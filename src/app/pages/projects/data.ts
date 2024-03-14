@@ -7,10 +7,10 @@ export class Project {
     description: string;
     details: string[];
     frameworks: string[];
-    cloudSkills: string[];
+    cloudSkills?: string[];
     softSkills: string[];
     uniqueTools: string[];
-    testTools: string[];
+    testTools?: string[];
     buildTools: string[];
     languages: string[];
     startDate: string;
@@ -70,7 +70,6 @@ const projects: Project [] = [
         frameworks:['Node.js', 'Angular 6+'],
         softSkills:['Application Design', 'API Development'],
         uniqueTools:['DevExpress', 'Stripe'],
-        testTools:[],
         buildTools:['Visual Studio Code', 'Npm'],
         languages: ['Typescript', 'Javascript', 'SQL'],
         startDate:"01/2020",
@@ -82,8 +81,7 @@ const projects: Project [] = [
         title:"Living Benefits Mobile App",
         company:"Alliance Group IMO",
         description:"Some good friends of mine recently moved into C-Level positions within Alliance Group. Lots of ideas emerged, but the immediate need was to rebuild a mobile application that the source code was no longer available to them. This application was used to augment their Sales Team by providing an augmented Reality app that worked hand-in hand with their primary sales tool, the 'Living Benefits' handbook.",
-        details:[],
-        cloudSkills: [
+        details:[
             "Built cross device, Augmented Reality application using Unity and Vuforia that enabled Image recognition technology, launching videos related to recognized image.",
             "The architecture of the application was built upon video storage service from Vimeo, Data Storage in Firebase and was distributed for both IOS and Android devices.",
             "Learned and built application using Unity and Vuforia.",
@@ -92,7 +90,6 @@ const projects: Project [] = [
         frameworks:['Firebase(Firestore, Firestorage)'],
         softSkills:['Application Design', 'Mobile Development'],
         uniqueTools:['Unity', 'Vuforia Augmented Reality SDK', 'Firebase', 'Vimeo API', 'iOS Development', 'Android Development', 'TestFlight'],
-        testTools:[],
         buildTools:['Visual Studio', 'XCode'],
         languages: ['C#', 'Objective-C', 'Javascript'],
         startDate:"03/2019",
