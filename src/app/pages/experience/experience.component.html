@@ -1,0 +1,218 @@
+<dx-accordion
+  [collapsible]="true"
+  [multiple]="true"
+  [animationDuration]="300">
+  <dxi-item titleTemplate="1">
+    <h6>After years of working in public and private companies, I started my own consulting business in 2012. Since then, I have worked with several different customers on projects of many different sizes. During this time, I have served in many different roles to lead or augment existing teams. Click on a card below to see more details.</h6>
+    
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div class="col" *ngFor="let contract of contracts;">
+        <div class="card" (click)="showContract(contract.id)">
+          <img src="{{contract.icon}}" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title">{{contract.title}}</h5>
+            <b>{{contract.company}}</b>
+            <p class="card-text">{{contract.description}}</p>
+          </div>
+        </div>  
+      </div>
+    </div>
+    
+
+  </dxi-item>
+  <div *dxTemplate="let data of '1'">
+      <h5>Managing Director - SRFreed Consulting, LLC (10/2012 - Present)</h5>
+  </div>
+  <dxi-item titleTemplate="2">
+    <h6>Served as Manager of internal 5 person Web Development team. Responsible for day to day operations of Southwire.com web site as well as many internally based web applications.</h6>
+    <ul>
+      <li>Monitored web site activity for problems and performance. Tuned where necessary.</li>
+      <li>Interacted with business teams to discover web needs and potential solutions.</li>
+      <li>Managed day to day activities of 4 developers while reporting to Vice President of Information Technology.</li>
+      <li>Initiated Infrastructure Project to upgrade the web infrastructure from RedDot to JBoss Enterprise Portal. Evaluated competing technologies to decide best fit for organizational needs.</li>
+      <li>Created 10 month Project plan to roll EPP into production.</li>
+      <li>Provided direction to organization in procuring and upgrading to Webtrends for web site usage analysis.</li>
+      <li>Provided UML documentation for application specifications where needed.</li>
+      <li>Designed and developed EDI Scheduler Import system to import EDI Data from a file structure into an Oracle 11 database using Spring, Hibernate, and Java API (Timer Task interface)</li>
+    </ul>
+  </dxi-item>
+  <div *dxTemplate="let data of '2'">
+      <h5>Web Team Manager - Southwire (01/2012-09/2012)</h5>
+  </div>  
+  <dxi-item titleTemplate="3">
+    <h6>Served as 1 of 2 Solution Architects reporting directly to Director of Professional Services. Responsible for leading 3 – 4 project teams of varying sizes. Provided strategic project guidance and real-life tactical portal solutions while managing company policies, business methodologies, and technical roadmap.</h6>
+    <ul>
+      <li>Interacted with Account Executives and Sales teams to provide Statement of Work scoping for project proposal.</li>
+      <li>Interacted with customers to help guide customer expectations and prevent scope creep.</li>
+      <li>Guided Project teams heavily to manage customer requirements.</li>
+      <li>Identified possible project risks and provided risk mitigation plans.</li>
+      <li>Managed remote teams from Israel and India responsible for project deliverables. Held daily meetings to ensure remote teams were on track with requirements, technical details, and schedule.</li>
+      <li>Interacted with Product Management teams to formulate product vision based upon current and foreseeable customer needs.</li>
+      <li>Provided direct estimations or led teams to provide project estimations including task and resource allocation estimates.</li>
+      <li>Advised Sales teams on RFP responses, solution proposals, and design estimations.</li>
+      <li>Provided technical documentation to customer describing proposed solution to include Network / Physical / Portal architecture diagrams, DFD diagrams, integration diagrams, and documented source code (meaningful Java Docs).</li>
+      <li>Wrote technical design documentation to development teams to include component architecture diagrams, class diagrams, interaction diagrams, page flow diagrams, and configuration schematics.</li>
+      <li>Guidaed, mentored, and superved technical leads on latest technologies, methodologies, and design patterns.</li>
+    </ul>
+  </dxi-item>
+  <div *dxTemplate="let data of '3'">
+      <h5>Senior Technical Lead / Enterprise Solution Architect - Jacada, Inc (06/2005- 12/2011)</h5>
+  </div>
+  <dxi-item titleTemplate="4">
+    <h6>Served as Development Team Lead for a 5 man team created to design Struts based application with a handheld .NET device to track customer service data.</h6>
+    <ul>
+      <li>Involved with full life cycle of application development, focused mainly on customer requirements, problem domain analysis, Analysis and Design, and implementation.</li>
+      <li>Responsible for delegating development tasks and generating documentation for External and Internal Design Specification.</li>
+      <li>Performed Code Peer Reviews to evaluate quality and consistency of team’s code.</li>
+      <li>Designed a 3-tier application utilizing Java technologies such as Struts and Tiles for the Presentation Layer, leveraging ActionServlets, ActionForms, DynaActionForms, Struts Plug-ins, and Struts Validator Framework to meet application needs.</li>
+      <li>Designed and built a custom Business Services layer and a custom built DAO layer providing services to the application layer.</li>
+      <li>Designed and implemented a multithreaded scheduling system responsible for the execution and maintenance of process related to the core application components.</li>
+      <li>Integrated Service Data with legacy system using Web Services to provide up-to-date information to Custom Built CRM application.</li>
+      <li>Designed and built Interface for legacy system to import data using DB2 Stored Procedures.</li>
+      <li>Designed and built a report-querying interface that allowed Customers to query service data and view the results in a PDF Format.</li>
+    </ul>
+  </dxi-item>
+  <div *dxTemplate="let data of '4'">
+      <h5>Rollins Corporation - Advisory Application Engineer (05/2003- 05/2005)</h5>
+  </div>
+  <dxi-item titleTemplate="5">
+    <h6>Served as Senior Developer / Team Lead for a 7 man team created to design B2E / B2C application for AAA Clubs across America. </h6>
+  </dxi-item>
+  <div *dxTemplate="let data of '5'">
+      <h5>The Ross Group - Senior Application Engineer (03/2002- 04/2003)</h5>
+  </div>  
+  <dxi-item titleTemplate="6">
+    <h6>Served as Design Consultant/Developer on projects designing sophisticated front end systems (Using HTML, JavaScript, JSP, and Servlets) and distributed back end systems (leveraging JDBC, RMI, EJB, and JNDI technologies.) Worked on Medium to Large sized projects with clients to develop applications using Epicentric Foundation Server (custom J2EE based MVC framework built using JSP’s and Servlets). </h6>
+    <ul>
+      <li>Involved with customer from beginning to end of full software development life cycle. Provided mentoring and technical leadership to customers deploying software for B2E, B2B, and B2C customer fronts. </li>
+      <li>Integrated database applications, web based applications and other 3rd party applications into the Epicentric Framework using Java, XML/XSL, and external Data sources. </li>
+      <li>Created Web services using SOAP technologies (UDDI, WSDL) and integrate these into the portal framework to build a distributed web based application. </li>
+      <li>Analyzed customer requirements, designed application architecture, and developed integration strategies.</li>
+      <li>Designed portal based applications using JSP, Servlet, and XML/XSL technology, integrating them into the Epicentric framework using several J2EE technologies. </li>
+      <li>Served as consultant role for best coding practices, application scaling, and application security.</li>
+    </ul>
+  </dxi-item>
+  <div *dxTemplate="let data of '6'">
+      <h5>Solutions Engineer - Epicentric, Inc (03/2001- 10/2001)</h5>
+  </div>     
+  <dxi-item titleTemplate="7">
+    <h6>Teaching Network Servicing and Network Administration with Windows NT class to college students working towards Associates Degree in Network Technology. Teaching students specifically in analyzing networking needs, selecting appropriate network equipment and topology, designing cable plant for network, protocol analysis and troubleshooting, administration, and servicing techniques. </h6>
+  </dxi-item>
+  <div *dxTemplate="let data of '7'">
+      <h5>Visiting Professor - Clayton College and State University (05/1999- 10/2001)</h5>
+  </div>  
+  <dxi-item titleTemplate="8">
+    <h6>Served in 2 different roles at Delta Technology, moving from Web Master to Senior Web Developer. Recognized as SME for Java based Web Development and Web Server Technology by peers.</h6>
+    <ul>
+      <li>Involved with full life cycle of application development, focused mainly on design and implementation using RUP and Rational Rose for Use Case Analysis and Design. Created Object Model using UML diagrams to support development efforts.</li>
+      <li>Performed lead or support roles on Analysis and Design Teams, Development teams, Implementation Teams, and Support Teams.</li>
+      <li>Developed web applications using the base JDK (1.1 and 1.2), JSP, JavaBeans, Servlets, Tibco Rendezvous Services, and full breadth of J2EE technologies, including JDBC, JNDI, and RMI.</li>
+      <li>Leveraged JDBC services to connect to Oracle, SQL, and DB2 Databases to access and query data tables.</li>
+      <li>One of three Web Masters that maintained 26 Web based applications for 75,000 employees around the world.</li>
+      <li>Provided consulting services to Web Application teams during the development cycle concerning:
+        <ol>
+          <li>Application design patterns</li>
+          <li>Web Server Support Services</li>
+          <li>Best coding practices</li>
+          <li>Monitoring of applications currently in production</li>
+          <li>Load testing applications going into Production from SI.</li>
+        </ol>
+      </li>
+      <li>Oversaw initial planning, design, and deployment of remote web sites and coordinated web activities with external clients.</li>
+      <li>Developed and enforced written standards, guidelines, and conventions for Intranet web sites. Evaluate tools and applications for web design and development.</li>
+    </ul>
+    
+  </dxi-item>
+  <div *dxTemplate="let data of '8'">
+      <h5>Webmaster / Senior Web Developer- Delta Airlines (05/1997- 03/2001)</h5>
+  </div>    
+  <dxi-item titleTemplate="9">
+    <h6>Provided expertise in all technology issues for large law firm, including hardware and software purchasing, technology direction, application designing, information reporting, and daily support. </h6>
+    <ul>
+      <li>Developed Data Driven web application, allowing users to input client information into a MS Access database. </li>
+      <li>Created complex reports, for annual state report, that analyzed several categories from using ODBC and SQL</li>
+      <li>Designed Network Infrastructure using Windows NT technology for server and client communication.</li>
+    </ul>
+  </dxi-item>
+  <div *dxTemplate="let data of '9'">
+      <h5>Systems Engineer / DBA - Atlanta Legal Aid Society (12/1996 - 03/1997)</h5>
+  </div>   
+  <dxi-item titleTemplate="10">
+    <h6>Platoon Sergeant for Headquarters Platoon, 8th Marines, USMC. Designed and Administered Company Training database.</h6>
+    <ul>
+      <li>Meritorious Promotion from Executive Officer for “Uncompromising leadership in moving 8th Marine Regiment into the 21st century.</li>
+      <li>Meritorious Promotion from Commanding Officer for Superior Analytical skills in support of Regimental Training Office.</li>
+    </ul>
+  </dxi-item>
+  <div *dxTemplate="let data of '10'">
+      <h5>Company Training NCO (Sergeant E-5)- United States Marine Corps (11/1989 - 11/1995)</h5>
+  </div>     
+</dx-accordion>
+
+<ng-container *ngIf="popupVisible">
+  <dx-popup
+    [width]="'50%'"
+    [height]="600"
+    [showTitle]="true"
+    [title]="selectedContract.title + ' - ' + selectedContract.company"
+    [dragEnabled]="false"
+    [hideOnOutsideClick]="true"
+    [showCloseButton]="true"
+    [(visible)]="popupVisible">
+    <div class="row">
+      <div class="col-6">
+        <h5>Description</h5>
+        <p><b>{{selectedContract.description}}</b></p>
+
+        <h5>Details</h5>
+        <ul *ngFor="let detail of selectedContract.details">
+          <li><b>{{detail}}</b></li>
+        </ul>
+      </div>
+      <div class="col-6">
+        <ng-container *ngIf="selectedContract.uniqueTools">
+          <h5>Unique Tools</h5>
+          <ul style="list-style: none;">
+            <li style="display: inline-block; margin-right: 10px;" *ngFor="let tools of selectedContract.uniqueTools"><b>{{tools}}</b></li>  
+          </ul>
+        </ng-container>
+        <ng-container *ngIf="selectedContract.softSkills">
+          <h5>Soft Skills</h5>
+          <ul style="list-style: none;">
+            <li style="display: inline-block; margin-right: 10px;" *ngFor="let tools of selectedContract.softSkills"><b>{{tools}}</b></li>  
+          </ul>
+        </ng-container>
+        <ng-container *ngIf="selectedContract.frameworks">
+          <h5>Frameworks</h5>
+          <ul style="list-style: none;">
+            <li style="display: inline-block; margin-right: 10px;" *ngFor="let tools of selectedContract.frameworks"><b>{{tools}}</b></li>  
+          </ul>
+        </ng-container>
+        <ng-container *ngIf="selectedContract.languages">
+          <h5>Languages</h5>
+          <ul style="list-style: none;">
+            <li style="display: inline-block; margin-right: 10px;" *ngFor="let tools of selectedContract.languages"><b>{{tools}}</b></li>  
+          </ul>
+        </ng-container>
+        <ng-container *ngIf="selectedContract.cloudSkills">
+          <h5>Cloud Skills</h5>
+          <ul style="list-style: none;">
+            <li style="display: inline-block; margin-right: 10px;" *ngFor="let tools of selectedContract.cloudSkills"><b>{{tools}}</b></li>  
+          </ul>
+        </ng-container>
+        <ng-container *ngIf="selectedContract.testTools">
+          <h5>Test Tools</h5>
+          <ul style="list-style: none;">
+            <li style="display: inline-block; margin-right: 10px;" *ngFor="let tools of selectedContract.testTools"><b>{{tools}}</b></li>  
+          </ul>
+        </ng-container>
+        <ng-container *ngIf="selectedContract.buildTools">
+          <h5>Build Tools</h5>
+          <ul style="list-style: none;">
+            <li style="display: inline-block; margin-right: 10px;" *ngFor="let tools of selectedContract.buildTools"><b>{{tools}}</b></li>  
+          </ul>
+        </ng-container>
+      </div>
+    </div>
+  </dx-popup>
+</ng-container>

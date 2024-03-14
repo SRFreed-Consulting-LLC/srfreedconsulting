@@ -1,0 +1,13 @@
+<h5>Certifications</h5>
+<b>The following certifications were aquired before I started SRFreed Consulting, but were foundational in setting me up for success!</b>
+<div class="row row-cols-1 row-cols-md-3 my-2">
+  <div class="col" *ngFor="let contract of certifications;">
+    <div class="card" style="width: 24em;">
+      <img src="{{contract.icon}}" class="card-img-top">
+      <div class="card-body">
+        <h5 class="card-title">{{contract.title}}</h5>
+        <b>{{contract.company}} - {{contract.year}}</b>
+      </div>
+    </div>  
+  </div>
+</div>

@@ -1,0 +1,60 @@
+<h5>Projects</h5>
+<b>In order to expand my technology footprint (and also to help out friends), I would pick up on small project over the years.</b> 
+<b>The following list of projects allowed me to aquire deep skills using technologies that I most likely would not have had access to, and lead me to my real passion "<h6>Angular and Firebase</h6></b>
+<div class="row my-2">
+  <div class="col-12" *ngFor="let project of projects;">
+    <div class="card mb-3">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="{{project.icon}}" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">{{project.title}} - {{project.company}}</h5>
+            <p class="card-text">{{project.description}}</p>
+
+            <dx-tabs
+              [width]="'%100'"
+              [selectedIndex]="selectedIndex[project.id]"
+              (onSelectionChanged)="showTab($event, project.id)"
+              [dataSource]="tabs">
+            </dx-tabs>
+
+            <div class="row m-2" *ngIf="selectedIndex[project.id] == 0">
+              <ol>
+                <li *ngFor="let detail of project.details;">{{detail}}</li>
+              </ol>
+            </div>
+            <div class="row m-2" *ngIf="selectedIndex[project.id] == 1">
+              <div class="row">
+                <div class="col-4">Soft Skills:</div>
+                <div class="col-8">{{project.softSkills}}</div>
+              </div>
+              <div class="row">
+                <div class="col-4">Frameworks:</div>
+                <div class="col-8">{{project.frameworks}}</div>
+              </div> 
+              <div class="row">
+                <div class="col-4">Cloud Technologies:</div>
+                <div class="col-8">{{project.cloudSkills}}</div>
+              </div> 
+              <div class="row">
+                <div class="col-4">Languages:</div>
+                <div class="col-8">{{project.languages}}</div>
+              </div>
+              <div class="row">
+                <div class="col-4">Build Tools:</div>
+                <div class="col-8">{{project.buildTools}}</div>
+              </div>  
+              <div class="row">
+                <div class="col-4">Unique Tools:</div>
+                <div class="col-8">{{project.uniqueTools}}</div>
+              </div>               
+            </div>                                                        
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

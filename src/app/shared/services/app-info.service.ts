@@ -5,7 +5,7 @@ export class AppInfoService {
   constructor() {}
 
   public get title() {
-    return 'Srfreedconsulting';
+    return 'SRFreed Consulting, LLC';
   }
 
   public get currentYear() {
