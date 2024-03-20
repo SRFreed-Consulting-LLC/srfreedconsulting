@@ -1,0 +1,67 @@
+@import '../../styles/variables.scss';
+
+.certifications {
+  height: calc(100% - $navbar-height - $footer-height);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 60px;
+  .content-row {
+    display: flex;
+    justify-content: space-around;
+    margin: 0;
+  }
+  .left-section {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .title {
+    font-family: "Playfair Display", serif;
+    font-size: 110px;
+    font-weight: 600;
+    margin-bottom: 50px;
+  }
+  .subtitle {
+    font-size: 40px;
+  }
+  .sr-span {
+    background-color: #d9d917;
+    padding: 0px 6px;
+    margin-right: 5px;
+  }
+
+  .consulting-span {
+    border-bottom: 3px solid #d9d917;
+    padding-bottom: 10px;
+  }
+  .right-section {
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px; /* Adjust the gap between cards */
+      justify-content: center; /* Center cards horizontally */
+      padding: 20px;
+      .card {
+        flex: 1 0 300px;
+        max-width: 300px;
+        padding: 30px;
+        border: 1px solid rgb(57 54 28 / 28%);
+        border-radius: 5px;
+        box-shadow: rgb(197 182 54 / 83%) 0px 1px 3px, rgb(255, 236, 61) 0px 1px 1px;
+        text-align: center;
+        .img-container {
+          height: 150px;
+          img {
+            max-width: 100%;
+            height: inherit;
+          }
+        }
+        .card-title {
+          font-weight: 300;
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}

@@ -1,7 +1,241 @@
 :host {
   @import "../themes/generated/variables.base.scss";
-  background-color: darken($base-bg, 5.00);
-  display: flex;
+  background-color: #ffffff;
   height: 100%;
   width: 100%;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  ::ng-deep .home {
+    .header__pretitle{
+      font-size: 15px !important;
+    }
+    .header__title {
+      font-size: 25px !important;
+    }
+    .header__subtitle-description {
+      font-size: 12px !important;
+    }
+    .profile-img {
+      width: 200px !important;
+      height: 150px !important;
+    }
+    .link-icon {
+      font-size: 20px !important;
+    }
+  }
+}
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) and (max-width: 767px) {
+  ::ng-deep .home {
+    .header__pretitle{
+      font-size: 25px !important;
+    }
+    .header__title {
+      font-size: 35px !important;
+    }
+    .header__subtitle-description {
+      font-size: 18px !important;
+    }
+    .profile-img {
+      width: 220px !important;
+      height: 160px !important;
+    }
+    .link-icon {
+      font-size: 20px !important;
+    }
+  }
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 767px) and (max-width: 991px) {
+  ::ng-deep .home {
+    .header__pretitle{
+      font-size: 25px !important;
+    }
+    .header__title {
+      font-size: 45px !important;
+    }
+    .header__subtitle-description {
+      font-size: 18px !important;
+    }
+    .profile-img {
+      width: 350px !important;
+      height: 280px !important;
+    }
+  }
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 991px) and (max-width: 1199px) {
+  ::ng-deep .home {
+    .header__pretitle{
+      font-size: 25px !important;
+    }
+    .header__title {
+      font-size: 45px !important;
+    }
+    .header__subtitle-description {
+      font-size: 18px !important;
+    }
+    .profile-img {
+      width: 350px !important;
+      height: 280px !important;
+    }
+    .section-title {
+      font-size: 80px !important;
+    }
+    .about {
+      .left-section, .right-section {
+        padding: 25px 10px !important;
+      }
+      .about-desc {
+        font-size: 14px !important; 
+      }
+      .list-item {
+        margin: 10px 0 !important;
+        transform: scale(.8) !important;
+      }
+    }
+    .manifesto {
+      .left-section, .right-section {
+        padding: 25px 10px !important;
+        transform: scale(.5) !important;
+      }
+    }
+  }
+  ::ng-deep .skills {
+    .core-skills {
+      .title {
+        p {
+          font-size: 40px !important;
+        }
+      }
+      ::ng-deep .square {
+        height: 200px !important;
+        width: 150px !important;
+        &__title {
+          font-size: 12px !important;
+        }
+        &__subtitle {
+          font-size: 9px !important;
+        }
+      }
+  
+    }
+  }
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) and (max-width: 1599px) {
+  ::ng-deep .home {
+    .gallery-item {
+      padding: 0 50px !important;
+    }
+    .header__pretitle{
+      font-size: 30px !important;
+    }
+    .header__title {
+      font-size: 50px !important;
+    }
+    .header__subtitle-description {
+      font-size: 20px !important;
+    }
+    .profile-img {
+      width: 490px !important;
+      height: 440px !important;
+    }
+    .section-title {
+      font-size: 80px !important;
+    }
+    .about {
+      .left-section, .right-section {
+        padding: 25px 10px !important;
+      }
+      .about-desc {
+        font-size: 14px !important; 
+      }
+      .list-item {
+        margin: 10px 0 !important;
+        transform: scale(.8) !important;
+      }
+    }
+    .manifesto {
+      .left-section, .right-section {
+        padding: 25px 10px !important;
+        transform: scale(.7) !important;
+      }
+    }
+  }
+
+  ::ng-deep .skills {
+    .core-skills {
+      .title {
+        p {
+          font-size: 60px !important;
+        }
+      }
+      ::ng-deep .square {
+        height: 250px !important;
+        width: 200px !important;
+        &__title {
+          font-size: 15px !important;
+        }
+        &__subtitle {
+          font-size: 12px !important;
+        }
+      }
+  
+    }
+  }
+}
+
+@media only screen and (min-width: 1600px) and (max-width: 2000px) {
+  ::ng-deep .home {
+    .header__pretitle{
+      font-size: 35px !important;
+    }
+    .header__title {
+      font-size: 55px !important;
+    }
+    .header__subtitle-description {
+      font-size: 20px !important;
+    }
+    .profile-img {
+      width: 500px !important;
+      height: 450px !important;
+    }
+    .section-title {
+      font-size: 100px !important;
+    }
+    .left-section, .right-section {
+      padding: 25px 50px !important;
+    }
+    .about-desc {
+      font-size: 15px !important; 
+    }
+    .list-item {
+      margin: 10px 0 !important;
+      transform: scale(.8) !important;
+    }
+    .manifesto {
+      .title {
+        font-size: 60px !important;
+      }
+      .subtitle {
+        font-size: 30px !important;
+      }
+      .right-section {
+        font-size: 20px;
+      }
+    }
+  }
+
+  ::ng-deep .projects {
+    .intro-text {
+      font-size: 40px !important;
+    }
+    .card {
+      transform: scale(.85) !important;
+    }
+  }
+
 }

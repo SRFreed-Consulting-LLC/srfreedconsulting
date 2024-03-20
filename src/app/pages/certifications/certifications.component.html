@@ -1,4 +1,28 @@
-<h5>Certifications</h5>
+<div class="certifications">
+  <div class="row content-row">
+    <div class="col-lg-3 col-md-10 col-sm-10 left-section">
+      <div class="title"><em>Certifications</em></div>
+      <div class="subtitle"><span class="sr-span">SR</span>Freed <span class="consulting-span">Consulting</span></div>
+    </div>
+    <div class="col-lg-7 col-md-10 col-sm-10 right-section">
+      <div class="card-container">
+        <div class="card" *ngFor="let contract of certifications;">
+          <div class="img-container"><img src="{{contract.icon}}" class="card-img-top"></div>
+          <div class="card-body">
+            <h5 class="card-title">{{contract.title}}</h5>
+            <b>{{contract.company}} - {{contract.year}}</b>
+          </div>
+        </div>  
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- <h5>Certifications</h5>
 <b>The following certifications were aquired before I started SRFreed Consulting, but were foundational in setting me up for success!</b>
 <div class="row row-cols-1 row-cols-md-3 my-2">
   <div class="col" *ngFor="let contract of certifications;">
@@ -10,4 +34,4 @@
       </div>
     </div>  
   </div>
-</div>
+</div> -->

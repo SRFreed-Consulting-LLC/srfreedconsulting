@@ -1,9 +1,18 @@
-@import "../../../../themes/generated/variables.base.scss";
+@import "../../../styles/variables.scss";
 
 :host {
-  display: block;
-  color: rgba($base-text-color, alpha($base-text-color) * 0.7);
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  padding-top: 20px;
-  padding-bottom: 24px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: #212121;
+  padding: 20px;
+  text-align: center;
+  border-top: 1px solid #b1b1b1;
+  height: $footer-height;
+  background-color: #ffffff;
+  a {
+    color: #000000;
+    font-weight: 600;
+  }
 }

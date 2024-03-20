@@ -1,4 +1,92 @@
-<h5>Projects</h5>
+<div class="projects">
+  <div class="row content-row">
+    <div class="col-12">
+      <div class="intro-text">Working on <b>small projects</b> have broadened my tech skills and</div><div class="intro-text"> ignited <b>new passions</b>...</div>
+    </div>
+    <div class="col-12">
+      <dx-gallery
+        width="100%"
+        height="100%"
+        [dataSource]="projects"
+        [loop]="true"
+        [initialItemWidth]="500"
+        [showIndicator]="false"
+        [showNavButtons]="true"
+        [swipeEnabled]="false"
+      >
+        <div *dxTemplate="let project of 'item'">
+          <div class="card mb-3">
+            <div class="row card-image-container">
+              <div class="col-md-4">
+                <img src="{{project.icon}}" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-7 card-title">
+                <h5>{{project.title}} - {{project.company}}</h5>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="card-body">
+                <p class="card-text">{{project.description}}</p>
+    
+                <dx-tabs
+                  [selectedIndex]="selectedIndex[project.id]"
+                  (onSelectionChanged)="showTab($event, project.id)"
+                  [dataSource]="tabs">
+                </dx-tabs>
+    
+                <div class="row m-2 tab-details" *ngIf="selectedIndex[project.id] == 0">
+                  <dx-scroll-view>
+                    <ol>
+                      <li *ngFor="let detail of project.details;">{{detail}}</li>
+                    </ol>
+                  </dx-scroll-view>
+                </div>
+                <div class="row m-2 tab-details" *ngIf="selectedIndex[project.id] == 1">
+                  <dx-scroll-view>
+                    <div class="row">
+                      <div class="col-4">Soft Skills:</div>
+                      <div class="col-8">{{project.softSkills}}</div>
+                    </div>
+                    <div class="row">
+                      <div class="col-4">Frameworks:</div>
+                      <div class="col-8">{{project.frameworks}}</div>
+                    </div> 
+                    <div class="row">
+                      <div class="col-4">Cloud Technologies:</div>
+                      <div class="col-8">{{project.cloudSkills}}</div>
+                    </div> 
+                    <div class="row">
+                      <div class="col-4">Languages:</div>
+                      <div class="col-8">{{project.languages}}</div>
+                    </div>
+                    <div class="row">
+                      <div class="col-4">Build Tools:</div>
+                      <div class="col-8">{{project.buildTools}}</div>
+                    </div>  
+                    <div class="row">
+                      <div class="col-4">Unique Tools:</div>
+                      <div class="col-8">{{project.uniqueTools}}</div>
+                    </div>  
+                  </dx-scroll-view>             
+                </div>                                                        
+              </div>
+            </div>
+         
+          </div>
+        </div>
+      </dx-gallery>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<!-- <h5>Projects</h5>
 <b>In order to expand my technology footprint (and also to help out friends), I would pick up on small project over the years.</b> 
 <b>The following list of projects allowed me to aquire deep skills using technologies that I most likely would not have had access to, and lead me to my real passion... <h6>Angular and Firebase</h6></b>
 <div class="row my-2">
@@ -56,5 +144,5 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 

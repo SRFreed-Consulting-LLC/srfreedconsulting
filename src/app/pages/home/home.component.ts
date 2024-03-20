@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, HostListener, ViewChild } from '@angular/core';
+import { DxGalleryComponent } from 'devextreme-angular';
 
 @Component({
   templateUrl: 'home.component.html',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
 })
 
 export class HomeComponent {
-  constructor() {}
+  @ViewChild(DxGalleryComponent) gallery: DxGalleryComponent;
+
+  @HostListener('wheel', ['$event']) onMouseWheel(event: WheelEvent) {
+    if (event.deltaY > 0) {
+      this.gallery.instance.nextItem(true)
+    } else {
+      this.gallery.instance.prevItem(true);
+    }
+  }
 }
