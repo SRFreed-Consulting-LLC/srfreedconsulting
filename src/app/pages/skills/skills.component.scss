@@ -1,0 +1,161 @@
+@import '../../styles/variables.scss';
+
+.skills {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .core-skills {
+    padding: 50px 100px 0;
+    white-space: normal;
+    .content-row {
+      display: flex;
+      justify-content: space-between;
+      margin: 0;
+      height: 100%;
+      flex-wrap: nowrap;
+      align-items: center;
+    }
+    .title {
+      height: 100%;
+      align-items: center;
+      display: flex;
+      p {
+        text-orientation: upright;
+        writing-mode: vertical-lr;
+        font-size: 90px;
+        font-weight: 600;
+        text-align: center;
+        height: min-content;
+      }
+    }
+    .square-row {
+      justify-content: center;
+    }
+    .square {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      height: 300px;
+      width: 300px;
+  
+      &__title {
+        font-size: 25px;
+      }
+      &__subtitle {
+        font-size: 15px;
+      }
+    }
+    ::ng-deep .dx-gallery-item {
+      text-align: left;
+    }
+  }
+
+  .toolbox {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    .toolbox-gallery {
+      margin: 50px;
+    }
+    .content-row {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: 0;
+      height: min-content;
+      height: 100%;
+      flex-wrap: nowrap;
+      align-items: center;
+    }
+    .title {
+      display: flex;
+      justify-content: center;
+      p {
+        font-size: 90px;
+        font-weight: 600;
+        text-align: center;
+        background-color: #d9d917;
+        padding: 5px 50px;
+        margin: 50px;
+      }
+    }
+    .card {
+      height: 100%;
+      border: 1px solid rgb(57 54 28 / 28%);
+      border-radius: 5px;
+      box-shadow: rgb(197 182 54 / 83%) 0px 1px 3px, rgb(255, 236, 61) 0px 1px 1px;
+    }
+  }
+
+  .technical-strengths {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    margin: 50px 50px 120px 50px;
+    .content-row {
+      display: flex;
+      justify-content: center;
+      margin: 0;
+      width: 100%;
+      flex-wrap: nowrap;
+      align-items: center;
+    }
+    .strength-container {
+      height: 100%;
+      padding: 50px;
+    }
+    .title {
+      color: #3a3a3a;
+      font-size: 80px;
+      font-weight: 600;
+    }
+    .list-group-item {
+      font-size: 20px;
+      padding: 10px 0;  
+    }
+  }
+
+
+  ::ng-deep .dx-gallery-item-content {
+    padding: 10px;
+  }
+  ::ng-deep .dx-state-focused.dx-gallery {
+    border: none;
+  }
+
+  ::ng-deep .dx-gallery-nav-button-next {
+    width: 3%;
+  }
+  ::ng-deep .dx-gallery-nav-button-prev {
+    width: 3%;
+  }
+  ::ng-deep .dx-gallery-item {
+    text-align: left;
+  }
+
+}
+
+.logo-img {
+  display: flex;
+  flex-direction: column;
+  max-width: 100px;
+  min-height: 50px;
+  img {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.hl {
+  border-bottom: 2px solid #b1b1b1;
+  margin: 10px 100px;
+}
+
+.yellow {
+  background-color: #d9d917;
+}
+
+.grey {
+  background-color: #a3a3a3;
+}

@@ -1,0 +1,9 @@
+<div class="nav-toolbar">
+  <dx-menu
+    #menu
+    [dataSource]="items"
+    displayExpr="text"
+    orientation="horizontal"
+    (onItemClick)="onItemClick($event)"
+  ></dx-menu>
+</div>

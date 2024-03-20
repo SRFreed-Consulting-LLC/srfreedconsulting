@@ -1,38 +1,181 @@
-.logos-container {
-  margin: 20px 0 40px 0;
-  text-align: center;
-  svg {
-    display: inline-block;
+@import '../../styles/variables.scss';
+
+.home {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - $navbar-height - $footer-height);
+  justify-content: center;
+  margin-bottom: 60px;
+  .gallery-item {
+    height: calc(100vh - $navbar-height - $footer-height);
+    justify-content: center;
+    padding: 100px;
+    white-space: normal;
   }
-}
-
-.devextreme-logo {
-  width: 200px;
-  height: 34px;
-  margin-bottom: 13px;
-}
-
-.angular-logo {
-  width: 220px;
-  height: 62px;
-}
-
-.plus {
-  margin: 15px 10px;
-  width: 22px;
-  height: 22px;
-}
-
-:host-context(.screen-x-small) .logos-container {
-  svg {
-    width: 100%;
-    display: block;
-    &.plus {
-      margin: 0;
+  .main {
+    .header {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    
+      &__pretitle {
+        font-size: 45px;
+      }
+    
+      &__title {
+        font-size: 75px;
+        .sr-span {
+          background-color: #d9d917;
+          padding: 0px 10px;
+          margin-right: 5px;
+        }
+      
+        .consulting-span {
+          border-bottom: 10px solid #d9d917;
+          padding-bottom: 10px;
+        }
+      }
+    
+      &__subtitle {
+        margin: 55px 15px;
+    
+        &-description {
+          margin-bottom: 50px;
+          font-size: 30px;
+        }
+        &-links {
+          display: flex;
+          justify-content: space-between;
+          width: 40%;
+    
+          .link-icon {
+            font-size: 40px;
+            color: #1f1f1f;
+          }
+        }
+      }
+    }
+    .image-section {
+      justify-content: center;
+      display: flex;
+      
+      .profile-img {
+        width: 600px;
+        height: 550px;
+      }
     }
   }
-}
 
-.red-text {
-  color: red;
+  .about {
+    .content-row {
+      color: #212121;
+      padding: 15px;
+      border: 10px solid #d9d917;
+      .left-section {
+        padding: 25px 100px;
+        background-color: #d9d917;
+        height: 100%;
+        .section-title {
+          font-size: 150px;
+        }
+        .about-desc {
+          font-size: 16px;
+        }
+      }
+      .right-section {
+        padding: 25px 100px;
+        background-color: #d9d917;
+        height: 100%;
+        .list-item {
+          display: flex;
+          margin: 20px 0;
+          align-items: center;
+          .number {
+            font-size: 3em;
+            font-weight: 700;
+            background-color: #ffffff;
+            border-radius: 50%;
+            padding: 5px 20px;
+          }
+          .desc {
+            font-size: 25px;
+            margin-left: 45px;    
+          }
+        }
+      }
+    }
+  }
+
+  .manifesto {
+
+
+    .left-section {
+      height: 100%;
+      justify-content: space-around;
+      display: flex;
+      flex-direction: column;
+    }
+    .title {
+      font-family: "Playfair Display", serif;
+      font-size: 80px;
+      font-weight: 600;
+    }
+    .subtitle {
+      font-size: 40px;
+    }
+    .sr-span {
+      background-color: #d9d917;
+      padding: 0px 6px;
+      margin-right: 5px;
+    }
+  
+    .consulting-span {
+      border-bottom: 3px solid #d9d917;
+      padding-bottom: 10px;
+    }
+    .right-section {
+      font-size: 25px;
+  
+      .desc {
+        display: flex;
+        align-items: center;
+        span{
+          font-size: 70px;
+          color: #d9d917;
+          margin: 0 25px 6px 0;
+        }
+      }
+      
+    }
+  }
+  
+  .content-row {
+    margin: 50px 0;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .hl {
+    border-bottom: 2px solid #b1b1b1;
+  }
+  
+  .section-center {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .font-normal {
+    font-weight: 500;
+  }
+
+  ::ng-deep .dx-gallery-nav-button-next {
+    width: 3%;
+  }
+  ::ng-deep .dx-gallery-nav-button-prev {
+    width: 3%;
+  }
+
+  ::ng-deep .dx-gallery-item {
+    text-align: left;
+  }
 }

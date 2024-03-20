@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginFormComponent, ResetPasswordFormComponent, CreateAccountFormComponent, ChangePasswordFormComponent, HeaderModule } from './shared/components';
 import { AuthGuardService } from './shared/services';
 import { HomeComponent } from './pages/home/home.component';
-import { DxAccordionModule, DxButtonModule, DxDataGridModule, DxFormModule, DxPopupModule, DxTabsModule } from 'devextreme-angular';
+import { DxAccordionModule, DxButtonModule, DxDataGridModule, DxFormModule, DxGalleryModule, DxPopupModule, DxScrollViewModule, DxTabsModule } from 'devextreme-angular';
 import { CertificationsComponent } from './pages/certifications/certifications.component';
 import { ExperienceComponent } from './pages/experience/experience.component';
 import { ResumeComponent } from './pages/resume/resume.component';
@@ -73,7 +73,7 @@ const routes: Routes = [
     CommonModule, 
     HeaderModule,
     RouterModule.forRoot(routes, { useHash: true }),
-    DxTabsModule, DxDataGridModule, DxFormModule, DxAccordionModule, DxPopupModule, DxButtonModule],
+    DxTabsModule, DxDataGridModule, DxFormModule, DxAccordionModule, DxPopupModule, DxButtonModule, DxGalleryModule, DxScrollViewModule],
   providers: [AuthGuardService],
   exports: [RouterModule],
   declarations: [
