@@ -145,10 +145,14 @@ img {
 
 /* ---------------------------------------------------------- typography ---- */
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4, h5, h6 {
   text-wrap: balance;
   letter-spacing: -0.015em;
   line-height: 1.15;
+  /* Bootstrap's reboot sets heading colour from --bs-heading-color, which
+     resolves to its own dark body ink and survives inheritance. Without this
+     every heading inside our components stays dark in dark mode. */
+  color: var(--color-text);
 }
 
 /* Uppercase monospace label — used for section eyebrows and metadata keys. */
