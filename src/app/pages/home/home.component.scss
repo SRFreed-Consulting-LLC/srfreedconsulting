@@ -93,7 +93,11 @@
     display: block;
     width: 260px;
     height: 260px;
+    /* The asset is already square-cropped with headroom; object-position is
+       set anyway so any future non-square source still crops from the top
+       rather than through the middle of the face. */
     object-fit: cover;
+    object-position: center top;
     border-radius: var(--radius-md);
     border: 1px solid var(--color-border);
   }
