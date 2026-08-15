@@ -1,7 +1,5 @@
-/* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { LeadershipComponent } from './leadership.component';
 
@@ -9,9 +7,10 @@ describe('LeadershipComponent', () => {
   let component: LeadershipComponent;
   let fixture: ComponentFixture<LeadershipComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ LeadershipComponent ]
+      declarations: [ LeadershipComponent ],
+      imports: [ CommonModule ]
     })
     .compileComponents();
   }));

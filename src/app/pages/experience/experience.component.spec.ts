@@ -1,17 +1,17 @@
-/* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
+import { AccordionComponent, AccordionItemComponent, ModalComponent } from '../../shared/components';
 import { ExperienceComponent } from './experience.component';
 
 describe('ExperienceComponent', () => {
   let component: ExperienceComponent;
   let fixture: ComponentFixture<ExperienceComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ ExperienceComponent ]
+      declarations: [ ExperienceComponent ],
+      imports: [ CommonModule, AccordionComponent, AccordionItemComponent, ModalComponent ]
     })
     .compileComponents();
   }));
