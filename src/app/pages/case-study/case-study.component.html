@@ -65,6 +65,29 @@
     <li class="tag" *ngFor="let tech of item.stack">{{ tech }}</li>
   </ul>
 
+  <!-- Device screens — shown in a phone frame, since this ships as an app -->
+  <ng-container *ngIf="study.devices as devices">
+    <div class="section-head">
+      <span class="eyebrow">On device</span>
+      <h2 class="section-head__title">{{ devices.heading }}</h2>
+    </div>
+
+    <p class="chapter__p">{{ devices.body }}</p>
+
+    <ul class="devices">
+      <li class="device" *ngFor="let shot of devices.shots">
+        <div class="phone">
+          <div class="phone__frame">
+            <span class="phone__notch" aria-hidden="true"></span>
+            <img class="phone__screen" [src]="shot.src" [alt]="shot.label + ' — ' + (shot.note || '')" loading="lazy">
+          </div>
+        </div>
+        <p class="device__label">{{ shot.label }}</p>
+        <p class="device__note" *ngIf="shot.note">{{ shot.note }}</p>
+      </li>
+    </ul>
+  </ng-container>
+
   <!-- Gallery -->
   <ng-container *ngIf="study.gallery?.length">
     <div class="section-head">

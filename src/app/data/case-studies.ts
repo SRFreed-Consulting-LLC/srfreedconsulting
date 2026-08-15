@@ -18,6 +18,21 @@ export interface CaseImage {
   caption: string;
 }
 
+/** A phone screen, rendered inside a device frame rather than as a flat image. */
+export interface DeviceShot {
+  src: string;
+  /** Shown under the device, e.g. the language. */
+  label: string;
+  /** Optional second line, e.g. what the screen is. */
+  note?: string;
+}
+
+export interface DeviceSet {
+  heading: string;
+  body: string;
+  shots: DeviceShot[];
+}
+
 export interface CaseStudy {
   /** One sentence above the fold. */
   standfirst: string;
@@ -25,6 +40,8 @@ export interface CaseStudy {
   facts: { key: string; value: string }[];
   sections: CaseSection[];
   gallery?: CaseImage[];
+  /** Phone screens shown in a device frame — used where the product ships as an app. */
+  devices?: DeviceSet;
 }
 
 export const CASE_STUDIES: Record<string, CaseStudy> = {
@@ -179,6 +196,21 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
         ],
       },
     ],
+    devices: {
+      heading: 'The same lesson, four languages',
+      body:
+        'The reader ships in English, French, Spanish and chiTonga — a language of southern Zambia, which is not an accident given where this app is used. Interface, navigation, progress figures and the curriculum itself all translate; a lesson renders in the reader\'s preferred language when a translation exists, and in its original language when one does not. These are real screens from the running app, not mockups.',
+      shots: [
+        { src: 'assets/work/library/langs/lesson-en.webp', label: 'English', note: 'Lesson' },
+        { src: 'assets/work/library/langs/lesson-fr.webp', label: 'Français', note: 'Lesson' },
+        { src: 'assets/work/library/langs/lesson-es.webp', label: 'Español', note: 'Lesson' },
+        { src: 'assets/work/library/langs/lesson-to.webp', label: 'chiTonga', note: 'Lesson' },
+        { src: 'assets/work/library/langs/home-en.webp', label: 'English', note: 'Home' },
+        { src: 'assets/work/library/langs/home-fr.webp', label: 'Français', note: 'Home' },
+        { src: 'assets/work/library/langs/home-es.webp', label: 'Español', note: 'Home' },
+        { src: 'assets/work/library/langs/home-to.webp', label: 'chiTonga', note: 'Home' },
+      ],
+    },
     gallery: [
       { src: 'assets/work/library/reader.webp', caption: 'Reading a lesson' },
       { src: 'assets/work/library/home.webp', caption: 'Home — progress, streak, and a highlighted passage' },
@@ -220,6 +252,20 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
         ],
       },
       {
+        heading: 'Importing a book with AI',
+        body: [
+          'Getting a curriculum into the system used to mean re-creating it by hand: reading a printed book, retyping each lesson, rebuilding the question sets, and placing the images — before any of it could be translated.',
+          'Import Book takes the PDF instead. The book is read by an AI pass that detects its structure — units, lessons, questions and images — and proposes the hierarchy the manager would otherwise be built by hand.',
+          'Nothing is written on the model\'s say-so. The detected structure is presented for review first, and a person confirms it before anything is saved. That is the same principle I apply to agent-generated code: the machine proposes, a human is accountable for what lands.',
+        ],
+        points: [
+          'Upload a PDF, choose or create the series it belongs to',
+          'AI detects units, lessons, questions and images',
+          'The proposed structure is reviewed before any of it is persisted',
+          'Imported content then flows into the translation workflow',
+        ],
+      },
+      {
         heading: 'The presence map',
         body: [
           'The manager includes a live map showing where readers are currently active, drawn with Leaflet over OpenStreetMap data.',
@@ -228,6 +274,7 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
       },
     ],
     gallery: [
+      { src: 'assets/work/manager/import-book.webp', caption: 'Import Book — a PDF is read by AI to detect units, lessons, questions and images, for review before anything is saved' },
       { src: 'assets/work/manager/series-expanded.webp', caption: 'Content tree with publication state, and the live presence map' },
       { src: 'assets/work/manager/content-tree.webp', caption: 'Series and lessons' },
       { src: 'assets/work/manager/lesson.webp', caption: 'Editing a lesson' },

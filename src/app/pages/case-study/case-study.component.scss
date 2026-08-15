@@ -93,6 +93,106 @@
   gap: 8px;
 }
 
+/* ------------------------------------------------------- device frames ---
+   The reader ships on Android via Capacitor, so its screens are presented in
+   a phone bezel rather than as flat images. The frame is drawn in CSS so it
+   stays crisp at any density and follows the theme.                        */
+
+/* Four across, so each row is one screen shown in all four languages —
+   the comparison only reads if the languages stay on a single line. */
+.devices {
+  list-style: none;
+  margin: 4px 0 8px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 26px 20px;
+}
+
+.device {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.phone {
+  width: 100%;
+  max-width: 220px;
+}
+
+.phone__frame {
+  position: relative;
+  border-radius: 30px;
+  padding: 9px;
+  background: linear-gradient(160deg, #3a4048, #15181b 45%, #23282d);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.55),
+    0 14px 30px rgba(0, 0, 0, 0.24);
+}
+
+/* A camera pill rather than a full notch — a notch wide enough to look
+   right sat on top of the app's own title bar and hid content. This rides
+   in the bezel itself, so it covers nothing. */
+.phone__notch {
+  position: absolute;
+  top: 3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 3px;
+  border-radius: 2px;
+  background: #05070a;
+  z-index: 2;
+}
+
+.phone__screen {
+  display: block;
+  width: 100%;
+  aspect-ratio: 390 / 844;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 22px;
+  background: var(--color-surface);
+}
+
+.device__label {
+  margin: 12px 0 0;
+  font-size: 14px;
+  font-weight: 650;
+  color: var(--color-text);
+}
+
+.device__note {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-3);
+}
+
+@media (max-width: 900px) {
+  .devices {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .devices {
+    gap: 20px 12px;
+  }
+
+  .phone__frame {
+    border-radius: 22px;
+    padding: 6px;
+  }
+
+  .phone__screen {
+    border-radius: 17px;
+  }
+}
+
 /* ------------------------------------------------------------ gallery ---- */
 
 .gallery {
