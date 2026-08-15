@@ -1,5 +1,14 @@
 import { Injectable } from '@angular/core';
 
+/**
+ * The Federal Reserve engagement ends 31 August 2026, so availability is a
+ * fact the site states plainly rather than something a reader has to infer.
+ */
+export const AVAILABILITY = {
+  availableFrom: 'September 2026',
+  note: 'Current engagement ends 31 August 2026.',
+};
+
 export type WorkKind = 'product' | 'client';
 
 export interface WorkItem {
@@ -104,7 +113,7 @@ export const WORK: WorkItem[] = [
     summary: 'Moving a mission-critical payments platform off WebLogic.',
     org: 'Federal Reserve Bank of Cleveland',
     role: 'Senior Software Engineer',
-    period: '18 months',
+    period: '1 yr 9 mos — through Aug 2026',
     sortYear: 2025,
     kind: 'client',
     tags: ['Java', 'Spring', 'AWS', 'Modernisation'],

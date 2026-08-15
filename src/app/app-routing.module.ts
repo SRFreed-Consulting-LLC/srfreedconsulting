@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { CaseStudyComponent } from './pages/case-study/case-study.component';
 import { CertificationsComponent } from './pages/certifications/certifications.component';
 import { ExperienceComponent } from './pages/experience/experience.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -21,14 +22,13 @@ const routes: Routes = [
     component: WorkComponent
   },
   {
-    // The Impact estate is one system with four applications, so the overview
-    // owns the parent slug and each application hangs beneath it.
-    path: 'work/impact-platform',
+    path: 'impact',
     component: ImpactSystemComponent
   },
   {
-    path: 'impact',
-    component: ImpactSystemComponent
+    // Every case study renders from one component; content lives in data.
+    path: 'work/:slug',
+    component: CaseStudyComponent
   },
   {
     path: 'projects',
@@ -61,7 +61,8 @@ const routes: Routes = [
     ModalComponent,
     TabsComponent,
     WorkComponent,
-    ImpactSystemComponent
+    ImpactSystemComponent,
+    CaseStudyComponent
   ],
   exports: [RouterModule],
   declarations: [

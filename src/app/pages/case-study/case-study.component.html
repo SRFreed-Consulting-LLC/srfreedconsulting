@@ -1,0 +1,118 @@
+<div class="page" *ngIf="item && study">
+
+  <a class="back" routerLink="/work">&larr; All work</a>
+
+  <header class="page-head">
+    <p class="eyebrow">
+      {{ item.kind === 'product' ? 'Case study · I operate this' : 'Case study · Client platform' }}
+    </p>
+    <h1 class="page-head__title">{{ item.name }}</h1>
+    <p class="lede">{{ study.standfirst }}</p>
+
+    <div class="head-actions">
+      <a class="btn btn--primary" *ngIf="item.liveUrl" [href]="item.liveUrl" target="_blank" rel="noopener">
+        Visit the live site
+      </a>
+      <a class="btn btn--ghost" routerLink="/impact" *ngIf="item.slug.startsWith('impact-')">
+        See the whole system
+      </a>
+    </div>
+  </header>
+
+  <!-- Facts -->
+  <dl class="facts">
+    <div class="facts__cell">
+      <dt class="facts__k">Organisation</dt>
+      <dd class="facts__v">{{ item.org }}</dd>
+    </div>
+    <div class="facts__cell">
+      <dt class="facts__k">Period</dt>
+      <dd class="facts__v">{{ item.period }}</dd>
+    </div>
+    <div class="facts__cell" *ngFor="let fact of study.facts">
+      <dt class="facts__k">{{ fact.key }}</dt>
+      <dd class="facts__v">{{ fact.value }}</dd>
+    </div>
+  </dl>
+
+  <!-- Lead image -->
+  <figure class="lead-shot" *ngIf="item.image">
+    <img [src]="item.image" [alt]="item.name" loading="lazy">
+  </figure>
+
+  <!-- Narrative -->
+  <section class="body">
+    <article class="chapter" *ngFor="let section of study.sections; let i = index">
+      <div class="section-head">
+        <span class="eyebrow">{{ ordinal(i) }}</span>
+        <h2 class="section-head__title">{{ section.heading }}</h2>
+      </div>
+
+      <p class="chapter__p" *ngFor="let para of section.body">{{ para }}</p>
+
+      <ul class="chapter__points" *ngIf="section.points?.length">
+        <li *ngFor="let point of section.points">{{ point }}</li>
+      </ul>
+    </article>
+  </section>
+
+  <!-- Stack -->
+  <div class="section-head">
+    <span class="eyebrow">Stack</span>
+    <h2 class="section-head__title">What it's built with</h2>
+  </div>
+  <ul class="stack">
+    <li class="tag" *ngFor="let tech of item.stack">{{ tech }}</li>
+  </ul>
+
+  <!-- Gallery -->
+  <ng-container *ngIf="study.gallery?.length">
+    <div class="section-head">
+      <span class="eyebrow">Screens</span>
+      <h2 class="section-head__title">The application itself</h2>
+    </div>
+
+    <ul class="gallery">
+      <li class="shot" *ngFor="let shot of study.gallery; let i = index">
+        <button type="button" class="shot__btn" (click)="openImage(i)">
+          <img [src]="shot.src" [alt]="shot.caption" loading="lazy">
+          <span class="shot__caption">{{ shot.caption }}</span>
+        </button>
+      </li>
+    </ul>
+  </ng-container>
+
+  <!-- Related -->
+  <ng-container *ngIf="siblings.length">
+    <div class="section-head">
+      <span class="eyebrow">Next</span>
+      <h2 class="section-head__title">Related work</h2>
+    </div>
+
+    <ul class="related">
+      <li *ngFor="let sib of siblings">
+        <a class="related__link" [routerLink]="['/work', sib.slug]">
+          <span class="related__name">{{ sib.name }}</span>
+          <span class="related__org">{{ sib.org }}</span>
+        </a>
+      </li>
+    </ul>
+  </ng-container>
+
+</div>
+
+<!-- Lightbox -->
+<app-modal
+  *ngIf="lightbox() !== null && study?.gallery"
+  [title]="study!.gallery![lightbox()!].caption"
+  (closed)="closeImage()">
+  <img class="lightbox__img" [src]="study!.gallery![lightbox()!].src"
+       [alt]="study!.gallery![lightbox()!].caption">
+  <div class="lightbox__nav" *ngIf="study!.gallery!.length > 1">
+    <button type="button" class="btn btn--ghost" (click)="step(-1)">&larr; Previous</button>
+    <span class="lightbox__count">
+      {{ lightbox()! + 1 }} / {{ study!.gallery!.length }}
+    </span>
+    <button type="button" class="btn btn--ghost" (click)="step(1)">Next &rarr;</button>
+  </div>
+</app-modal>
