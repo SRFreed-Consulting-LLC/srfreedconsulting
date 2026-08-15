@@ -17,36 +17,9 @@
 
 /* -------------------------------------------------------------- facts ---- */
 
-.facts {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1px;
-  background: var(--color-border);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  margin: 0;
-}
-
-.facts__cell {
-  background: var(--color-surface);
-  padding: 13px 16px;
-}
-
-.facts__k {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-text-3);
-  margin: 0 0 3px;
-}
-
+/* .facts lives in global styles — shared with the case studies. */
 .facts__v {
   font-family: var(--font-mono);
-  font-size: 13.5px;
-  color: var(--color-text);
-  margin: 0;
   font-variant-numeric: tabular-nums;
 }
 
@@ -71,7 +44,7 @@
 }
 
 .tier {
-  min-width: 620px;
+  min-width: 0;
 }
 
 .tier__label {
@@ -146,7 +119,7 @@ a.node:hover {
   align-items: center;
   gap: 12px;
   margin: 14px 0;
-  min-width: 620px;
+  min-width: 0;
 }
 
 .connector__line {
@@ -288,8 +261,40 @@ a.node:hover {
   color: var(--color-accent);
 }
 
-@media (max-width: 700px) {
+/* The topology reads top-to-bottom on narrow screens rather than forcing a
+   horizontal scroll: applications stack, then libraries, then the platform. */
+@media (max-width: 860px) {
+  .tier__row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
   .diagram {
-    padding: 20px 14px;
+    padding: 18px 14px;
+    overflow-x: visible;
+  }
+
+  .tier__row,
+  .tier__row--two {
+    grid-template-columns: 1fr;
+  }
+
+  .connector__caption {
+    white-space: normal;
+    text-align: center;
+  }
+
+  .decision {
+    padding: 16px 16px 16px 46px;
+  }
+
+  .decision::before {
+    left: 16px;
+  }
+
+  .head-actions .btn {
+    flex: 1 1 auto;
+    justify-content: center;
   }
 }

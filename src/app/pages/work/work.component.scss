@@ -93,7 +93,8 @@
   margin: 0 0 40px;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  /* min() keeps a single column from overflowing viewports under 330px. */
+  grid-template-columns: repeat(auto-fill, minmax(min(330px, 100%), 1fr));
   gap: 22px;
 }
 
@@ -237,4 +238,54 @@
   color: var(--color-accent);
   text-decoration: underline;
   cursor: pointer;
+}
+
+/* ---------------------------------------------------------- responsive ---
+   On a phone, sixteen wrapped tag chips pushed the actual work roughly a
+   full screen down. Below 720px the tags become one horizontally scrollable
+   row, so filtering stays available without owning the viewport.          */
+
+@media (max-width: 720px) {
+  .filters__group--tags {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    padding-bottom: 6px;
+    /* Bleed to the screen edges so the row reads as scrollable. */
+    margin-inline: -16px;
+    padding-inline: 16px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .filters__group--tags .chip {
+    flex: 0 0 auto;
+  }
+
+  .result-count {
+    margin: 14px 0 14px;
+  }
+
+  .grid {
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .card__body {
+    padding: 15px 16px 17px;
+  }
+
+  .card__name {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 480px) {
+  .filters__group .chip {
+    font-size: 13px;
+    padding: 6px 12px;
+  }
+
+  .card__media {
+    aspect-ratio: 16 / 9;
+  }
 }
