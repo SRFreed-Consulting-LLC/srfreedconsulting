@@ -54,7 +54,7 @@ export const WORK: WorkItem[] = [
     tags: ['Angular', 'Firebase', 'Commerce', 'Self-directed'],
     stack: ['Angular 20', 'Firebase', 'Cloud Functions', 'Stripe', 'PayPal', 'ShipEngine'],
     outcome:
-      'Payments, fulfilment, tax and refunds in production — and a security review that moved financial writes behind a trusted server boundary.',
+      'Payments, fulfillment, tax and refunds in production — and a security review that moved financial writes behind a trusted server boundary.',
     image: 'assets/work/public/home.webp',
     hasCaseStudy: true,
     liveUrl: 'https://impactdisciples.com',
@@ -62,7 +62,7 @@ export const WORK: WorkItem[] = [
   {
     slug: 'impact-admin',
     name: 'Impact Administrative CMS',
-    summary: 'Back office for orders, events, catalogue and content.',
+    summary: 'Back office for orders, events, catalog and content.',
     org: 'Impact Discipleship Ministries',
     role: 'Architect, developer, operator',
     period: '2023 – present',
@@ -71,7 +71,7 @@ export const WORK: WorkItem[] = [
     tags: ['Angular', 'Firebase', 'CMS', 'Self-directed'],
     stack: ['Angular 20', 'Firebase', 'Role-based auth', 'Excel / PDF export'],
     outcome:
-      'Non-technical staff publish content and run fulfilment without a developer in the loop.',
+      'Non-technical staff publish content and run fulfillment without a developer in the loop.',
     image: 'assets/work/admin/dashboard.webp',
     hasCaseStudy: true,
   },
@@ -109,17 +109,17 @@ export const WORK: WorkItem[] = [
   },
   {
     slug: 'federal-reserve',
-    name: 'Lincoln Platform Modernisation',
+    name: 'Lincoln Platform Modernization',
     summary: 'Moving a mission-critical payments platform off WebLogic.',
     org: 'Federal Reserve Bank of Cleveland',
     role: 'Senior Software Engineer',
     period: '1 yr 9 mos — through Aug 2026',
     sortYear: 2025,
     kind: 'client',
-    tags: ['Java', 'Spring', 'AWS', 'Modernisation'],
+    tags: ['Java', 'Spring', 'AWS', 'Modernization'],
     stack: ['Java 21', 'Spring Boot 4', 'Spring Framework 7', 'Docker', 'EKS'],
     outcome:
-      'Java 8 / WebLogic 8 to Java 21 and Spring Boot 4 on a platform processing over $200 billion annually; 340+ libraries containerised for EKS.',
+      'Java 8 / WebLogic 8 to Java 21 and Spring Boot 4 on a platform processing over $200 billion annually; 340+ libraries containerized for EKS.',
     hasCaseStudy: true,
   },
   {

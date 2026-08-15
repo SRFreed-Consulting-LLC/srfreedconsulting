@@ -1,0 +1,177 @@
+:host {
+  display: block;
+}
+
+/* ------------------------------------------------------------ results ---- */
+
+.results {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.result {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 24px;
+  padding: 22px 24px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+
+.result__delta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-family: var(--font-mono);
+  padding-right: 20px;
+  border-right: 1px solid var(--color-border-soft);
+}
+
+.result__before {
+  font-size: 15px;
+  color: var(--color-text-3);
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+}
+
+.result__arrow {
+  font-size: 13px;
+  color: var(--color-text-3);
+}
+
+.result__after {
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--color-accent);
+  line-height: 1.15;
+}
+
+.result__title {
+  font-size: 17px;
+  font-weight: 650;
+  margin: 0 0 8px;
+}
+
+.result__body {
+  font-size: 14.5px;
+  color: var(--color-text-2);
+  margin: 0;
+  max-width: var(--measure);
+}
+
+.result__link {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 13.5px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* --------------------------------------------------------- principles ---- */
+
+.principles {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  gap: 18px;
+}
+
+.principle {
+  padding: 18px 20px;
+  border: 1px solid var(--color-border);
+  border-top: 2px solid var(--color-steel);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+
+.principle__title {
+  font-size: 16px;
+  font-weight: 650;
+  margin: 0 0 6px;
+}
+
+.principle__body {
+  font-size: 14.5px;
+  color: var(--color-text-2);
+  margin: 0;
+}
+
+/* ------------------------------------------------------------- caveat ---- */
+
+.caveat {
+  margin-top: 32px;
+  padding: 22px 24px;
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-accent);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+
+.caveat__title {
+  font-size: 16px;
+  font-weight: 650;
+  margin: 0 0 8px;
+}
+
+.caveat__body {
+  font-size: 14.5px;
+  color: var(--color-text-2);
+  margin: 0;
+  max-width: var(--measure);
+}
+
+/* -------------------------------------------------------------- tools ---- */
+
+.tools {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.closing {
+  margin: 32px 0 48px;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-border);
+  font-size: 14px;
+  color: var(--color-text-3);
+  max-width: var(--measure);
+}
+
+/* --------------------------------------------------------- responsive ---- */
+
+@media (max-width: 760px) {
+  .result {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 18px;
+  }
+
+  /* Stacked, the delta reads as a row with a rule beneath it. */
+  .result__delta {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 10px;
+    padding: 0 0 12px;
+    border-right: none;
+    border-bottom: 1px solid var(--color-border-soft);
+  }
+
+  .result__after {
+    font-size: 22px;
+  }
+
+  .caveat,
+  .principle {
+    padding: 18px;
+  }
+}

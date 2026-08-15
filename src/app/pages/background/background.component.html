@@ -1,0 +1,107 @@
+<div class="page">
+
+  <header class="page-head">
+    <p class="eyebrow">Background</p>
+    <h1 class="page-head__title">Thirty-six years of getting things into production.</h1>
+    <p class="lede">
+      From a Marine Corps training database in 1989 to Spring Boot 4 and Angular 20
+      today. The through-line is ownership: I have rarely handed something over at
+      launch and walked away.
+    </p>
+  </header>
+
+  <!-- Contact first: it is the reason most people are on this page. -->
+  <section class="contact" id="contact">
+    <div class="contact__lead">
+      <p class="availability">
+        <span class="availability__dot" aria-hidden="true"></span>
+        Available {{ availability.availableFrom }}
+      </p>
+      <h2 class="contact__title">Let's talk.</h2>
+      <p class="contact__body">
+        {{ availability.note }} I take long-running engagements where I am embedded
+        as a senior or lead engineer and own delivery end to end — not advisory work.
+        Backend platforms and APIs, event-driven services, cloud migration and
+        modernization, front-end platform delivery, and team leadership.
+      </p>
+    </div>
+
+    <ul class="contact__links">
+      <li>
+        <a class="contact__link" href="mailto:shane.freed@srfreedconsulting.com">
+          <span class="contact__k">Email</span>
+          <span class="contact__v">shane.freed&#64;srfreedconsulting.com</span>
+        </a>
+      </li>
+      <li>
+        <a class="contact__link" href="https://www.linkedin.com/in/shane-freed" target="_blank" rel="noopener">
+          <span class="contact__k">LinkedIn</span>
+          <span class="contact__v">in/shane-freed</span>
+        </a>
+      </li>
+      <li>
+        <a class="contact__link" href="https://github.com/SRFreed-Consulting-LLC" target="_blank" rel="noopener">
+          <span class="contact__k">GitHub</span>
+          <span class="contact__v">SRFreed-Consulting-LLC</span>
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Leadership -->
+  <div class="section-head">
+    <span class="eyebrow">01</span>
+    <h2 class="section-head__title">Leading people</h2>
+  </div>
+
+  <ul class="leadership">
+    <li class="lead-item" *ngFor="let item of leadership">
+      <h3 class="lead-item__title">{{ item.title }}</h3>
+      <p class="lead-item__where">{{ item.where }}</p>
+      <p class="lead-item__body">{{ item.body }}</p>
+    </li>
+  </ul>
+
+  <!-- Timeline -->
+  <div class="section-head">
+    <span class="eyebrow">02</span>
+    <h2 class="section-head__title">Where I've done it</h2>
+  </div>
+
+  <ol class="timeline">
+    <li class="entry" *ngFor="let entry of visible" [class.entry--notable]="entry.notable">
+      <div class="entry__marker" aria-hidden="true"></div>
+      <div class="entry__content">
+        <p class="entry__period">{{ entry.period }}</p>
+        <h3 class="entry__org">{{ entry.org }}</h3>
+        <p class="entry__role">{{ entry.role }}</p>
+        <p class="entry__summary">{{ entry.summary }}</p>
+        <ul class="entry__points" *ngIf="entry.points?.length">
+          <li *ngFor="let point of entry.points">{{ point }}</li>
+        </ul>
+      </div>
+    </li>
+  </ol>
+
+  <button type="button" class="btn btn--ghost more" (click)="toggle()" *ngIf="hiddenCount > 0">
+    {{ expanded() ? 'Show recent only' : 'Show ' + hiddenCount + ' earlier roles' }}
+  </button>
+
+  <!-- Credentials -->
+  <div class="section-head">
+    <span class="eyebrow">03</span>
+    <h2 class="section-head__title">Credentials</h2>
+  </div>
+
+  <p class="creds__note">
+    Earned before I started SRFreed Consulting, and foundational to everything after.
+  </p>
+
+  <ul class="creds">
+    <li class="cred" *ngFor="let cred of credentials">
+      <span class="cred__name">{{ cred.name }}</span>
+      <span class="cred__issuer">{{ cred.issuer }}</span>
+    </li>
+  </ul>
+
+</div>

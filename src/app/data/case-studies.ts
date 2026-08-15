@@ -37,26 +37,26 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
       { key: 'Role', value: 'Architect, developer, operator' },
       { key: 'Status', value: 'Live in production' },
       { key: 'Payments', value: 'Stripe, PayPal' },
-      { key: 'Fulfilment', value: 'ShipEngine' },
+      { key: 'Fulfillment', value: 'ShipEngine' },
     ],
     sections: [
       {
         heading: 'The problem',
         body: [
           'A discipleship ministry needed to sell and ship physical and digital resources, take donations, run events, and publish its own content — without a developer standing between staff and every change.',
-          'That rules out a brochure site with a payment button bolted on. It needs a catalogue, a cart, tax, shipping, refunds, and an administrative surface that ordinary staff can operate.',
+          'That rules out a brochure site with a payment button bolted on. It needs a catalog, a cart, tax, shipping, refunds, and an administrative surface that ordinary staff can operate.',
         ],
       },
       {
         heading: 'What I built',
         body: [
-          'An Angular and Firebase storefront driven entirely by content records, so the catalogue and the pages around it are edited rather than deployed.',
+          'An Angular and Firebase storefront driven entirely by content records, so the catalog and the pages around it are edited rather than deployed.',
         ],
         points: [
           'Stripe and PayPal payment processing, side by side',
-          'ShipEngine for fulfilment and live shipping rates',
+          'ShipEngine for fulfillment and live shipping rates',
           'Tax calculation and refund handling as first-class flows, not afterthoughts',
-          'Events and registration alongside the product catalogue',
+          'Events and registration alongside the product catalog',
         ],
       },
       {
@@ -70,7 +70,7 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
       {
         heading: 'Operating it',
         body: [
-          'I did not hand this over at launch. It is still mine: payments, fulfilment, refunds, and the support that follows a real order going wrong.',
+          'I did not hand this over at launch. It is still mine: payments, fulfillment, refunds, and the support that follows a real order going wrong.',
         ],
       },
     ],
@@ -86,7 +86,7 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
   /* ------------------------------------------------------ Impact: CMS ---- */
   'impact-admin': {
     standfirst:
-      'The back office behind the storefront: orders, fulfilment, catalogue, events and content, built so non-technical staff run the ministry without a developer in the loop.',
+      'The back office behind the storefront: orders, fulfillment, catalog, events and content, built so non-technical staff run the ministry without a developer in the loop.',
     facts: [
       { key: 'Role', value: 'Architect, developer, operator' },
       { key: 'Users', value: 'Ministry staff' },
@@ -103,12 +103,12 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
       {
         heading: 'What I built',
         body: [
-          'A role-based administrative application covering the whole operational surface, with a dashboard that leads on what actually needs attention: recent orders and their fulfilment state.',
+          'A role-based administrative application covering the whole operational surface, with a dashboard that leads on what actually needs attention: recent orders and their fulfillment state.',
         ],
         points: [
-          'Orders, purchases and fulfilment tracking with per-order progress',
-          'Customers, organisations, coaches and locations',
-          'Product catalogue, coupons and sales',
+          'Orders, purchases and fulfillment tracking with per-order progress',
+          'Customers, organizations, coaches and locations',
+          'Product catalog, coupons and sales',
           'Events, courses and registrations',
           'Form submissions and campaigns',
           'Excel and PDF reporting for administrators',
@@ -123,10 +123,10 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
       },
     ],
     gallery: [
-      { src: 'assets/work/admin/dashboard.webp', caption: 'Dashboard — recent orders and fulfilment state' },
+      { src: 'assets/work/admin/dashboard.webp', caption: 'Dashboard — recent orders and fulfillment state' },
       { src: 'assets/work/admin/purchases.webp', caption: 'Purchases' },
-      { src: 'assets/work/admin/fulfillment.webp', caption: 'Fulfilment' },
-      { src: 'assets/work/admin/products.webp', caption: 'Product catalogue' },
+      { src: 'assets/work/admin/fulfillment.webp', caption: 'Fulfillment' },
+      { src: 'assets/work/admin/products.webp', caption: 'Product catalog' },
       { src: 'assets/work/admin/coupons.webp', caption: 'Coupons' },
       { src: 'assets/work/admin/events.webp', caption: 'Events' },
       { src: 'assets/work/admin/coaches.webp', caption: 'Coaches' },
@@ -142,7 +142,7 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
       { key: 'Role', value: 'Architect, developer, operator' },
       { key: 'Distribution', value: 'Android via Capacitor, PWA' },
       { key: 'Designed for', value: 'Low-connectivity regions' },
-      { key: 'Languages', value: 'Fully localised' },
+      { key: 'Languages', value: 'Fully localized' },
     ],
     sections: [
       {
@@ -161,7 +161,7 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
           'Offline-first Firestore caching, with content prefetch at install time',
           'A custom text-quote highlighting engine, built from scratch',
           'Reading progress, streaks and completion tracked locally and synced when possible',
-          'Full localisation — the interface and the curricula both translate',
+          'Full localization — the interface and the curricula both translate',
           'Group membership and messaging for cohorts working through a series together',
         ],
       },
@@ -237,7 +237,7 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
   /* ------------------------------------------------- Federal Reserve ---- */
   'federal-reserve': {
     standfirst:
-      'Modernising a platform that moves over $200 billion a year — from Java 8 on WebLogic 8 to Java 21 on Spring Boot 4, and out of the data centre onto EKS.',
+      'Modernizing a platform that moves over $200 billion a year — from Java 8 on WebLogic 8 to Java 21 on Spring Boot 4, and out of the data centre onto EKS.',
     facts: [
       { key: 'Role', value: 'Senior Software Engineer' },
       { key: 'Team', value: 'Lincoln product team' },
@@ -249,7 +249,7 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
         heading: 'The problem',
         body: [
           'A mission-critical payments platform was running on Java 8 and WebLogic 8 — a stack whose support horizon had long since passed, carrying volume that cannot simply be paused for a rewrite.',
-          'Nothing about this kind of modernisation is greenfield. The constraint is that the system keeps working, correctly, throughout.',
+          'Nothing about this kind of modernization is greenfield. The constraint is that the system keeps working, correctly, throughout.',
         ],
       },
       {
@@ -260,7 +260,7 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
         points: [
           'Java 8 / WebLogic 8 → Java 21, Spring Boot 4, Spring Framework 7',
           'Defined and drove the cloud migration strategy for the platform',
-          'Containerised over 340 libraries and deployable units for EKS',
+          'Containerized over 340 libraries and deployable units for EKS',
           'Redesigned the testing strategy as the monolith decomposed into services',
         ],
       },

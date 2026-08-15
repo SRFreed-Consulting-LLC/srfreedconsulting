@@ -2,8 +2,7 @@
    SRFreed Consulting — design tokens and base styles.
 
    Light is the base palette; dark redefines tokens only, so components never
-   hard-code a colour. Bootstrap is still loaded for the legacy pages, so new
-   component classes are namespaced to avoid colliding with it.
+   hard-code a color. No CSS framework is loaded — every class here is ours.
    ============================================================================ */
 
 :root {
@@ -149,9 +148,7 @@ h1, h2, h3, h4, h5, h6 {
   text-wrap: balance;
   letter-spacing: -0.015em;
   line-height: 1.15;
-  /* Bootstrap's reboot sets heading colour from --bs-heading-color, which
-     resolves to its own dark body ink and survives inheritance. Without this
-     every heading inside our components stays dark in dark mode. */
+  margin: 0;
   color: var(--color-text);
 }
 
@@ -295,7 +292,7 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--color-surface-hover);
 }
 
-/* Legacy Bootstrap pages still rely on these. */
+/* Layout helpers used by the app shell. */
 .content {
   line-height: 1.6;
   padding: 24px 40px;

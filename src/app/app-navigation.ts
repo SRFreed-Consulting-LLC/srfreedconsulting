@@ -21,18 +21,13 @@ export const navigation: NavigationItem[] = [
     icon: 'fas fa-diagram-project',
   },
   {
-    text: 'Skills',
-    path: '/skills',
-    icon: 'fas fa-microchip',
+    text: 'Agentic Delivery',
+    path: '/agentic',
+    icon: 'fas fa-wand-magic-sparkles',
   },
   {
-    text: 'Experience',
-    path: '/experience',
-    icon: 'fas fa-keyboard',
+    text: 'Background',
+    path: '/background',
+    icon: 'fas fa-timeline',
   },
-  {
-    text: 'Certifications',
-    path: '/certifications',
-    icon: 'fas fa-code',
-  }
 ];
