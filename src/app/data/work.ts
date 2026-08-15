@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { CASE_STUDIES } from './case-studies';
 
 /**
  * The Federal Reserve engagement ends 31 August 2026, so availability is a
@@ -231,12 +232,24 @@ export const WORK: WorkItem[] = [
 
 @Injectable({ providedIn: 'root' })
 export class WorkService {
+  /**
+   * Whether a case study exists is derived from the content itself rather than
+   * trusted from a hand-maintained flag — otherwise a card can advertise a
+   * study that was never written and bounce the reader back to the index.
+   */
+  private resolve(item: WorkItem): WorkItem {
+    return { ...item, hasCaseStudy: !!CASE_STUDIES[item.slug] };
+  }
+
   getAll(): WorkItem[] {
-    return [...WORK].sort((a, b) => b.sortYear - a.sortYear);
+    return [...WORK]
+      .sort((a, b) => b.sortYear - a.sortYear)
+      .map(item => this.resolve(item));
   }
 
   getBySlug(slug: string): WorkItem | undefined {
-    return WORK.find(w => w.slug === slug);
+    const found = WORK.find(w => w.slug === slug);
+    return found ? this.resolve(found) : undefined;
   }
 
   /** Every tag in use, ordered by how often it appears. */

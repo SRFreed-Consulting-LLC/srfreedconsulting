@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 
+import { CASE_STUDIES } from '../../data/case-studies';
 import { WorkComponent } from './work.component';
 
 describe('WorkComponent', () => {
@@ -42,5 +43,23 @@ describe('WorkComponent', () => {
     component.clear();
     expect(component.isFiltered).toBeFalse();
     expect(component.items().length).toBe(component.productCount + component.clientCount);
+  });
+});
+
+describe('WorkComponent case-study links', () => {
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      imports: [WorkComponent],
+      providers: [provideRouter([])]
+    }).compileComponents();
+  }));
+
+  it('only advertises a case study where content actually exists', () => {
+    const fixture = TestBed.createComponent(WorkComponent);
+    fixture.detectChanges();
+    const withStudy = fixture.componentInstance.items().filter(i => i.hasCaseStudy);
+    // Every advertised study must resolve; none may dead-end on the index.
+    expect(withStudy.length).toBeGreaterThan(0);
+    expect(withStudy.every(i => !!CASE_STUDIES[i.slug])).toBeTrue();
   });
 });
