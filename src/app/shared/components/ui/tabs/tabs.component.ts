@@ -7,10 +7,9 @@ export interface TabItem {
 }
 
 @Component({
-  selector: 'app-tabs',
-  standalone: true,
-  imports: [CommonModule],
-  template: `
+    selector: 'app-tabs',
+    imports: [CommonModule],
+    template: `
     <div class="ui-tabs" role="tablist">
       <button
         type="button"
@@ -26,7 +25,7 @@ export interface TabItem {
       </button>
     </div>
   `,
-  styleUrls: ['./tabs.component.scss']
+    styleUrls: ['./tabs.component.scss']
 })
 export class TabsComponent {
   @Input() tabs: TabItem[] = [];

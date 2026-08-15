@@ -12,10 +12,9 @@ import { Subscription } from 'rxjs';
 let nextPanelId = 0;
 
 @Component({
-  selector: 'app-accordion-item',
-  standalone: true,
-  imports: [CommonModule],
-  template: `
+    selector: 'app-accordion-item',
+    imports: [CommonModule],
+    template: `
     <h3 class="ui-accordion__heading">
       <button
         type="button"
@@ -33,7 +32,7 @@ let nextPanelId = 0;
       </div>
     </div>
   `,
-  styleUrls: ['./accordion.component.scss']
+    styleUrls: ['./accordion.component.scss']
 })
 export class AccordionItemComponent {
   @Input() title = '';
@@ -50,11 +49,10 @@ export class AccordionItemComponent {
 }
 
 @Component({
-  selector: 'app-accordion',
-  standalone: true,
-  imports: [CommonModule],
-  template: `<div class="ui-accordion"><ng-content></ng-content></div>`,
-  styles: [`
+    selector: 'app-accordion',
+    imports: [CommonModule],
+    template: `<div class="ui-accordion"><ng-content></ng-content></div>`,
+    styles: [`
     .ui-accordion {
       border: 1px solid var(--color-border);
       border-radius: var(--radius-md);

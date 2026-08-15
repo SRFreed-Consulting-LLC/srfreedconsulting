@@ -12,10 +12,9 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'app-modal',
-  standalone: true,
-  imports: [CommonModule],
-  template: `
+    selector: 'app-modal',
+    imports: [CommonModule],
+    template: `
     <div class="ui-modal__backdrop" (click)="onBackdropClick($event)">
       <div
         class="ui-modal__dialog"
@@ -40,7 +39,7 @@ import {
       </div>
     </div>
   `,
-  styleUrls: ['./modal.component.scss']
+    styleUrls: ['./modal.component.scss']
 })
 export class ModalComponent implements OnInit, OnDestroy {
   @Input() title = '';

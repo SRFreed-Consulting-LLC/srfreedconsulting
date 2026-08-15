@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Certification, DataService } from './data';
 
 @Component({
-  selector: 'app-certifications',
-  templateUrl: './certifications.component.html',
-  styleUrls: ['./certifications.component.css']
+    selector: 'app-certifications',
+    templateUrl: './certifications.component.html',
+    styleUrls: ['./certifications.component.css'],
+    standalone: false
 })
 export class CertificationsComponent implements OnInit {
 

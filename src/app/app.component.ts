@@ -2,9 +2,10 @@ import { Component, HostBinding } from '@angular/core';
 import { AppInfoService, ScreenService } from './shared/services';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'],
+    standalone: false
 })
 export class AppComponent {
   @HostBinding('class') get getClass() {

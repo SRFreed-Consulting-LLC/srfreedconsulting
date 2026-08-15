@@ -14,11 +14,10 @@ import { SideNavigationMenuComponent } from '../../shared/components/side-naviga
 import { ScreenService } from '../../shared/services';
 
 @Component({
-  selector: 'app-main-layout',
-  standalone: true,
-  imports: [CommonModule, HeaderComponent, SideNavigationMenuComponent],
-  templateUrl: './main-layout.component.html',
-  styleUrls: ['./main-layout.component.scss']
+    selector: 'app-main-layout',
+    imports: [CommonModule, HeaderComponent, SideNavigationMenuComponent],
+    templateUrl: './main-layout.component.html',
+    styleUrls: ['./main-layout.component.scss']
 })
 export class MainLayoutComponent implements OnInit, OnDestroy {
   @Input() title = '';

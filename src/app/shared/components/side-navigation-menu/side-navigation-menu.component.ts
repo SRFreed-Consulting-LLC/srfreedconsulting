@@ -4,11 +4,10 @@ import { RouterModule } from '@angular/router';
 import { navigation, NavigationItem } from '../../../app-navigation';
 
 @Component({
-  selector: 'app-side-navigation-menu',
-  standalone: true,
-  imports: [CommonModule, RouterModule],
-  templateUrl: './side-navigation-menu.component.html',
-  styleUrls: ['./side-navigation-menu.component.scss']
+    selector: 'app-side-navigation-menu',
+    imports: [CommonModule, RouterModule],
+    templateUrl: './side-navigation-menu.component.html',
+    styleUrls: ['./side-navigation-menu.component.scss']
 })
 export class SideNavigationMenuComponent {
   /** Collapsed rail mode — icons only, labels hidden. */
