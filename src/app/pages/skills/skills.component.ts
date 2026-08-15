@@ -24,8 +24,4 @@ export class SkillsComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  showTab(e: any){
-    this.selectedIndex = e.addedItems[0].id
-  }
 }

@@ -1,13 +1,17 @@
-<ng-content></ng-content>
-
-<div class="menu-container">
-  <dx-tree-view
-    [items]="items"
-    keyExpr="path"
-    selectionMode="single"
-    [focusStateEnabled]="false"
-    expandEvent="click"
-    (onItemClick)="onItemClick($event)"
-    width="100%">
-  </dx-tree-view>
-</div>
+<nav class="side-nav" [class.side-nav--compact]="compactMode" aria-label="Main">
+  <ul class="side-nav__list">
+    <li class="side-nav__item" *ngFor="let item of items">
+      <a
+        class="side-nav__link"
+        [routerLink]="item.path"
+        routerLinkActive="side-nav__link--active"
+        [attr.title]="compactMode ? item.text : null"
+        (click)="onNavigate()">
+        <span class="side-nav__icon" aria-hidden="true">
+          <i [class]="item.icon"></i>
+        </span>
+        <span class="side-nav__text">{{ item.text }}</span>
+      </a>
+    </li>
+  </ul>
+</nav>

@@ -13,12 +13,11 @@
             <h5 class="card-title">{{project.title}} - {{project.company}}</h5>
             <p class="card-text">{{project.description}}</p>
 
-            <dx-tabs
-              [width]="'%100'"
+            <app-tabs
+              [tabs]="tabs"
               [selectedIndex]="selectedIndex[project.id]"
-              (onSelectionChanged)="showTab($event, project.id)"
-              [dataSource]="tabs">
-            </dx-tabs>
+              (selectedIndexChange)="selectedIndex[project.id] = $event">
+            </app-tabs>
 
             <div class="row m-2" *ngIf="selectedIndex[project.id] == 0">
               <ol>

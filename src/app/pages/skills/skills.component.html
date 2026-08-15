@@ -1,13 +1,11 @@
 <h5>Skills</h5>
 <b>Understanding a person's skill is more than getting a list of the tools with which they have worked.</b>
 <b>The following are my Core Skills, along with listing Technical Prowess and my Non-Technical (Soft Skills), and finally, a list of the tolls I have worked with over the years.</b>
-<dx-tabs
-    #withText
-    [width]="'%100'"
+<app-tabs
+    [tabs]="tabs"
     [selectedIndex]="selectedIndex"
-    (onSelectionChanged)="showTab($event)"
-    [dataSource]="tabs">
-</dx-tabs>
+    (selectedIndexChange)="selectedIndex = $event">
+</app-tabs>
 
 <div class="row justify-content-md-center my-2" *ngIf="selectedIndex == 0">
     <div class="col-12 col-md-12 col-xl-12">

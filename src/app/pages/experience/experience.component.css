@@ -1,5 +1,26 @@
 .link {
-    cursor:pointer;
-    color:blue;
-    text-decoration:underline;
+    cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+}
+
+.contract-card {
+    cursor: pointer;
+    height: 100%;
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.contract-card:hover {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+}
+
+.tag-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.tag-list li {
+    display: inline-block;
+    margin-right: 10px;
 }

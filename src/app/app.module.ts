@@ -2,12 +2,10 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { SideNavOuterToolbarModule, SideNavInnerToolbarModule, SingleCardModule } from './layouts';
-import { FooterModule, ResetPasswordFormModule, CreateAccountFormModule, ChangePasswordFormModule, LoginFormModule, HeaderComponent } from './shared/components';
-import { AuthService, ScreenService, AppInfoService } from './shared/services';
-import { UnauthenticatedContentModule } from './unauthenticated-content';
 import { AppRoutingModule } from './app-routing.module';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MainLayoutComponent } from './layouts';
+import { FooterComponent } from './shared/components';
+import { AppInfoService, ScreenService } from './shared/services';
 
 @NgModule({
   declarations: [
@@ -15,23 +13,13 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   ],
   imports: [
     BrowserModule,
-    SideNavOuterToolbarModule,
-    SideNavInnerToolbarModule,
-    SingleCardModule,
-    FooterModule,
-    ResetPasswordFormModule,
-    CreateAccountFormModule,
-    ChangePasswordFormModule,
-    LoginFormModule,
-    UnauthenticatedContentModule,
     AppRoutingModule,
-    FontAwesomeModule
+    MainLayoutComponent,
+    FooterComponent
   ],
   providers: [
-    AuthService,
     ScreenService,
-    AppInfoService,
-    HeaderComponent
+    AppInfoService
   ],
   bootstrap: [AppComponent]
 })

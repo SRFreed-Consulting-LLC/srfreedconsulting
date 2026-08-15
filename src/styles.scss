@@ -1,1 +1,107 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global styles and design tokens for SRFreed Consulting. */
+
+:root {
+  /* Surfaces */
+  --color-bg: #f2f4f7;
+  --color-surface: #ffffff;
+  --color-surface-hover: #f1f3f6;
+  --color-border: #dde1e7;
+
+  /* Text */
+  --color-text: #1f2933;
+  --color-text-muted: #5b6672;
+
+  /* Accent */
+  --color-accent: #1867c0;
+  --color-accent-hover: #145aa8;
+
+  /* Sidebar */
+  --color-sidebar-bg: #ffffff;
+  --color-sidebar-hover: #eef2f7;
+  --color-sidebar-text: #5b6672;
+  --color-sidebar-text-active: #1f2933;
+
+  /* Metrics */
+  --header-height: 60px;
+  --sidebar-width: 250px;
+  --sidebar-rail-width: 60px;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+}
+
+/* Below the small breakpoint the collapsed sidebar hides entirely
+   rather than leaving an icon rail. */
+@media (max-width: 599px) {
+  :root {
+    --sidebar-rail-width: 0px;
+  }
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  min-height: 100%;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Prevent background scroll while a modal is open. */
+body.ui-modal-open {
+  overflow: hidden;
+}
+
+/* Routed page content inside the scrolling shell. */
+.content {
+  line-height: 1.5;
+  padding: 20px 40px;
+
+  h2 {
+    font-size: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  /* Pages that wrap themselves in .content-block already sit inside
+     the padded content area, so drop the duplicated side margins. */
+  .content-block {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+/* Used by the footer, which sits outside .content. */
+.content-block {
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-top: 20px;
+}
+
+.responsive-paddings {
+  padding: 20px;
+
+  .screen-large & {
+    padding: 40px;
+  }
+}
+
+.screen-x-small {
+  .content {
+    padding: 16px 20px;
+  }
+
+  .content-block {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}

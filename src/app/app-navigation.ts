@@ -1,4 +1,10 @@
-export const navigation = [
+export interface NavigationItem {
+  text: string;
+  path: string;
+  icon: string;
+}
+
+export const navigation: NavigationItem[] = [
   {
     text: 'Home',
     path: '/home',
@@ -8,7 +14,7 @@ export const navigation = [
     text: 'Projects',
     path: '/projects',
     icon: 'fas fa-diagram-project',
-  },  
+  },
   {
     text: 'Skills',
     path: '/skills',

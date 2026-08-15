@@ -7,9 +7,7 @@
     "build": "ng build",
     "deploy": "firebase deploy --only hosting",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "build-themes": "devextreme build",
-    "postinstall": "npm run build-themes"
+    "test": "ng test"
   },
   "private": true,
   "dependencies": {
@@ -22,15 +20,9 @@
     "@angular/platform-browser": "^16.2.12",
     "@angular/platform-browser-dynamic": "^16.2.12",
     "@angular/router": "^16.2.12",
-    "@fortawesome/angular-fontawesome": "^0.13.0",
-    "@ng-bootstrap/ng-bootstrap": "^15.1.2",
-    "devextreme": "23.2.4",
-    "devextreme-angular": "23.2.4",
-    "devextreme-schematics": "^1.6.7",
+    "bootstrap5": "^5.3.3",
     "firebase": "^10.8.1",
-    "jquery": "^3.5.1",
-    "popper.js": "^1.14.3",
-    "rxjs": "~6.6.0",
+    "rxjs": "~7.8.1",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.3"
   },
@@ -40,8 +32,6 @@
     "@angular/compiler-cli": "^16.2.12",
     "@types/jasmine": "~3.8.0",
     "@types/node": "^12.11.1",
-    "devextreme-cli": "latest",
-    "devextreme-themebuilder": "23.2.4",
     "jasmine-core": "~3.8.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",

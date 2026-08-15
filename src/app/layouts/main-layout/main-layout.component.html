@@ -1,0 +1,32 @@
+<div class="layout" [class.layout--overlay]="overlayMode">
+  <aside class="layout__sidebar" [class.layout__sidebar--open]="menuOpened">
+    <app-side-navigation-menu
+      [compactMode]="!menuOpened"
+      (navigated)="onNavigated()">
+    </app-side-navigation-menu>
+  </aside>
+
+  <div
+    class="layout__shade"
+    *ngIf="overlayMode && menuOpened"
+    (click)="closeMenu()">
+  </div>
+
+  <div class="layout__main">
+    <app-header
+      [title]="title"
+      [menuOpened]="menuOpened"
+      (menuToggle)="toggleMenu()">
+    </app-header>
+
+    <main class="layout__content" #content>
+      <div class="content">
+        <ng-content></ng-content>
+      </div>
+
+      <div class="content-block">
+        <ng-content select="app-footer"></ng-content>
+      </div>
+    </main>
+  </div>
+</div>

@@ -50,31 +50,23 @@
               "src/assets"
             ],
             "styles": [
-              "src/themes/generated/theme.base.css",
-              "src/themes/generated/theme.additional.css",
               "node_modules/bootstrap5/dist/css/bootstrap.min.css",
-              "node_modules/devextreme/dist/css/dx.common.css",
-              "src/dx-styles.scss",
               "src/styles.scss"
             ],
-            "scripts": [
-              "node_modules/jquery/dist/jquery.slim.min.js",
-              "node_modules/popper.js/dist/umd/popper.min.js",
-              "node_modules/bootstrap5/dist/js/bootstrap.bundle.min.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "4mb",
-                  "maximumError": "7mb"
+                  "maximumWarning": "1mb",
+                  "maximumError": "2mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
                 }
               ],
               "fileReplacements": [

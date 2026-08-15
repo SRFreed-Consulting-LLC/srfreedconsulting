@@ -29,8 +29,4 @@ export class ProjectsComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  showTab(e: any, projectid: number){
-    this.selectedIndex[projectid] = e.addedItems[0].id
-  }
 }

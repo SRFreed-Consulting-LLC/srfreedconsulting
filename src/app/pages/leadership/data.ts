@@ -43,14 +43,14 @@
 // 2. Mentorship
 // 3. Own Software 
 //     - Strong sense of ownership, urgency, and drive
-//     - identify technology gaps and opportunities
-//     - in tackle projects that solve open-ended, ambiguous problems
+//     - Identify technology gaps and opportunities
+//     - In tackle projects that solve open-ended, ambiguous problems
 // 4. Define Solutions - driving operational excellence and best practices
 // 5. Mitigate Risk and blockers
 //     - conflict resolution and managing ambiguity.
 // 6. Report status to leadership 
 //     - good communication to technical and non-technical people
-//     - provide clear data driven status updates, communicate blockers and remediations, and buildingdeliverable rollout plans with timelines,
+//     - provide clear data driven status updates, communicate blockers and remediations, and building deliverable rollout plans with timelines,
 //       risks, and resource needs through-out the project lifecycle.
 // 7. Coordanite with business teams
 

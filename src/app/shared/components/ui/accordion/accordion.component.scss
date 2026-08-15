@@ -1,0 +1,84 @@
+:host {
+  display: block;
+  border-bottom: 1px solid var(--color-border);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.ui-accordion__heading {
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.ui-accordion__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  appearance: none;
+  background: none;
+  border: none;
+  padding: 16px 20px;
+  font: inherit;
+  text-align: left;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+
+  &:hover {
+    background-color: var(--color-surface-hover);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: -2px;
+  }
+
+  &[aria-expanded='true'] {
+    color: var(--color-accent);
+  }
+}
+
+.ui-accordion__title {
+  font-weight: 600;
+}
+
+.ui-accordion__chevron {
+  flex: 0 0 auto;
+  width: 9px;
+  height: 9px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  transform-origin: center;
+  transition: transform 0.2s ease;
+}
+
+.ui-accordion__trigger[aria-expanded='true'] .ui-accordion__chevron {
+  transform: rotate(-135deg);
+}
+
+// Collapsed/expanded via grid-template-rows so the panel animates to its
+// natural height without needing a hard-coded max-height.
+.ui-accordion__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.25s ease;
+}
+
+.ui-accordion__panel--open {
+  grid-template-rows: 1fr;
+}
+
+.ui-accordion__content {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.ui-accordion__panel--open > .ui-accordion__content {
+  padding: 0 20px 20px;
+}

@@ -1,20 +1,17 @@
-<header>
-  <dx-toolbar class="header-toolbar">
-    <dxi-item
-      location="before"
-      locateInMenu="never"
-      menuItemTemplate="menuItem">
-      <div *dxTemplate="let data of 'item'">
-        <h2>Welcome to SRFreed Consulting!</h2>
-      </div>
-    </dxi-item>    
-    <dxi-item
-      location="after"
-      locateInMenu="never"
-      menuItemTemplate="menuItem">
-      <div *dxTemplate="let data of 'item'">
-        <a href="mailto:youremail@example.com" class="email-button">Contact Me</a>
-      </div>
-    </dxi-item>    
-  </dx-toolbar>
+<header class="app-header">
+  <button
+    *ngIf="menuToggleEnabled"
+    type="button"
+    class="app-header__menu-button"
+    [attr.aria-expanded]="menuOpened"
+    aria-label="Toggle navigation menu"
+    (click)="toggleMenu()">
+    <i class="fas fa-bars" aria-hidden="true"></i>
+  </button>
+
+  <h1 class="app-header__title">{{ title }}</h1>
+
+  <a class="app-header__cta" href="mailto:shane.freed@srfreedconsulting.com">
+    Contact Me
+  </a>
 </header>
