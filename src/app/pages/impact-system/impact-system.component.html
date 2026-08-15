@@ -1,0 +1,150 @@
+<div class="page">
+
+  <header class="page-head">
+    <p class="eyebrow">Case study · Self-directed</p>
+    <h1 class="page-head__title">Four applications, one estate.</h1>
+    <p class="lede">
+      Impact Discipleship Ministries runs on four Angular applications that share a
+      common Firebase backend and a set of custom libraries versioned as git
+      submodules. I designed it, built it, launched it, and still operate it —
+      including payments, fulfilment and support.
+    </p>
+    <div class="head-actions">
+      <a class="btn btn--primary" href="https://impactdisciples.com" target="_blank" rel="noopener">
+        Visit the live site
+      </a>
+      <a class="btn btn--ghost" routerLink="/work">All work</a>
+    </div>
+  </header>
+
+  <!-- Facts -->
+  <dl class="facts">
+    <div class="facts__cell" *ngFor="let fact of facts">
+      <dt class="facts__k">{{ fact.key }}</dt>
+      <dd class="facts__v">{{ fact.value }}</dd>
+    </div>
+  </dl>
+
+  <!-- Architecture -->
+  <div class="section-head">
+    <span class="eyebrow">01</span>
+    <h2 class="section-head__title">How it fits together</h2>
+  </div>
+
+  <p class="prose">
+    Four separate deployables would normally mean four copies of the same models,
+    services and UI primitives. They don't here: the shared code lives in two
+    versioned libraries, pulled into each application as a git submodule. A change
+    to a domain model is made once and adopted deliberately, at a version each
+    application chooses.
+  </p>
+
+  <figure class="diagram">
+    <figcaption class="diagram__cap">Impact Discipleship — application and library topology</figcaption>
+
+    <div class="tier">
+      <span class="tier__label">Applications</span>
+      <div class="tier__row">
+        <a class="node node--app" *ngFor="let app of apps" [routerLink]="['/work', app.slug]">
+          <span class="node__name">{{ app.name.replace('Impact ', '') }}</span>
+          <span class="node__note">{{ app.summary }}</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="connector" aria-hidden="true">
+      <span class="connector__line"></span>
+      <span class="connector__caption">git submodule</span>
+      <span class="connector__line"></span>
+    </div>
+
+    <div class="tier">
+      <span class="tier__label">Shared, versioned libraries</span>
+      <div class="tier__row tier__row--two">
+        <div class="node node--lib">
+          <span class="node__name">impactdisciplescommon</span>
+          <span class="node__note">Domain models, services, guards shared by the web applications</span>
+        </div>
+        <div class="node node--lib">
+          <span class="node__name">impactdisciplespwacommon</span>
+          <span class="node__note">Offline caching, prefetch and PWA concerns for the reader</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector" aria-hidden="true">
+      <span class="connector__line"></span>
+      <span class="connector__caption">Cloud Functions — trust boundary</span>
+      <span class="connector__line"></span>
+    </div>
+
+    <div class="tier">
+      <span class="tier__label">Platform</span>
+      <div class="tier__row tier__row--one">
+        <div class="node node--platform">
+          <span class="node__name">Firebase</span>
+          <span class="node__note">Firestore · Auth · Storage · Hosting · Cloud Functions</span>
+        </div>
+      </div>
+    </div>
+  </figure>
+
+  <!-- Decisions -->
+  <div class="section-head">
+    <span class="eyebrow">02</span>
+    <h2 class="section-head__title">Three decisions worth defending</h2>
+  </div>
+
+  <ol class="decisions">
+    <li class="decision">
+      <h3 class="decision__title">Security rules were not enough</h3>
+      <p class="decision__body">
+        An AI-assisted security review found clients writing financial and order data
+        straight to Firestore. Security rules can gate <em>who</em> writes, but they
+        cannot validate <em>what</em> is written — a client that owns a document can
+        still write a wrong total. Those paths moved behind Cloud Functions, which
+        became the trusted boundary where validation and authorisation actually happen.
+      </p>
+    </li>
+    <li class="decision">
+      <h3 class="decision__title">Offline-first came from the field, not the whiteboard</h3>
+      <p class="decision__body">
+        The reader is used in rural Zambia, where people often have connectivity only
+        at the moment the app is installed. That single constraint drove Firestore
+        cache configuration, content prefetch at install time, and a reading
+        experience that never assumes a network.
+      </p>
+    </li>
+    <li class="decision">
+      <h3 class="decision__title">Staff had to be able to ship without me</h3>
+      <p class="decision__body">
+        A ministry cannot depend on one engineer to publish a lesson. The CMS and the
+        Library Manager exist so non-technical staff create, translate and deploy
+        content themselves — which is also what makes the system survivable if I step away.
+      </p>
+    </li>
+  </ol>
+
+  <!-- The four apps -->
+  <div class="section-head">
+    <span class="eyebrow">03</span>
+    <h2 class="section-head__title">The four applications</h2>
+  </div>
+
+  <ul class="apps">
+    <li class="app" *ngFor="let app of apps">
+      <a class="app__link" [routerLink]="['/work', app.slug]">
+        <div class="app__media" *ngIf="app.image">
+          <img [src]="app.image" [alt]="app.name + ' screenshot'" loading="lazy">
+        </div>
+        <div class="app__body">
+          <h3 class="app__name">{{ app.name }}</h3>
+          <p class="app__outcome">{{ app.outcome }}</p>
+          <p class="app__stack">{{ app.stack.join(' · ') }}</p>
+          <span class="app__cta">Read the case study &rarr;</span>
+        </div>
+      </a>
+    </li>
+  </ul>
+
+</div>

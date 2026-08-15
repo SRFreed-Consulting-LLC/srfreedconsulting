@@ -11,8 +11,13 @@ export const navigation: NavigationItem[] = [
     icon: 'fas fa-home',
   },
   {
-    text: 'Projects',
-    path: '/projects',
+    text: 'Work',
+    path: '/work',
+    icon: 'fas fa-layer-group',
+  },
+  {
+    text: 'Impact System',
+    path: '/impact',
     icon: 'fas fa-diagram-project',
   },
   {

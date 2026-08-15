@@ -1,0 +1,98 @@
+<div class="page">
+
+  <header class="page-head">
+    <p class="eyebrow">Selected work</p>
+    <h1 class="page-head__title">Things I designed, built, and still answer for.</h1>
+    <p class="lede">
+      Four applications I own and operate in production, and the client platforms
+      I was embedded on. Every entry names the role I actually held.
+    </p>
+  </header>
+
+  <!-- Filters -->
+  <div class="filters">
+    <div class="filters__group" role="group" aria-label="Filter by type">
+      <button
+        type="button"
+        class="chip"
+        [class.chip--on]="kind() === 'all'"
+        (click)="setKind('all')">
+        All <span class="chip__n">{{ productCount + clientCount }}</span>
+      </button>
+      <button
+        type="button"
+        class="chip"
+        [class.chip--on]="kind() === 'product'"
+        (click)="setKind('product')">
+        Products I operate <span class="chip__n">{{ productCount }}</span>
+      </button>
+      <button
+        type="button"
+        class="chip"
+        [class.chip--on]="kind() === 'client'"
+        (click)="setKind('client')">
+        Client platforms <span class="chip__n">{{ clientCount }}</span>
+      </button>
+    </div>
+
+    <div class="filters__group filters__group--tags" role="group" aria-label="Filter by technology">
+      <button
+        type="button"
+        class="chip chip--tag"
+        *ngFor="let tag of tags"
+        [class.chip--on]="activeTag() === tag"
+        [attr.aria-pressed]="activeTag() === tag"
+        (click)="toggleTag(tag)">
+        {{ tag }}
+      </button>
+    </div>
+
+    <button type="button" class="filters__clear" *ngIf="isFiltered" (click)="clear()">
+      Clear filters
+    </button>
+  </div>
+
+  <p class="result-count" aria-live="polite">
+    {{ items().length }} {{ items().length === 1 ? 'project' : 'projects' }}
+  </p>
+
+  <!-- Grid -->
+  <ul class="grid">
+    <li class="card" *ngFor="let item of items()">
+      <a class="card__link" [routerLink]="item.hasCaseStudy ? ['/work', item.slug] : null"
+         [class.card__link--static]="!item.hasCaseStudy">
+
+        <div class="card__media" *ngIf="item.image; else noMedia">
+          <img [src]="item.image" [alt]="item.name + ' screenshot'" loading="lazy">
+        </div>
+        <ng-template #noMedia>
+          <div class="card__media card__media--empty" aria-hidden="true">
+            <span class="card__org-mark">{{ item.org.charAt(0) }}</span>
+          </div>
+        </ng-template>
+
+        <div class="card__body">
+          <div class="card__meta">
+            <span class="tag" [class.tag--accent]="item.kind === 'product'">
+              {{ item.kind === 'product' ? 'I operate this' : 'Client' }}
+            </span>
+            <span class="card__period">{{ item.period }}</span>
+          </div>
+
+          <h2 class="card__name">{{ item.name }}</h2>
+          <p class="card__org">{{ item.org }} &middot; {{ item.role }}</p>
+          <p class="card__outcome">{{ item.outcome }}</p>
+
+          <p class="card__stack">{{ item.stack.join(' · ') }}</p>
+
+          <span class="card__cta" *ngIf="item.hasCaseStudy">Read the case study &rarr;</span>
+        </div>
+      </a>
+    </li>
+  </ul>
+
+  <p class="empty" *ngIf="items().length === 0">
+    Nothing matches that combination. <button type="button" class="linkish" (click)="clear()">Clear the filters</button>.
+  </p>
+
+</div>
