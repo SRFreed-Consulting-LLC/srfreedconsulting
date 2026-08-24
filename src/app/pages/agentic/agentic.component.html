@@ -1,21 +1,48 @@
 <div class="page">
 
   <header class="page-head">
-    <p class="eyebrow">Method</p>
-    <h1 class="page-head__title">I came to AI hesitant, not resistant.</h1>
+    <p class="eyebrow">Method &amp; adoption</p>
+    <h1 class="page-head__title">Bringing a team to agentic delivery.</h1>
     <p class="lede">
-      Twenty-eight years of hard-won engineering instinct made me skeptical that a
-      model could carry real architectural weight. Team-wide adoption of GitLab Duo
-      at the Federal Reserve changed that. I now run a fully agentic development
-      practice — and the results below are the reason, not the marketing.
+      I run a spec-first, human-in-the-loop agentic practice, and I have taken other
+      engineers through the same change — including engineers who did not want to go.
+      Twenty-eight years of instinct made me skeptical that a model could carry real
+      architectural weight. Team-wide adoption of GitLab Duo at the Federal Reserve
+      is what changed my mind, which is exactly why I can argue with a skeptic
+      instead of past one.
     </p>
   </header>
 
-  <!-- Results -->
+  <!-- Adoption -->
   <div class="section-head">
     <span class="eyebrow">01</span>
-    <h2 class="section-head__title">What actually changed</h2>
+    <h2 class="section-head__title">Taking a team with you</h2>
   </div>
+
+  <p class="chapter-intro">
+    The hard part of this work has never been the tooling. It is getting a room of
+    experienced engineers to change how they work without lowering the bar they hold
+    themselves to.
+  </p>
+
+  <ul class="adoption">
+    <li class="adopt" *ngFor="let item of adoption">
+      <h3 class="adopt__title">{{ item.title }}</h3>
+      <p class="adopt__where">{{ item.where }}</p>
+      <p class="adopt__body">{{ item.body }}</p>
+    </li>
+  </ul>
+
+  <!-- Results -->
+  <div class="section-head">
+    <span class="eyebrow">02</span>
+    <h2 class="section-head__title">What it actually changed</h2>
+  </div>
+
+  <p class="chapter-intro">
+    Numbers from my own delivery. They matter here as evidence that the practice
+    works, not as the point of it.
+  </p>
 
   <ol class="results">
     <li class="result" *ngFor="let result of results">
@@ -34,9 +61,31 @@
     </li>
   </ol>
 
+  <!-- AI in the product -->
+  <div class="section-head">
+    <span class="eyebrow">03</span>
+    <h2 class="section-head__title">Shipping AI inside the product</h2>
+  </div>
+
+  <p class="chapter-intro">
+    Using AI to build software and putting AI into software are different claims, and
+    the second is the rarer one. Both of these are in production, used by people who
+    will never see a prompt.
+  </p>
+
+  <ul class="shipped">
+    <li class="ship" *ngFor="let item of shipped">
+      <h3 class="ship__title">{{ item.title }}</h3>
+      <p class="ship__body">{{ item.body }}</p>
+      <a class="ship__link" *ngIf="item.link" [routerLink]="item.link.route">
+        {{ item.link.label }} &rarr;
+      </a>
+    </li>
+  </ul>
+
   <!-- Principles -->
   <div class="section-head">
-    <span class="eyebrow">02</span>
+    <span class="eyebrow">04</span>
     <h2 class="section-head__title">How I keep it honest</h2>
   </div>
 
@@ -51,17 +100,18 @@
   <div class="caveat">
     <h2 class="caveat__title">What this does not mean</h2>
     <p class="caveat__body">
-      It does not mean the agent decides the architecture, and it does not mean
-      review gets skipped because output arrived quickly. Every number on this page
-      came from a change I specified, read and own. If something on one of these
-      systems breaks at two in the morning, the person answering for it is me —
-      which is precisely why the judgment stays human.
+      It does not mean the agent decides the architecture, and it does not mean review
+      gets skipped because output arrived quickly. Every number on this page came from
+      a change I specified, read and own. If something on one of these systems breaks
+      at two in the morning, the person answering for it is me — which is precisely
+      why the judgment stays human. A team that adopts the speed without adopting that
+      boundary has bought itself faster defects.
     </p>
   </div>
 
   <!-- Tooling -->
   <div class="section-head">
-    <span class="eyebrow">03</span>
+    <span class="eyebrow">05</span>
     <h2 class="section-head__title">Tooling</h2>
   </div>
 
@@ -71,8 +121,8 @@
 
   <p class="closing">
     This site is part of the evidence. It was an Angular 16 application built on a
-    vendor widget template; it is now Angular 20 with the widget library gone and
-    the component layer written from scratch.
+    vendor widget template; it is now Angular 20 with the widget library gone and the
+    component layer written from scratch.
   </p>
 
 </div>
