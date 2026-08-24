@@ -2,12 +2,13 @@
 
   <header class="page-head">
     <p class="eyebrow">Case study · Self-directed</p>
-    <h1 class="page-head__title">Four applications, one estate.</h1>
+    <h1 class="page-head__title">Three applications, one estate.</h1>
     <p class="lede">
-      Impact Discipleship Ministries runs on four Angular applications that share a
-      common Firebase backend and a set of custom libraries versioned as git
-      submodules. I designed it, built it, launched it, and still operate it —
-      including payments, fulfillment and support.
+      Impact Discipleship Ministries runs on three Angular applications sharing one
+      Firebase backend and a set of custom libraries versioned as git submodules:
+      a public storefront, an operations console covering CRM, CMS, LMS and campaigns,
+      and an offline-first reader. I designed it, built it, launched it, and still
+      operate it — including payments, fulfillment and support.
     </p>
     <div class="head-actions">
       <a class="btn btn--primary" href="https://impactdisciples.com" target="_blank" rel="noopener">
@@ -32,7 +33,7 @@
   </div>
 
   <p class="prose">
-    Four separate deployables would normally mean four copies of the same models,
+    Three separate deployables would normally mean three copies of the same models,
     services and UI primitives. They don't here: the shared code lives in two
     versioned libraries, pulled into each application as a git submodule. A change
     to a domain model is made once and adopted deliberately, at a version each
@@ -118,17 +119,19 @@
     <li class="decision">
       <h3 class="decision__title">Staff had to be able to ship without me</h3>
       <p class="decision__body">
-        A ministry cannot depend on one engineer to publish a lesson. The CMS and the
-        Library Manager exist so non-technical staff create, translate and deploy
-        content themselves — which is also what makes the system survivable if I step away.
+        A ministry cannot depend on one engineer to publish a lesson. The operations
+        console exists so non-technical staff create, translate and deploy content
+        themselves — which is also what makes the system survivable if I step away.
+        Curriculum authoring originally ran as a fourth application; merging it into
+        the console left staff with one login and one permission model instead of two.
       </p>
     </li>
   </ol>
 
-  <!-- The four apps -->
+  <!-- The three apps -->
   <div class="section-head">
     <span class="eyebrow">03</span>
-    <h2 class="section-head__title">The four applications</h2>
+    <h2 class="section-head__title">The three applications</h2>
   </div>
 
   <ul class="apps">

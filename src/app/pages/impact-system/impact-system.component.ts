@@ -19,7 +19,7 @@ export class ImpactSystemComponent {
   readonly apps: WorkItem[];
 
   readonly facts: Fact[] = [
-    { key: 'Applications', value: '4' },
+    { key: 'Applications', value: '3' },
     { key: 'Shared libraries', value: '2, git submodules' },
     { key: 'Framework', value: 'Angular 20' },
     { key: 'Backend', value: 'Firebase' },
@@ -27,8 +27,9 @@ export class ImpactSystemComponent {
   ];
 
   constructor(work: WorkService) {
-    // The four Impact applications, in the order a reader meets them.
-    const order = ['impact-platform', 'impact-admin', 'impact-library', 'impact-manager'];
+    // The three Impact applications, in the order a reader meets them. A fourth,
+    // the Library Manager, was merged into the operations console and retired.
+    const order = ['impact-platform', 'impact-admin', 'impact-library'];
     this.apps = order
       .map(slug => work.getBySlug(slug))
       .filter((w): w is WorkItem => !!w);

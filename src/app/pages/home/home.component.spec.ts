@@ -30,6 +30,6 @@ describe('HomeComponent', () => {
   });
 
   it('states when I am available', () => {
-    expect(component.availability.availableFrom).toBeTruthy();
+    expect(component.availability.label).toBeTruthy();
   });
 });

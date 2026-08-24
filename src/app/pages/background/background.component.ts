@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CREDENTIALS, LEADERSHIP, TIMELINE, TimelineEntry } from '../../data/background';
-import { AVAILABILITY } from '../../data/work';
+import { availabilityStatus } from '../../data/work';
 
 @Component({
   selector: 'app-background',
@@ -12,7 +12,7 @@ import { AVAILABILITY } from '../../data/work';
   styleUrls: ['./background.component.scss']
 })
 export class BackgroundComponent {
-  readonly availability = AVAILABILITY;
+  readonly availability = availabilityStatus();
   readonly leadership = LEADERSHIP;
   readonly credentials = CREDENTIALS;
 

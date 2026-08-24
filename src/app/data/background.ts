@@ -52,7 +52,7 @@ export const TIMELINE: TimelineEntry[] = [
     period: '2023 – present',
     from: 2023,
     summary:
-      'Four Angular and Firebase applications I designed, launched and still run in production, including payments, fulfillment and support.',
+      'Three Angular and Firebase applications I designed, launched and still run in production, including payments, fulfillment and support.',
     notable: true,
   },
   {

@@ -6,9 +6,22 @@ import { CASE_STUDIES } from './case-studies';
  * fact the site states plainly rather than something a reader has to infer.
  */
 export const AVAILABILITY = {
+  /** Last day of the current engagement. Everything else is derived from it. */
+  engagementEnds: new Date('2026-08-31T23:59:59'),
   availableFrom: 'September 2026',
   note: 'Current engagement ends 31 August 2026.',
 };
+
+/**
+ * "Available September 2026" reads as a future date right up until it isn't.
+ * Deriving the label from the end date means the site does not quietly go
+ * stale on 1 September while nobody is looking at it.
+ */
+export function availabilityStatus(now: Date = new Date()): { label: string; note: string } {
+  return now > AVAILABILITY.engagementEnds
+    ? { label: 'Available now', note: '' }
+    : { label: `Available ${AVAILABILITY.availableFrom}`, note: AVAILABILITY.note };
+}
 
 export type WorkKind = 'product' | 'client';
 
@@ -38,9 +51,10 @@ export interface WorkItem {
 }
 
 /**
- * The four Impact applications share one Angular/Firebase estate and a set of
+ * The three Impact applications share one Angular/Firebase estate and a set of
  * custom libraries versioned as git submodules, so they are listed as siblings
- * rather than folded into a single entry.
+ * rather than folded into a single entry. A fourth app, the Library Manager,
+ * was merged into the operations console and no longer exists separately.
  */
 export const WORK: WorkItem[] = [
   {
@@ -62,24 +76,24 @@ export const WORK: WorkItem[] = [
   },
   {
     slug: 'impact-admin',
-    name: 'Impact Administrative CMS',
-    summary: 'Back office for orders, events, catalog and content.',
+    name: 'Impact Operations Platform',
+    summary: 'CRM, CMS, LMS, storefront back office and campaign manager in one console.',
     org: 'Impact Discipleship Ministries',
     role: 'Architect, developer, operator',
     period: '2023 – present',
     sortYear: 2026,
     kind: 'product',
-    tags: ['Angular', 'Firebase', 'CMS', 'Self-directed'],
-    stack: ['Angular 20', 'Firebase', 'Role-based auth', 'Excel / PDF export'],
+    tags: ['Angular', 'Firebase', 'CRM', 'CMS', 'LMS', 'Commerce', 'Self-directed'],
+    stack: ['Angular 20', 'Firebase', 'Role-based auth', 'Form.io', 'Leaflet', 'Excel / PDF export'],
     outcome:
-      'Non-technical staff publish content and run fulfillment without a developer in the loop.',
+      'Nine operational domains behind one role-based console — contacts and organizations, order fulfillment, catalog, content, curriculum authoring, campaigns and reporting — so staff run the ministry without a developer in the loop.',
     image: 'assets/work/admin/dashboard.webp',
     hasCaseStudy: true,
   },
   {
     slug: 'impact-library',
     name: 'Impact Library',
-    summary: 'Offline-first reader shipped to low-connectivity regions.',
+    summary: 'Offline-first reader built to replace printed curricula.',
     org: 'Impact Discipleship Ministries',
     role: 'Architect, developer, operator',
     period: '2023 – present',
@@ -88,24 +102,8 @@ export const WORK: WorkItem[] = [
     tags: ['Angular', 'Firebase', 'Mobile', 'Offline', 'Self-directed'],
     stack: ['Angular 20', 'Firebase', 'Capacitor (Android)', 'PWA', 'i18n'],
     outcome:
-      'Designed from field conditions in rural Zambia, where users often have connectivity only at install time.',
+      'Built so curricula stop being printed and shipped worldwide — now a community reader in four languages, designed from field conditions in rural Zambia where users often have connectivity only at install time.',
     image: 'assets/work/library/reader.webp',
-    hasCaseStudy: true,
-  },
-  {
-    slug: 'impact-manager',
-    name: 'Impact Library Manager',
-    summary: 'Staff CMS for authoring, translating and publishing curricula.',
-    org: 'Impact Discipleship Ministries',
-    role: 'Architect, developer, operator',
-    period: '2023 – present',
-    sortYear: 2026,
-    kind: 'product',
-    tags: ['Angular', 'Firebase', 'CMS', 'Self-directed'],
-    stack: ['Angular 20', 'Firebase', 'Form.io', 'Leaflet', 'i18n'],
-    outcome:
-      'Series, lessons and translations managed by staff — with a live map of where readers are active.',
-    image: 'assets/work/manager/series-expanded.webp',
     hasCaseStudy: true,
   },
   {

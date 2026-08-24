@@ -5,7 +5,7 @@
     <div class="hero__text">
       <p class="availability">
         <span class="availability__dot" aria-hidden="true"></span>
-        Available {{ availability.availableFrom }}
+        {{ availability.label }}
       </p>
 
       <h1 class="hero__name">Shane Freed</h1>
@@ -27,7 +27,7 @@
         <a class="btn btn--ghost" routerLink="/contact">Get in touch</a>
       </div>
 
-      <p class="hero__note">{{ availability.note }}</p>
+      <p class="hero__note" *ngIf="availability.note">{{ availability.note }}</p>
     </div>
 
     <div class="hero__portrait">

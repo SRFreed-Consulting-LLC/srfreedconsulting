@@ -37,7 +37,7 @@ export class AgenticComponent {
       after: 'Three days',
       title: 'A rewrite of two production applications',
       body:
-        'The Impact Library reader and its companion Manager were rebuilt agentically in roughly three days. The hand-built originals had taken nine months. Same domain, same requirements, same person deciding what correct looked like.',
+        'The Impact Library reader and the authoring application behind it were rebuilt agentically in roughly three days. The hand-built originals had taken nine months. Same domain, same requirements, same person deciding what correct looked like. That authoring app has since been merged into the operations console.',
       link: { label: 'Impact Library case study', route: '/work/impact-library' },
     },
     {
@@ -45,7 +45,7 @@ export class AgenticComponent {
       after: '40 minutes',
       title: 'Angular 16 to Angular 20, across a multi-application codebase',
       body:
-        'Manual upgrade attempts had stalled. With Claude Code the migration took roughly forty minutes across the whole estate — four applications sharing versioned libraries through git submodules.',
+        'Manual upgrade attempts had stalled. With Claude Code the migration took roughly forty minutes across the whole estate — every application sharing versioned libraries through git submodules.',
       link: { label: 'The Impact system', route: '/impact' },
     },
     {

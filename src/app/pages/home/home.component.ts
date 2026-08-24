@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { AVAILABILITY, WorkItem, WorkService } from '../../data/work';
+import { availabilityStatus, WorkItem, WorkService } from '../../data/work';
 
 interface Proof {
   figure: string;
@@ -17,7 +17,7 @@ interface Proof {
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  readonly availability = AVAILABILITY;
+  readonly availability = availabilityStatus();
 
   /** Two pieces of work above the fold — the portfolio's opening argument. */
   readonly featured: WorkItem[];
@@ -29,7 +29,7 @@ export class HomeComponent {
       detail: 'on the platform I spent 18 months modernizing at the Federal Reserve',
     },
     {
-      figure: '4',
+      figure: '3',
       label: 'apps I run in production',
       detail: 'designed, launched and still operated by me, payments included',
     },

@@ -15,11 +15,11 @@
     <div class="contact__lead">
       <p class="availability">
         <span class="availability__dot" aria-hidden="true"></span>
-        Available {{ availability.availableFrom }}
+        {{ availability.label }}
       </p>
       <h2 class="contact__title">Let's talk.</h2>
       <p class="contact__body">
-        {{ availability.note }} I take long-running engagements where I am embedded
+        <ng-container *ngIf="availability.note">{{ availability.note }} </ng-container>I take long-running engagements where I am embedded
         as a senior or lead engineer and own delivery end to end — not advisory work.
         Backend platforms and APIs, event-driven services, cloud migration and
         modernization, front-end platform delivery, and team leadership.

@@ -100,68 +100,113 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
     ],
   },
 
-  /* ------------------------------------------------------ Impact: CMS ---- */
+  /* --------------------------------------- Impact: operations console ---- */
   'impact-admin': {
     standfirst:
-      'The back office behind the storefront: orders, fulfillment, catalog, events and content, built so non-technical staff run the ministry without a developer in the loop.',
+      'One role-based console covering nine operational domains — CRM, order management, catalog, CMS, a curriculum LMS, a campaign manager and reporting — so ministry staff run the organization without a developer in the loop.',
     facts: [
       { key: 'Role', value: 'Architect, developer, operator' },
       { key: 'Users', value: 'Ministry staff' },
       { key: 'Access', value: 'Role-based' },
-      { key: 'Reporting', value: 'Excel and PDF' },
+      { key: 'Domains', value: '9 top-level' },
     ],
     sections: [
       {
         heading: 'The problem',
         body: [
           'A ministry cannot depend on one engineer to publish a lesson, refund an order, or add an event. If it does, the software is a liability rather than an asset — and the engineer is a single point of failure.',
+          'The usual answer is to buy five products: a CRM, a CMS, a storefront back office, an email platform and an LMS. For an organization this size that means five subscriptions, five logins, five permission models, and integration work between all of them.',
         ],
       },
       {
         heading: 'What I built',
         body: [
-          'A role-based administrative application covering the whole operational surface, with a dashboard that leads on what actually needs attention: recent orders and their fulfillment state.',
+          'A single Angular console over the same Firebase backend as the public site, organized into the operational domains staff actually work in. In industry terms it covers:',
         ],
         points: [
-          'Orders, purchases and fulfillment tracking with per-order progress',
-          'Customers, organizations, coaches and locations',
-          'Product catalog, coupons and sales',
-          'Events, courses and registrations',
-          'Form submissions and campaigns',
-          'Excel and PDF reporting for administrators',
+          'CRM — contacts, organizations and their history',
+          'Order management — purchases, fulfillment and shipping labels',
+          'E-commerce back office — product catalog, coupons and pricing',
+          'CMS — site content, testimonials, imagery and page configuration',
+          'LMS — curriculum series, lessons, templates and learner groups',
+          'Campaign manager — campaigns, newsletters, tag rules and a status board',
+          'Event management — events, the annual summit and coaches',
+          'Low-code form builder — forms and system templates, no deploy required',
+          'Reporting — subscribers and exports to Excel and PDF',
+        ],
+      },
+      {
+        heading: 'Absorbing a second application',
+        body: [
+          'Curriculum authoring originally lived in its own application, the Library Manager. Running it separately meant a second deployment, a second login and a second permission model for staff who were already in the admin console all day.',
+          'It was merged in as the Library domain. Series and lesson authoring, lesson templates, learner groups, library users and the activity log now sit alongside everything else — one console, one identity, one role model. Retiring an application you wrote is the right call more often than shipping another one.',
+        ],
+      },
+      {
+        heading: 'Importing a book with AI',
+        body: [
+          'Getting a curriculum into the system used to mean re-creating it by hand: reading a printed book, retyping each lesson, rebuilding the question sets, and placing the images — before any of it could be translated.',
+          'Import Book takes the PDF instead. The book is read by an AI pass that detects its structure — units, lessons, questions and images — and proposes the hierarchy that would otherwise be built by hand.',
+          'Nothing is written on the model’s say-so. The detected structure is presented for review first, and a person confirms it before anything is saved. That is the same principle I apply to agent-generated code: the machine proposes, a human is accountable for what lands.',
+        ],
+        points: [
+          'Upload a PDF, choose or create the series it belongs to',
+          'AI detects units, lessons, questions and images',
+          'The proposed structure is reviewed before any of it is persisted',
+          'Imported content then flows into the translation workflow',
+        ],
+      },
+      {
+        heading: 'Knowing whether any of it worked',
+        body: [
+          'The console includes a world map of where readers are currently active, drawn with Leaflet over OpenStreetMap data, alongside an activity log.',
+          'For an organization distributing curricula into regions with poor connectivity, whether anyone is actually reading — and where — is not a vanity metric. It is the feedback loop that tells staff whether a distribution effort worked.',
         ],
       },
       {
         heading: 'The design constraint that mattered',
         body: [
-          'Every screen was built for someone who does not think in database terms. Order state is a progress bar, not a status enum. Content publishing is a form, not a deployment.',
+          'Every screen was built for someone who does not think in database terms. Order state is a progress bar, not a status enum. Publishing content is a form, not a deployment.',
           'This is the part of the estate that determines whether the system survives me stepping away, so it got the same care as the customer-facing site.',
         ],
       },
     ],
     gallery: [
       { src: 'assets/work/admin/dashboard.webp', caption: 'Dashboard — recent orders and fulfillment state' },
-      { src: 'assets/work/admin/purchases.webp', caption: 'Purchases' },
-      { src: 'assets/work/admin/fulfillment.webp', caption: 'Fulfillment' },
-      { src: 'assets/work/admin/products.webp', caption: 'Product catalog' },
-      { src: 'assets/work/admin/coupons.webp', caption: 'Coupons' },
-      { src: 'assets/work/admin/events.webp', caption: 'Events' },
-      { src: 'assets/work/admin/coaches.webp', caption: 'Coaches' },
-      { src: 'assets/work/admin/sales.webp', caption: 'Sales reporting' },
+      { src: 'assets/work/admin/crm-contacts.webp', caption: 'CRM — contacts and organizations' },
+      { src: 'assets/work/admin/library-browse.webp', caption: 'LMS — curriculum series, with Import Book' },
+      { src: 'assets/work/admin/import-book.webp', caption: 'Import Book — AI detects units, lessons, questions and images for review before anything is saved' },
+      { src: 'assets/work/admin/library-lesson-templates.webp', caption: 'LMS — lesson templates' },
+      { src: 'assets/work/admin/library-world-map.webp', caption: 'World map — where readers are active' },
+      { src: 'assets/work/admin/library-users.webp', caption: 'Library users' },
+      { src: 'assets/work/admin/products.webp', caption: 'E-commerce — product catalog' },
+      { src: 'assets/work/admin/coupons.webp', caption: 'E-commerce — coupons' },
+      { src: 'assets/work/admin/campaigns.webp', caption: 'Campaign manager' },
+      { src: 'assets/work/admin/cms-web-config.webp', caption: 'CMS — site configuration' },
+      { src: 'assets/work/admin/form-builder.webp', caption: 'Low-code form builder' },
+      { src: 'assets/work/admin/events.webp', caption: 'Event management' },
     ],
   },
 
   /* -------------------------------------------------- Impact: library ---- */
   'impact-library': {
     standfirst:
-      'An offline-first reader built for people who may only have connectivity at the moment the app is installed — designed from field conditions in rural Zambia, not from a whiteboard.',
+      'Built so a ministry could stop printing curricula and shipping them around the world — and built to work where the network does not, from field conditions in rural Zambia rather than from a whiteboard.',
     facts: [
       { key: 'Role', value: 'Architect, developer, operator' },
       { key: 'Distribution', value: 'Android via Capacitor, PWA' },
       { key: 'Designed for', value: 'Low-connectivity regions' },
-      { key: 'Languages', value: 'Fully localized' },
+      { key: 'Languages', value: 'English, French, Spanish, chiTonga' },
     ],
     sections: [
+      {
+        heading: 'Why it exists',
+        body: [
+          'Impact curricula were printed and shipped around the world. Every title meant a print run, a shipment and a wait — and a reader working through the study questions in the margins of a physical page.',
+          'The app exists to end that. People read the books and answer the questions on a device, and the ministry stops paying to print and send them.',
+          'It has grown well past a reader since. It is where groups form and talk, and it ties into the ministry storefront and the rest of the website — so the reading, the community and the commerce are one system rather than three.',
+        ],
+      },
       {
         heading: 'The constraint',
         body: [
@@ -221,65 +266,6 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
     ],
   },
 
-  /* -------------------------------------------------- Impact: manager ---- */
-  'impact-manager': {
-    standfirst:
-      'The staff CMS behind the reader: series, lessons, translations and publication state — plus a live map of where readers are actually active.',
-    facts: [
-      { key: 'Role', value: 'Architect, developer, operator' },
-      { key: 'Authoring', value: 'Form.io' },
-      { key: 'Structure', value: 'Series → lesson → page' },
-      { key: 'Presence', value: 'Live map, Leaflet' },
-    ],
-    sections: [
-      {
-        heading: 'The problem',
-        body: [
-          'Curricula are not blog posts. A series has lessons, lessons have ordered pages, and every one of them may exist in several languages with independent publication states.',
-          'Staff — not engineers — need to author all of that, translate it, and decide when it goes live.',
-        ],
-      },
-      {
-        heading: 'What I built',
-        body: [
-          'A management application built around the content tree itself: series, lessons and pages, each carrying its own published state, edited through Form.io-driven forms.',
-        ],
-        points: [
-          'Hierarchical authoring — series, lesson, page — with drag-level structure visible at all times',
-          'Per-item publication state, so a draft lesson cannot leak into a published series',
-          'Translation workflow across the reader and the manager',
-          'Content packaging that feeds the reader\'s offline prefetch',
-        ],
-      },
-      {
-        heading: 'Importing a book with AI',
-        body: [
-          'Getting a curriculum into the system used to mean re-creating it by hand: reading a printed book, retyping each lesson, rebuilding the question sets, and placing the images — before any of it could be translated.',
-          'Import Book takes the PDF instead. The book is read by an AI pass that detects its structure — units, lessons, questions and images — and proposes the hierarchy the manager would otherwise be built by hand.',
-          'Nothing is written on the model\'s say-so. The detected structure is presented for review first, and a person confirms it before anything is saved. That is the same principle I apply to agent-generated code: the machine proposes, a human is accountable for what lands.',
-        ],
-        points: [
-          'Upload a PDF, choose or create the series it belongs to',
-          'AI detects units, lessons, questions and images',
-          'The proposed structure is reviewed before any of it is persisted',
-          'Imported content then flows into the translation workflow',
-        ],
-      },
-      {
-        heading: 'The presence map',
-        body: [
-          'The manager includes a live map showing where readers are currently active, drawn with Leaflet over OpenStreetMap data.',
-          'For a ministry distributing curricula into regions with poor connectivity, "is anyone actually reading this, and where?" is not a vanity metric — it is the feedback loop that tells staff whether a distribution effort worked.',
-        ],
-      },
-    ],
-    gallery: [
-      { src: 'assets/work/manager/import-book.webp', caption: 'Import Book — a PDF is read by AI to detect units, lessons, questions and images, for review before anything is saved' },
-      { src: 'assets/work/manager/series-expanded.webp', caption: 'Content tree with publication state, and the live presence map' },
-      { src: 'assets/work/manager/content-tree.webp', caption: 'Series and lessons' },
-      { src: 'assets/work/manager/lesson.webp', caption: 'Editing a lesson' },
-    ],
-  },
 
   /* ------------------------------------------------- Federal Reserve ---- */
   'federal-reserve': {
