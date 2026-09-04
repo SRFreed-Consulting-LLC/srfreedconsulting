@@ -107,6 +107,23 @@ export const WORK: WorkItem[] = [
     hasCaseStudy: true,
   },
   {
+    slug: 'smeac-spec-builder',
+    name: 'SMEAC Spec Builder',
+    summary: 'Agent-ready specs, written as a Marine Corps five-paragraph order.',
+    org: 'SRFreed Consulting',
+    role: 'Designer, developer, operator',
+    period: '2026',
+    sortYear: 2026,
+    kind: 'product',
+    tags: ['Angular', 'Firebase', 'AI', 'Self-directed'],
+    stack: ['Angular 22', 'Angular Material', 'Signals, zoneless', 'Firebase Auth', 'Firestore', 'Web Speech API'],
+    outcome:
+      'Gets a usable agentic spec out of someone’s head in a few minutes by asking the questions an operations order asks, in that order — speak it or type it, then paste the markdown into Claude Code or Cursor.',
+    image: 'assets/work/smeac/help.webp',
+    hasCaseStudy: true,
+    liveUrl: 'https://smeac.srfreedconsulting.com',
+  },
+  {
     slug: 'federal-reserve',
     name: 'Lincoln Platform Modernization',
     summary: 'Moving a mission-critical payments platform off WebLogic.',

@@ -267,6 +267,75 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
   },
 
 
+  /* ------------------------------------------------------- SMEAC ---- */
+  'smeac-spec-builder': {
+    standfirst:
+      'The Marine Corps five-paragraph order, turned into a tool for writing specifications an AI agent can act on when you are not there to be asked.',
+    facts: [
+      { key: 'Role', value: 'Designer, developer, operator' },
+      { key: 'Method', value: 'SMEAC — the five-paragraph order' },
+      { key: 'Input', value: 'Voice or keyboard' },
+      { key: 'Privacy', value: 'Nothing uploaded until Save' },
+    ],
+    sections: [
+      {
+        heading: 'Why it exists',
+        body: [
+          'Most bad agent output traces back to an underspecified request, not to the model. I write the specification before the agent writes anything, and I have watched other engineers skip that step and blame the tool for what followed.',
+          'The problem a spec solves is old. Somebody has to act correctly on your behalf when you are not there to be asked a follow-up question. The Marine Corps solved it a long time before anyone was writing prompts, with the five-paragraph order — Situation, Mission, Execution, Admin & Logistics, Command & Signal. I am a Marine, and the fit was too good to leave alone.',
+          'SMEAC Spec Builder walks you through the order one paragraph at a time, by voice or by keyboard, and emits markdown you paste into Claude Code, Cursor, or whatever you are driving.',
+        ],
+      },
+      {
+        heading: 'The five paragraphs, as a spec',
+        body: [
+          'Each paragraph maps onto something an agent needs and most prompts leave out. The order they come in matters as much as the content.',
+        ],
+        points: [
+          'Situation — the codebase as it is, not as the README says. Most prompts open with the task; that is the wrong order, for the same reason a bad operations order is.',
+          'Mission — one sentence on what and why, stated twice, verbatim. The cheapest anti-drift device there is.',
+          'Execution — commander’s intent first, then the concept, the tasks, and what is explicitly out of scope.',
+          'Admin & Logistics — the environment: commands, test data, what the agent may install versus must ask about.',
+          'Command & Signal — who decides, and the agent’s authority. Choose and flag it, or stop and ask.',
+        ],
+      },
+      {
+        heading: 'The part that actually matters',
+        body: [
+          'Commander’s intent exists because no plan survives contact. It is what lets a corporal make the right call when the plan falls apart and nobody can reach you. An agent is in exactly that position, because it will hit a case the spec did not anticipate, every single time.',
+          'A spec with tasks and no intent produces an agent that either interrupts constantly or guesses and drifts. Intent is the only part of a spec that says what to optimise for when the instructions run out. A real one, from the Impact Library: this has to work for someone in rural Zambia who had connectivity at install and may never have it again. That is not a task and cannot be ticked off, but it decides every ambiguous call the agent makes without asking.',
+        ],
+      },
+      {
+        heading: 'What I built',
+        body: [
+          'An Angular 22 application on Angular Material, with standalone components, signals and zoneless change detection. The form is worth almost nothing; the questions are the product, and everything of value is in one file asking the right question at the right moment, with pick-lists of common answers under each one.',
+        ],
+        points: [
+          'Dictation through the Web Speech API, retargeted at whichever field is active — and hidden, not left dead, where the browser lacks it',
+          'Drafts held in the browser; nothing leaves the page until Save. No web fonts, no icon font, no analytics, because people paste real codebase detail into it',
+          'Sign in with Google or email, saved specifications in Firestore, readable only by their owner',
+          'Saving requires a verified email address, enforced twice: by the app and by the Firestore rules',
+          'A public help page that teaches the method by showing what each paragraph is in the Corps and in a spec',
+          'Runtime dependencies are Angular, Angular Material and the Firebase SDK. Adding another needs a real argument',
+        ],
+      },
+      {
+        heading: 'Built the way it preaches',
+        body: [
+          'The repository’s own specification is written as a five-paragraph order, in the format the tool produces. Any agent working on the project reads it as its brief. The generated markdown always restates the mission verbatim at the bottom, and a unit test guards that, because it is the one rule in the method that should never be optional.',
+          'It shares a Firebase project with this site, as a second hosting target with its own Firestore database, and deploys through the same GitHub Actions pipeline.',
+        ],
+      },
+    ],
+    gallery: [
+      { src: 'assets/work/smeac/help.webp', caption: 'What SMEAC is — the public help page walks through each paragraph, in the Corps and in a spec' },
+      { src: 'assets/work/smeac/intent.webp', caption: 'Execution — commander’s intent before tasks' },
+      { src: 'assets/work/smeac/signin.webp', caption: 'The front door — sign in, then write; nothing is uploaded until Save' },
+    ],
+  },
+
+
   /* ------------------------------------------------- Federal Reserve ---- */
   'federal-reserve': {
     standfirst:

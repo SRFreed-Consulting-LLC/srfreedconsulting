@@ -104,13 +104,19 @@ export class AgenticComponent {
         'An AI-assisted security review across the Impact estate surfaced clients writing financial and order data straight to Firestore. Security rules can govern who writes a document; they cannot validate what is written. Those paths moved behind Cloud Functions as a trusted boundary. Using AI to find what you missed is a different discipline from using it to produce more, and it is the one teams skip.',
       link: { label: 'Platform case study', route: '/work/impact-platform' },
     },
+    {
+      title: 'A spec tool built on a Marine Corps operations order',
+      body:
+        'SMEAC Spec Builder turns the five-paragraph order — Situation, Mission, Execution, Admin & Logistics, Command & Signal — into a form that gets an agent-ready specification out of someone’s head in a few minutes, by voice or by keyboard. The order exists because a plan has to survive being handed to someone who cannot ask a follow-up question, which is exactly the position an agent is in. It is the first principle below, turned into a tool other people can use.',
+      link: { label: 'SMEAC case study', route: '/work/smeac-spec-builder' },
+    },
   ];
 
   readonly principles: Principle[] = [
     {
       title: 'Spec first',
       body:
-        'I write the specification before the agent writes anything. Most bad agent output traces back to an underspecified request, not to the model.',
+        'I write the specification before the agent writes anything. Most bad agent output traces back to an underspecified request, not to the model. SMEAC Spec Builder is that habit turned into a tool.',
     },
     {
       title: 'Human in the loop, every change',
