@@ -6,7 +6,8 @@ Guidance for Claude Code when working in this repository.
 
 Shane Freed's portfolio site, **srfreedconsulting.com**. Angular 20, hash
 routing, hosted on Firebase in the `srfreedconsulting` project, source on
-GitHub at `sfreed/srfreedconsulting`. It is a
+GitHub at `SRFreed-Consulting-LLC/srfreedconsulting` (it moved there from
+`sfreed/srfreedconsulting`; the old address redirects). It is a
 data-driven site: the pages are thin, and nearly everything a reader sees comes
 from three files under `src/app/data/`.
 
@@ -150,12 +151,13 @@ deploy would push the empty scaffold and the rules along with hosting.
 - `master` is the deployed branch. A push to `master` builds and deploys to
   Firebase Hosting through `.github/workflows/`; pull requests get a preview
   channel.
-- Work happens on branches. `angular-20-migration` holds the whole summer 2026
+- On 2026-09-04 Shane had `master` replaced outright with the summer 2026
   rebuild (Angular 16 to 20, DevExtreme and Bootstrap removed, the ten-screen
-  portfolio). It is pushed, and the live site is deployed from it by hand with
-  `npm run deploy`. `origin/master` still carries five older style commits
-  (the GABBY-Initial PR) that this branch never took, so merging is not a
-  fast-forward; that merge is Shane's call.
+  portfolio, SMEAC). The old master, including the GABBY-Initial style
+  commits, was discarded by force-push. `angular-20-migration` is now just an
+  alias of master and can be deleted.
+- Day-to-day content edits can go straight to `master`; the pipeline deploys
+  them. Use a branch when a change should be previewed first.
 - The `.firebase/hosting.*.cache` file changes on every manual deploy. Leave
   it out of commits.
 - **Never merge to `master` without asking, even under a general "ship it".**
@@ -193,8 +195,9 @@ Carried from `HANDOFF.md` (2026-08-24) and still true on 2026-09-03:
 3. **The Import Book before/after line is missing its "after" number.** Before
    was 6 to 7 weeks to get a book into the app, plus weeks to translate it.
    Do not write the line until Shane supplies the after.
-4. **Reconcile `angular-20-migration` with `master`.** The branch is pushed
-   and live as of 2026-09-04; master still has the old style commits. Ask
-   Shane whether to merge over them or reset master to this branch.
+4. **The git remote still points at the old `sfreed/...` address.** GitHub
+   redirects it, but the URL should be switched to
+   `SRFreed-Consulting-LLC/srfreedconsulting` with `git remote set-url`.
+   Claude's sandbox was not allowed to change it.
 5. **`HANDOFF.md` is untracked.** Most of it has landed; decide whether to
    commit it as history or delete it once the items above are done.
