@@ -134,6 +134,7 @@ export const WORK: WorkItem[] = [
     stack: ['Angular', 'Firebase', 'DevExpress', 'Primus', 'Macro Point', 'Samsara'],
     outcome:
       'Led a three-person team; integrated three external vendor systems behind one portal.',
+    image: 'assets/work/jbh/tracer-map.webp',
     hasCaseStudy: true,
   },
   {
