@@ -67,7 +67,7 @@
     <ul class="cards">
       <li *ngFor="let item of featured">
         <a class="card" [routerLink]="['/work', item.slug]">
-          <div class="card__media" *ngIf="item.kind === 'product' && item.image">
+          <div class="card__media" *ngIf="item.image">
             <img [src]="item.image" [alt]="item.name" loading="lazy">
           </div>
           <div class="card__body">
