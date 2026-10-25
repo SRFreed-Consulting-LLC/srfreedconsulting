@@ -1,0 +1,795 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Getting Started with the Impact Discipleship Library</title>
+<meta name="description" content="Install the Impact Discipleship Library from Google Play or open it in a browser, create your account, and open your first lesson.">
+<link rel="canonical" href="https://srfreedconsulting.com/library-guide/">
+<link rel="icon" href="media/icon.png" type="image/png">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Getting Started with the Impact Discipleship Library">
+<meta property="og:description" content="Install the Impact Discipleship Library from Google Play or open it in a browser, create your account, and open your first lesson.">
+<meta property="og:url" content="https://srfreedconsulting.com/library-guide/">
+<meta property="og:image" content="https://srfreedconsulting.com/library-guide/media/icon.png">
+<meta name="twitter:card" content="summary">
+<style>
+  html { -webkit-text-size-adjust: 100%; }
+  img, video { max-width: 100%; }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Hanken+Grotesk:wght@400;500;600&display=swap">
+
+<style>
+  /* Palette measured from the running app (Material 3 seed, sienna primary,
+     teal tertiary) rather than invented, so the page reads as the product.  */
+  :root {
+    --paper:      #fff8f2;
+    --paper-2:    #fff2e0;
+    --paper-3:    #faecd8;
+    --ink:        #211b0e;
+    --ink-soft:   #4e4639;
+    --ink-faint:  #807668;
+    --sienna:     #8d4d31;
+    --sienna-dim: #70371c;
+    --teal:       #006a66;
+    --teal-wash:  #d8efed;
+    --rule:       #d1c5b4;
+    --shell:      #2b2318;
+
+    --display: "Fraunces", Georgia, "Times New Roman", serif;
+    --body: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+    --measure: 63ch;
+    --step-gap: clamp(2.75rem, 6vw, 4.5rem);
+  }
+
+  :root:not([data-theme="light"]) {
+    color-scheme: light dark;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper:      #191207;
+      --paper-2:    #221a0e;
+      --paper-3:    #2b2318;
+      --ink:        #efe1cd;
+      --ink-soft:   #d1c5b4;
+      --ink-faint:  #9a8f80;
+      --sienna:     #ffb597;
+      --sienna-dim: #e9bdac;
+      --teal:       #99f2ec;
+      --teal-wash:  #123b3a;
+      --rule:       #4e4639;
+      --shell:      #0d0904;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper:      #191207;
+    --paper-2:    #221a0e;
+    --paper-3:    #2b2318;
+    --ink:        #efe1cd;
+    --ink-soft:   #d1c5b4;
+    --ink-faint:  #9a8f80;
+    --sienna:     #ffb597;
+    --sienna-dim: #e9bdac;
+    --teal:       #99f2ec;
+    --teal-wash:  #123b3a;
+    --rule:       #4e4639;
+    --shell:      #0d0904;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 17px;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: clamp(1.5rem, 4vw, 3.5rem) clamp(1.1rem, 4vw, 2.5rem) 5rem;
+  }
+
+  a { color: var(--sienna); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--teal);
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+
+  h1, h2, h3 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-optical-sizing: auto;
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  .eyebrow {
+    font-family: var(--body);
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--sienna);
+    margin: 0;
+  }
+
+  /* ---------------------------------------------------------- masthead -- */
+  .masthead {
+    display: grid;
+    gap: 1.1rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .masthead-brand {
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+  }
+
+  .masthead-brand img { width: 34px; height: 34px; display: block; }
+
+  .masthead-brand span {
+    font-family: var(--display);
+    font-size: 1.02rem;
+    font-weight: 600;
+    letter-spacing: .01em;
+  }
+
+  .masthead h1 {
+    font-size: clamp(2.3rem, 6.4vw, 3.6rem);
+    line-height: 1.06;
+    letter-spacing: -.015em;
+    max-width: 16ch;
+  }
+
+  .masthead .lede {
+    font-size: clamp(1.02rem, 2.2vw, 1.16rem);
+    color: var(--ink-soft);
+    max-width: 54ch;
+    margin: 0;
+  }
+
+  /* The one thing that trips people up before they start, so it sits above
+     step 1 rather than inside it. */
+  .rule-note {
+    display: flex;
+    gap: .85rem;
+    align-items: baseline;
+    margin-top: .4rem;
+    padding: .95rem 1.15rem;
+    background: var(--teal-wash);
+    border-left: 3px solid var(--teal);
+    max-width: 60ch;
+  }
+
+  .rule-note strong { font-weight: 600; }
+  .rule-note p { margin: 0; font-size: .96rem; color: var(--ink); }
+
+  /* ------------------------------------------------------------- path --- */
+  /* The app draws a book's units as a vertical path with node markers
+     (book-detail's .path/.node). Setup genuinely is a sequence, so the
+     guide borrows the product's own device instead of generic 01/02/03. */
+  .path { margin-top: var(--step-gap); }
+
+  .step {
+    position: relative;
+    display: grid;
+    grid-template-columns: 2.4rem minmax(0, 1fr);
+    column-gap: 1.15rem;
+    padding-bottom: var(--step-gap);
+  }
+
+  .step::before {
+    content: "";
+    position: absolute;
+    left: 1.19rem;
+    top: 2.6rem;
+    bottom: 0;
+    width: 2px;
+    background: var(--rule);
+  }
+
+  .step:last-child::before { display: none; }
+
+  .marker {
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: 50%;
+    background: var(--sienna);
+    color: var(--on-marker);
+    display: grid;
+    place-items: center;
+    font-family: var(--display);
+    font-size: 1.12rem;
+    font-weight: 600;
+    line-height: 1;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* The marker sits ON --sienna, which flips from a dark sienna to a light
+     peach in dark mode, so its text has to flip the other way. */
+  :root { --on-marker: #fff8f2; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) { --on-marker: #2b1508; }
+  }
+  :root[data-theme="dark"] { --on-marker: #2b1508; }
+
+  .step-body { min-width: 0; padding-top: .15rem; }
+
+  .step h2 {
+    font-size: clamp(1.5rem, 3.4vw, 1.95rem);
+    line-height: 1.15;
+    letter-spacing: -.01em;
+    margin-bottom: .55rem;
+  }
+
+  .step p { max-width: var(--measure); color: var(--ink-soft); margin: 0 0 .9rem; }
+  .step p.tight { margin-bottom: .5rem; }
+  .step strong { color: var(--ink); font-weight: 600; }
+
+  .step-layout {
+    display: grid;
+    gap: clamp(1.25rem, 3vw, 2.25rem);
+    align-items: start;
+  }
+
+  @media (min-width: 880px) {
+    .step-layout.with-media { grid-template-columns: minmax(0, 1fr) 264px; }
+    .step-layout.with-media-wide { grid-template-columns: minmax(0, 1fr) 340px; }
+  }
+
+  /* ------------------------------------------------------------ doors --- */
+  /* Two install routes, equal weight - a table of choices, not a hero CTA. */
+  .doors {
+    display: grid;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin: 0 0 1.4rem;
+    max-width: var(--measure);
+  }
+
+  @media (min-width: 620px) { .doors { grid-template-columns: 1fr 1fr; } }
+
+  .door {
+    background: var(--paper-2);
+    padding: 1.25rem 1.3rem 1.35rem;
+    display: grid;
+    gap: .5rem;
+    align-content: start;
+  }
+
+  .door h3 { font-size: 1.16rem; line-height: 1.2; }
+  .door .who { font-size: .81rem; color: var(--ink-faint); font-weight: 500; margin: 0; }
+  .door p { margin: 0; font-size: .94rem; color: var(--ink-soft); }
+  .door .go {
+    font-family: var(--body);
+    font-size: .93rem;
+    font-weight: 600;
+    word-break: break-word;
+  }
+
+  /* -------------------------------------------------------- device art -- */
+  .device {
+    background: var(--shell);
+    border-radius: 26px;
+    padding: 7px;
+    box-shadow: 0 1px 2px rgba(33, 27, 14, .18);
+    max-width: 264px;
+    margin-inline: auto;
+  }
+
+  .device img, .device video {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 19px;
+    background: var(--paper-3);
+  }
+
+  .frame-wide {
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--paper-3);
+  }
+
+  .frame-wide img { display: block; width: 100%; height: auto; }
+
+  figure { margin: 0; display: grid; gap: .6rem; }
+
+  figcaption {
+    font-size: .82rem;
+    color: var(--ink-faint);
+    line-height: 1.45;
+    text-align: center;
+    max-width: 30ch;
+    margin-inline: auto;
+  }
+
+  .media-stack { display: grid; gap: 1.6rem; }
+
+  /* Step 5 carries two figures. Side by side under the prose keeps the step
+     from running a screen taller than the text that explains it. */
+  .media-row {
+    display: grid;
+    gap: 1.6rem;
+    margin-top: 1.75rem;
+    max-width: 600px;
+  }
+
+  @media (min-width: 560px) { .media-row { grid-template-columns: 1fr 1fr; } }
+  .media-row .device { max-width: 240px; }
+
+  .is-motion { position: relative; }
+
+  .motion-tag {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 2;
+    font-size: .63rem;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    background: rgba(13, 9, 4, .72);
+    color: #fff8f2;
+    padding: .28rem .5rem;
+    border-radius: 2px;
+  }
+
+  /* --------------------------------------------------------- key list --- */
+  .keys { max-width: var(--measure); margin: 0 0 1rem; }
+
+  .keys div {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: .15rem;
+    padding: .8rem 0;
+    border-top: 1px solid var(--rule);
+  }
+
+  @media (min-width: 560px) {
+    .keys div { grid-template-columns: 8.5rem minmax(0, 1fr); gap: 1rem; }
+  }
+
+  .keys dt { font-weight: 600; color: var(--ink); font-size: .95rem; }
+  .keys dd { margin: 0; color: var(--ink-soft); font-size: .95rem; }
+
+  /* ------------------------------------------------------------ index --- */
+  /* "Everything else" reads as a book index: hairlines, no cards. */
+  .also { margin-top: 1.5rem; padding-top: 2.6rem; border-top: 1px solid var(--rule); }
+
+  .also > h2 {
+    font-size: clamp(1.6rem, 3.6vw, 2.1rem);
+    letter-spacing: -.01em;
+    margin-bottom: .5rem;
+  }
+
+  .also > p { color: var(--ink-soft); max-width: var(--measure); margin: 0 0 2rem; }
+
+  .index { display: grid; gap: 0; max-width: 74ch; }
+
+  .index-row {
+    display: grid;
+    gap: .2rem .9rem;
+    padding: 1rem 0;
+    border-top: 1px solid var(--rule);
+  }
+
+  @media (min-width: 640px) {
+    .index-row { grid-template-columns: 11rem minmax(0, 1fr); align-items: baseline; }
+  }
+
+  .index-row h3 { font-size: 1.06rem; font-weight: 600; }
+  .index-row p { margin: 0; color: var(--ink-soft); font-size: .95rem; }
+  .index-row .where { color: var(--ink-faint); font-size: .88rem; }
+
+  /* ------------------------------------------------------------- help --- */
+  .help {
+    margin-top: 3.25rem;
+    padding: clamp(1.5rem, 4vw, 2.25rem);
+    background: var(--paper-3);
+    display: grid;
+    gap: 1.4rem;
+  }
+
+  .help h2 { font-size: clamp(1.45rem, 3.2vw, 1.85rem); }
+  .help > p { margin: 0; color: var(--ink-soft); max-width: var(--measure); }
+
+  .guides { display: grid; gap: 1.1rem; }
+  @media (min-width: 760px) { .guides { grid-template-columns: repeat(3, 1fr); } }
+
+  .guide-card { display: grid; gap: .3rem; align-content: start; }
+  .guide-card h3 { font-size: 1.08rem; }
+  .guide-card p { margin: 0; font-size: .92rem; color: var(--ink-soft); }
+
+  footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+    color: var(--ink-faint);
+    font-size: .87rem;
+  }
+
+  footer p { margin: 0 0 .4rem; max-width: 68ch; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="masthead-brand">
+      <img src="media/logo.webp" alt="">
+      <span>Impact Discipleship Library</span>
+    </div>
+    <p class="eyebrow">Getting started</p>
+    <h1>Install the library and open your first lesson</h1>
+    <p class="lede">
+      Five steps, start to finish: get the app, create your account, sign in, find your
+      book, and start reading. Everything else in the app is covered by the Guide that
+      travels with it.
+    </p>
+    <div class="rule-note">
+      <p>
+        <strong>Your login is an email address.</strong> Not a username or a phone number.
+        Use a real address you can open — it is how you set your password, how you get it
+        back if you forget it, and how a group leader invites you.
+      </p>
+    </div>
+  </header>
+
+  <div class="path">
+
+    <!-- 1 ------------------------------------------------------------- -->
+    <section class="step">
+      <div class="marker">1</div>
+      <div class="step-body">
+        <h2>Get the app</h2>
+        <p>
+          There are two ways in, and they are the same library with the same books,
+          highlights and answers. Pick whichever suits the device in your hand.
+        </p>
+        <div class="doors">
+          <div class="door">
+            <p class="who">Android phone or tablet</p>
+            <h3>Install from Google&nbsp;Play</h3>
+            <p>
+              Open the Play Store, search for <strong>Impact Discipleship Library</strong>,
+              and tap Install. Works offline once your lessons have loaded.
+            </p>
+            <a class="go" href="https://play.google.com/store/apps/details?id=com.impactdiscipleship.library">Open the Play Store listing&nbsp;→</a>
+          </div>
+          <div class="door">
+            <p class="who">iPhone, iPad, Mac or PC</p>
+            <h3>Open it in a browser</h3>
+            <p>
+              Nothing to install. Go to the address below and sign in. There is no iPhone
+              app yet — on Apple devices the web version is the library.
+            </p>
+            <a class="go" href="https://library.impactdisciples.com">library.impactdisciples.com&nbsp;→</a>
+          </div>
+        </div>
+        <p>
+          On a phone browser you can add the page to your home screen from the browser
+          menu, and it opens like an app from then on.
+        </p>
+      </div>
+    </section>
+
+    <!-- 2 ------------------------------------------------------------- -->
+    <section class="step">
+      <div class="marker">2</div>
+      <div class="step-body">
+        <h2>Create your account</h2>
+        <div class="step-layout with-media">
+          <div>
+            <p>
+              The first screen you meet is the sign-in screen. If you have never used the
+              library before, you do not have an account yet — tap
+              <strong>Don't have an account? Sign&nbsp;up</strong> at the bottom.
+            </p>
+            <dl class="keys">
+              <div>
+                <dt>Email</dt>
+                <dd>A valid address you can open. This becomes your login ID.</dd>
+              </div>
+              <div>
+                <dt>Password</dt>
+                <dd>At least 6 characters, typed twice so a slip can't lock you out.</dd>
+              </div>
+              <div>
+                <dt>Your name</dt>
+                <dd>What your group leader and the people in your group will see.</dd>
+              </div>
+            </dl>
+            <p>
+              <strong>If someone set your account up for you</strong> — Impact Disciples
+              staff, or a group leader who bought you a book — you don't sign up. You will
+              get an email asking you to set your password. Open it, choose a password,
+              then come back here and sign in.
+            </p>
+            <p>
+              No email? Check your spam folder first, then tap
+              <strong>Forgot password?</strong> on the sign-in screen and we will send a
+              fresh link. Use the same address the account was made with.
+            </p>
+          </div>
+          <figure>
+            <div class="device"><img src="media/signin.webp" alt="The library sign-in screen, with email and password fields, a Sign in button, and links reading Forgot password? and Don't have an account? Sign up."></div>
+            <figcaption>Both doors out of trouble live on the sign-in screen: <em>Forgot password?</em> and <em>Sign up</em>.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 ------------------------------------------------------------- -->
+    <section class="step">
+      <div class="marker">3</div>
+      <div class="step-body">
+        <h2>Sign in</h2>
+        <div class="step-layout with-media">
+          <div>
+            <p>
+              Type your email and password and tap <strong>Sign in</strong>. The library
+              remembers you on that device, so this is normally a once-only step — though
+              it signs you out after an hour of sitting idle, which matters if you read on
+              a shared phone.
+            </p>
+            <p>
+              What you land on is <strong>Home</strong>: the lesson you were last reading,
+              the books waiting for you, your streak, and this week's memory verse.
+            </p>
+          </div>
+          <figure>
+            <div class="device is-motion">
+              <span class="motion-tag">Motion</span>
+              <video poster="media/signing-in-poster.webp" data-fallback="media/signing-in-loop.webp" autoplay loop muted playsinline preload="metadata" aria-label="Screen recording: tapping Sign in and landing on the Home screen."><source src="media/signing-in.mp4" type="video/mp4"><source src="media/signing-in.webm" type="video/webm"></video>
+            </div>
+            <figcaption>Signing in, and the Home screen that follows.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 ------------------------------------------------------------- -->
+    <section class="step">
+      <div class="marker">4</div>
+      <div class="step-body">
+        <h2>Find your book and open a lesson</h2>
+        <div class="step-layout with-media">
+          <div>
+            <p>
+              Tap <strong>Library</strong> in the bar along the bottom. Every book you hold
+              a licence for is on the shelf; tap one to see its units, and tap a lesson to
+              open it.
+            </p>
+            <p>
+              A book you have <em>not</em> bought will not appear here. If your shelf is
+              empty, you need a licence — buy one in the Store, or ask your group leader,
+              who can assign you one.
+            </p>
+            <p class="tight">
+              Once a lesson is open, the arrows at the top move you to the previous or next
+              lesson without going back to the list.
+            </p>
+          </div>
+          <figure>
+            <div class="device is-motion">
+              <span class="motion-tag">Motion</span>
+              <video poster="media/reading-a-lesson-poster.webp" data-fallback="media/reading-a-lesson-loop.webp" autoplay loop muted playsinline preload="metadata" aria-label="Screen recording: the library shelf, a book, and a lesson opening."><source src="media/reading-a-lesson.mp4" type="video/mp4"><source src="media/reading-a-lesson.webm" type="video/webm"></video>
+            </div>
+            <figcaption>Home → Library → a book → a lesson.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 ------------------------------------------------------------- -->
+    <section class="step">
+      <div class="marker">5</div>
+      <div class="step-body">
+        <h2>Read, highlight and answer</h2>
+        <div>
+          <div>
+            <p>
+              A lesson is read straight down the screen. Two things make it yours:
+            </p>
+            <dl class="keys">
+              <div>
+                <dt>Highlighting</dt>
+                <dd>
+                  Press and drag across any text, then tap <strong>Highlight</strong>. On a
+                  phone the button sits just above the tab bar. Your highlights come back
+                  every time you open the lesson, on every device you sign in on.
+                </dd>
+              </div>
+              <div>
+                <dt>Answers</dt>
+                <dd>
+                  Questions sit in the reading where they belong — some to type into, some
+                  to choose from. They save on their own, so there is no Submit button to
+                  hunt for and nothing to lose if you close the app. A lesson with nothing
+                  to answer counts as done once you have read it.
+                </dd>
+              </div>
+            </dl>
+            <p>
+              Longer lessons are split across tabs — <strong>Lesson</strong>,
+              <strong>Discussion</strong>, <strong>Daily Reading</strong> — with the memory
+              verse and the goal pinned at the top. Prefer to speak than type? Tap the
+              microphone in an answer box and dictate.
+            </p>
+          </div>
+          <div class="media-row">
+            <figure>
+              <div class="device is-motion">
+                <span class="motion-tag">Motion</span>
+                <video poster="media/highlighting-poster.webp" data-fallback="media/highlighting-loop.webp" autoplay loop muted playsinline preload="metadata" aria-label="Screen recording: text is selected, Highlight is tapped, and the highlight stays."><source src="media/highlighting.mp4" type="video/mp4"><source src="media/highlighting.webm" type="video/webm"></video>
+              </div>
+              <figcaption>Select the words, tap Highlight, and it stays.</figcaption>
+            </figure>
+            <figure>
+              <div class="device"><img src="media/lesson-answer.webp" alt="A lesson screen showing the memory verse and goal at the top, the Lesson, Discussion and Daily Reading tabs, and a question with three answers to choose from."></div>
+              <figcaption>Memory verse up top, tabs across the middle, questions in the flow of the reading.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ------------------------------------------------------------------ -->
+  <section class="also">
+    <h2>The rest of the app, in one line each</h2>
+    <p>
+      That is everything you need to start reading. The library does more, and every one of
+      these has a full write-up in the Guide — this is just so you know it is there.
+    </p>
+
+    <div class="index">
+      <div class="index-row">
+        <h3>Store</h3>
+        <div>
+          <p>Buy a licence for a book, redeem a coupon code, or open one of the free eBooks.</p>
+          <p class="where">Guide → For Everyone → Buying a book license</p>
+        </div>
+      </div>
+      <div class="index-row">
+        <h3>Impact Groups</h3>
+        <div>
+          <p>Find a group near you and ask to join, or start one and lead it — with group chat, prayer requests, and licences you can hand to members.</p>
+          <p class="where">Guide → For Members, and For Group Leaders</p>
+        </div>
+      </div>
+      <div class="index-row">
+        <h3>Messages</h3>
+        <div>
+          <p>Announcements from Impact Disciples, and one-to-one messages with people in your group.</p>
+          <p class="where">Guide → For Everyone → Messages and announcements</p>
+        </div>
+      </div>
+      <div class="index-row">
+        <h3>Settings</h3>
+        <div>
+          <p>Dark mode, colour theme, the language your lessons are shown in, and notifications.</p>
+          <p class="where">Guide → For Everyone → Settings and appearance</p>
+        </div>
+      </div>
+      <div class="index-row">
+        <h3>Reading offline</h3>
+        <div>
+          <p>Lessons you have opened stay readable with no signal, and your answers and highlights sync when you are back online. Buying and groups need a connection.</p>
+          <p class="where">Guide → For Everyone → Using the app offline</p>
+        </div>
+      </div>
+      <div class="index-row">
+        <h3>Your account</h3>
+        <div>
+          <p>Change your password, your name, or delete your account and everything in it.</p>
+          <p class="where">Guide → For Everyone → Your account and privacy</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------------------ -->
+  <section class="help">
+    <div>
+      <h2>Where to get help</h2>
+      <p>
+        The Guide is inside the app under <strong>Profile → Help</strong>, and on the web at
+        <a href="https://library.impactdisciples.com/guide">library.impactdisciples.com/guide</a>.
+        It is written for three kinds of reader, and there is a find-by-screen index for when
+        you are looking at something and just want to know what it does.
+      </p>
+    </div>
+    <div class="guides">
+      <div class="guide-card">
+        <h3>For Everyone</h3>
+        <p>Signing in, reading lessons, buying a book licence, and the settings everyone shares.</p>
+      </div>
+      <div class="guide-card">
+        <h3>For Members</h3>
+        <p>Finding a group, joining it, and taking part once you are in.</p>
+      </div>
+      <div class="guide-card">
+        <h3>For Group Leaders</h3>
+        <p>Starting a group, buying licences in bulk, handing them out, and running it week to week.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>
+      Impact Discipleship Library · Android app and web library ·
+      <a href="https://library.impactdisciples.com">library.impactdisciples.com</a>
+    </p>
+    <p>
+      Screens and clips were recorded in the library itself, using a demonstration account
+      and its books. Nothing here shows another reader's account.
+    </p>
+  </footer>
+
+</div>
+
+<script>
+  // Muted autoplay is what makes these read as motion rather than as
+  // screenshots, but a reader who has asked for reduced motion gets the
+  // poster frame instead.
+  //
+  // The fallback matters more than the autoplay: a browser that cannot decode
+  // either source shows an EMPTY BOX and reports no error, so nothing here can
+  // wait for one. Instead, give playback three seconds to produce a frame
+  // (videoWidth > 0) and swap in the animated WebP if it hasn't. That covers
+  // Safari/iOS without VP8, a blocked autoplay, and data-saver modes alike.
+  (function () {
+    var quiet = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    document.querySelectorAll('video[data-fallback]').forEach(function (v) {
+      // Reduced motion must not mean NO motion when the motion IS the content:
+      // a silent poster with no way to play it is just a broken-looking image.
+      // Don't autoplay - but hand over the controls and say so.
+      if (quiet) {
+        v.removeAttribute('autoplay');
+        v.controls = true;
+        v.pause();
+        var tag = v.parentElement && v.parentElement.querySelector('.motion-tag');
+        if (tag) tag.textContent = 'Press play';
+        return;
+      }
+
+      var played = v.play();
+      if (played && played.catch) played.catch(function () {});
+
+      setTimeout(function () {
+        if (v.videoWidth > 0) return;
+        var img = document.createElement('img');
+        img.src = v.getAttribute('data-fallback');
+        img.alt = v.getAttribute('aria-label') || '';
+        v.replaceWith(img);
+      }, 3000);
+    });
+  })();
+</script>
+
+</body>
+</html>
