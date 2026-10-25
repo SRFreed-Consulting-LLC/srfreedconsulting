@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tracer demo guide</title>
+<meta name="description" content="How to sign in to the Tracer demo and what you are looking at on the Map, the Board, the Timeline and the big screen.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23c3102f'/%3E%3Ccircle cx='16' cy='16' r='7' fill='none' stroke='%23fff' stroke-width='3'/%3E%3C/svg%3E">
+<style>
+  html { -webkit-text-size-adjust: 100%; }
+  img { max-width: 100%; }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+
+<style>
+  /* The Tracer is a light, flat screen: a grey ground, white panels, hairline
+     borders, JB Harris red for the brand and the selection, and one colour per
+     state. These values are the product's own (src/app/shared/map/pin-svg.ts),
+     so the page reads as the thing it describes. */
+  :root {
+    color-scheme: light;
+    --ground:     #f2f4f6;
+    --panel:      #ffffff;
+    --panel-2:    #e9ecef;
+    --ink:        #191c1e;
+    --ink-soft:   #44494e;
+    --ink-faint:  #6b7178;
+    --rule:       #d8dce0;
+    --rule-dark:  #b4bac1;
+    --brand:      #c3102f;
+    --brand-ink:  #9c0c25;
+
+    --moving:     #1a7f37;
+    --stopped:    #0969da;
+    --delayed:    #9a6700;
+    --quiet:      #6b7178;
+    --delivered:  #2d3133;
+
+    --font: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --measure: 66ch;
+    --gap: clamp(2.75rem, 6vw, 4.5rem);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--font);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: clamp(1.5rem, 4vw, 3.5rem) clamp(1rem, 4vw, 2.5rem) 5rem;
+  }
+
+  a { color: var(--brand-ink); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  a:focus-visible { outline: 2px solid var(--stopped); outline-offset: 3px; border-radius: 3px; }
+
+  h1, h2, h3 { margin: 0; font-weight: 600; letter-spacing: -.01em; text-wrap: balance; }
+  p { margin: 0 0 .9rem; }
+  strong { font-weight: 600; color: var(--ink); }
+  code {
+    font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, monospace;
+    font-size: .92em;
+    background: var(--panel-2);
+    padding: .1em .35em;
+    border-radius: 3px;
+  }
+
+  .eyebrow {
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--brand);
+    margin: 0;
+  }
+
+  /* ---------------------------------------------------------- masthead -- */
+  .masthead {
+    display: grid;
+    gap: 1.1rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    font-size: .95rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+  }
+
+  .brand .mark {
+    display: inline-grid;
+    place-items: center;
+    width: 44px;
+    height: 34px;
+    border: 2px solid var(--brand);
+    color: var(--brand);
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: .02em;
+    background: var(--panel);
+  }
+
+  .masthead h1 {
+    font-size: clamp(2rem, 5.6vw, 3.1rem);
+    line-height: 1.08;
+    max-width: 20ch;
+  }
+
+  .lede {
+    font-size: clamp(1.02rem, 2.2vw, 1.14rem);
+    color: var(--ink-soft);
+    max-width: 58ch;
+  }
+
+  .note {
+    margin-top: .4rem;
+    padding: .95rem 1.15rem;
+    background: var(--panel);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--brand);
+    max-width: 62ch;
+  }
+
+  .note p { margin: 0; font-size: .96rem; }
+
+  /* ---------------------------------------------------------- sections -- */
+  .part { padding-top: var(--gap); }
+
+  .part > h2 {
+    font-size: clamp(1.6rem, 3.6vw, 2.15rem);
+    line-height: 1.15;
+    margin-bottom: .35rem;
+  }
+
+  .part > .kicker { color: var(--ink-faint); font-size: .95rem; margin-bottom: 1.4rem; }
+
+  .part h3 {
+    font-size: 1.22rem;
+    margin: 2.2rem 0 .5rem;
+    padding-top: 1.4rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .part h3:first-of-type { border-top: 0; padding-top: 0; margin-top: 1.4rem; }
+
+  .part p, .part li { max-width: var(--measure); color: var(--ink-soft); }
+
+  ol, ul { margin: 0 0 1rem; padding-left: 1.3rem; }
+  li { margin-bottom: .4rem; }
+  li::marker { color: var(--brand); font-weight: 600; }
+
+  /* ---------------------------------------------------------- figures --- */
+  figure { margin: 1.25rem 0 1.6rem; display: grid; gap: .55rem; }
+
+  .shot {
+    border: 1px solid var(--rule-dark);
+    background: var(--panel);
+    overflow: hidden;
+  }
+
+  .shot img { display: block; width: 100%; height: auto; }
+
+  figcaption { font-size: .84rem; color: var(--ink-faint); line-height: 1.45; }
+
+  .pair { display: grid; gap: 1.25rem; }
+  @media (min-width: 760px) { .pair { grid-template-columns: 1fr 1fr; } }
+  .pair figure { margin: 0; }
+
+  /* ----------------------------------------------------------- tables --- */
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: .95rem;
+    margin: .6rem 0 1.4rem;
+    background: var(--panel);
+    border: 1px solid var(--rule);
+  }
+
+  th, td { text-align: left; vertical-align: top; padding: .7rem .85rem; border-top: 1px solid var(--rule); }
+  th { font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); font-weight: 600; border-top: 0; }
+  td { color: var(--ink-soft); }
+  td:first-child { color: var(--ink); font-weight: 600; white-space: nowrap; }
+
+  .table-scroll { overflow-x: auto; }
+
+  /* The state marks, drawn the way the map draws them: circles for trucks,
+     squares for loads, a hollow grey for anything that has gone quiet. */
+  .mark-cell { display: flex; align-items: center; gap: .6rem; white-space: nowrap; }
+  .pin { display: inline-block; width: 14px; height: 14px; flex: none; border: 2.5px solid currentColor; }
+  .pin.circle { border-radius: 50%; }
+  .pin.fill { background: currentColor; }
+  .pin.hollow { background: transparent; }
+
+  /* ------------------------------------------------------------ try ----- */
+  .try {
+    background: var(--panel);
+    border: 1px solid var(--rule);
+    padding: 1.15rem 1.3rem .4rem;
+    max-width: 68ch;
+    margin: 1.4rem 0 .5rem;
+  }
+
+  .try h3 { border: 0; padding: 0; margin: 0 0 .6rem; font-size: 1rem; }
+  .try ol { margin-bottom: .6rem; }
+
+  .staff-only {
+    display: inline-block;
+    font-size: .66rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    background: var(--delivered);
+    color: #fff;
+    padding: .15rem .45rem;
+    vertical-align: middle;
+  }
+
+  footer {
+    margin-top: var(--gap);
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+    color: var(--ink-faint);
+    font-size: .87rem;
+  }
+
+  footer p { margin: 0 0 .4rem; max-width: 70ch; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="brand">
+      <span class="mark" aria-hidden="true">JBH</span>
+      <span>Tracer · JB Harris Group</span>
+    </div>
+    <p class="eyebrow">Demo guide</p>
+    <h1>How to sign in, and what you are looking at</h1>
+    <p class="lede">
+      Tracer shows JB Harris's trucks and loads on a map, a board and a timeline. This guide
+      signs you in and walks through the three ways to see it: the staff view, the customer
+      view, and the big screen.
+    </p>
+    <div class="note">
+      <p>
+        <strong>Your sign-in details came separately, by email from Shane.</strong> They are not
+        on this page. If you do not have them, ask him and he will send them again.
+      </p>
+    </div>
+  </header>
+
+  <!-- ------------------------------------------------------------------ -->
+  <section class="part" id="sign-in">
+    <h2>Sign in</h2>
+    <p class="kicker">Two logins, one address. Each shows the Tracer as a different kind of person sees it.</p>
+    <ol>
+      <li>Open <a href="https://tracer-1b330.web.app">tracer-1b330.web.app</a> in a browser. A laptop or desktop screen shows it best.</li>
+      <li>Type the email and password for the view you want to see, then press <strong>Sign in</strong>. You land on the Map.</li>
+      <li>To see the other view, open the menu on your email address (top right), choose <strong>Logout</strong>, and sign in with the other login.</li>
+    </ol>
+
+    <figure>
+      <div class="shot"><img src="media/sign-in.webp" width="1440" height="900" alt="The Tracer sign-in screen: the JBH logo, an email field, a password field and a Sign in button." loading="lazy"></div>
+      <figcaption>The sign-in screen.</figcaption>
+    </figure>
+
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th scope="col">Login</th><th scope="col">What it shows</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Staff view</td>
+            <td>What JB Harris staff see: every load and truck, the booking details with the carrier's cost and the profit, and the big screen (TV).</td>
+          </tr>
+          <tr>
+            <td>Customer view</td>
+            <td>What one customer, Demo Customer Co, is shown: only their own loads and trucks, and no cost or profit.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>
+      The staff login is not an administrator login. Administrators have three more screens in
+      the same menu (Users, Application Logs, Control Panel) for managing the system; they are
+      not part of this demo.
+    </p>
+  </section>
+
+  <!-- ------------------------------------------------------------------ -->
+  <section class="part" id="sample-data">
+    <h2>About the sample data</h2>
+    <p class="kicker">Everything named Demo is made up. The cities are real, so the map can place the trucks.</p>
+    <p>
+      The loads, bookings, customers and shippers in this demo are invented. Their BOL numbers
+      run from 990001 to 990012, and the customers are called Demo Customer Co, Demo Retail
+      Group and Demo Foods Inc.
+    </p>
+    <ul>
+      <li><strong>12 sample loads:</strong> 5 on track, 3 running late, 1 waiting to be picked up, 2 delivered, and 1 whose tracking was lost.</li>
+      <li><strong>14 sample trucks,</strong> named Demo Truck 01 to 14: 6 moving, 6 stopped, and 2 with no signal.</li>
+      <li><strong>Real trucks:</strong> the staff view also shows JB Harris's own trucks, because they report live. Anything named Demo is sample data.</li>
+      <li><strong>It keeps itself current.</strong> The sample is refreshed every 15 minutes, so the loads never go stale. Trucks do not creep along their routes between refreshes.</li>
+    </ul>
+    <p>
+      In real use, trucks come from Samsara, loads and their ETAs from Macropoint, and bookings
+      from Primus.
+    </p>
+  </section>
+
+  <!-- ------------------------------------------------------------------ -->
+  <section class="part" id="staff">
+    <h2>Staff view</h2>
+    <p class="kicker">Sign in with the staff login.</p>
+    <p>
+      Across the top are the three ways to look at the same trucks and loads (<strong>Map</strong>,
+      <strong>Board</strong>, <strong>Timeline</strong>), a search box (try a BOL number, a
+      customer, a driver or a city), the time in Eastern, and a <strong>TV</strong> button for
+      the big screen. Whatever you select stays selected as you move between the three.
+    </p>
+
+    <h3>Map</h3>
+    <figure>
+      <div class="shot"><img src="media/staff-map.webp" width="1440" height="900" alt="The Map view: a Fleet list on the left with Trucks and Loads tabs and Moving, Stopped and No signal switches, and a map of North America with truck pins and numbered clusters." loading="lazy"></div>
+      <figcaption>The Map: the fleet in a list beside the map.</figcaption>
+    </figure>
+    <p>
+      The list on the left has two tabs, <strong>Trucks</strong> and <strong>Loads</strong>, with
+      counts. The buttons under them (Moving, Stopped, No signal) switch each kind on or off. On
+      the map, a green circle with an arrow is a truck on the move, a blue circle is a truck that
+      has stopped, and a small box on a truck means it is carrying a load. Pins that would overlap
+      become a numbered circle. Press a pin or a row to open its details on the right.
+    </p>
+    <figure>
+      <div class="shot"><img src="media/staff-truck-details.webp" width="1440" height="900" alt="A truck selected on the map, with its details panel open on the right: Demo Truck 04, moving at 61 mph, its position, last fix, speed, heading, plate and VIN, and the load it is carrying." loading="lazy"></div>
+      <figcaption>A truck selected: its details open on the right.</figcaption>
+    </figure>
+
+    <h3>Board</h3>
+    <figure>
+      <div class="shot"><img src="media/staff-board.webp" width="1440" height="900" alt="The Board view: four columns headed Waiting, On track, Delayed and Delivered, each holding load cards with the BOL number, customer, commodity, lane, progress bar, driver and ETA." loading="lazy"></div>
+      <figcaption>The Board: one column for each state.</figcaption>
+    </figure>
+    <p>
+      Every load is a card in a column: <strong>Waiting</strong> (no position yet), <strong>On
+      track</strong>, <strong>Delayed</strong> and <strong>Delivered</strong> (kept for 24 hours).
+      A card shows the BOL number, the customer, what is on it, the lane with a progress bar, the
+      driver and the ETA. Late loads say how late, for example 3 H LATE. The <strong>Tracking
+      lost</strong> button brings back loads that stopped reporting. Press a card to open its
+      details.
+    </p>
+
+    <h3>Timeline</h3>
+    <figure>
+      <div class="shot"><img src="media/staff-timeline.webp" width="1440" height="900" alt="The Timeline view: one row per load, each a bar along a clock across the top, with a red line marking now and late time drawn in amber." loading="lazy"></div>
+      <figcaption>The Timeline: a bar for each load along a clock.</figcaption>
+    </figure>
+    <p>
+      Each row is a load, or a truck if you switch <strong>Rows</strong> to Trucks. The red line is
+      now. A solid bar is the distance travelled, the pale bar after it is the time still to go,
+      and a dashed amber bar is time late. Black is delivered. You can change the window (24 or
+      44 hours) and the order (State, ETA or Customer). Late loads sort to the top.
+    </p>
+
+    <h3>The load details</h3>
+    <p>Press any truck or load and a panel opens on the right, with four tabs:</p>
+    <ul>
+      <li><strong>Overview:</strong> how far along it is, the customer, what is on it, the Macropoint order number (staff only), where it is going, the appointment, the truck and driver, and each stop with its times. <strong>Call driver</strong> is staff only.</li>
+      <li><strong>Booking:</strong> who it is picked up from and delivered to, the freight and the references. Staff also see boxes marked <span class="staff-only">Staff only</span>: the carrier and its cost, the quotes and the profit, the people on the booking, the broker, and internal notes.</li>
+      <li><strong>Route:</strong> a map of where the load has been.</li>
+      <li><strong>History:</strong> what Macropoint has reported, newest first.</li>
+    </ul>
+    <div class="pair">
+      <figure>
+        <div class="shot"><img src="media/staff-booking-tab.webp" width="1440" height="900" alt="The Booking tab of a load, scrolled down to the boxes marked Staff only: invoice, people, broker and internal notes." loading="lazy"></div>
+        <figcaption>The Booking tab, scrolled to the staff-only boxes.</figcaption>
+      </figure>
+      <figure>
+        <div class="shot"><img src="media/staff-route-tab.webp" width="1440" height="900" alt="The Route tab of a load: a map with the line of the load's positions so far." loading="lazy"></div>
+        <figcaption>The Route tab.</figcaption>
+      </figure>
+    </div>
+
+    <h3>The Fleet menu</h3>
+    <figure>
+      <div class="shot"><img src="media/staff-fleet-menu.webp" width="1440" height="900" alt="The menu opened from the signed-in email address, top right, showing a Fleet group with Vehicles and Drivers, and Logout." loading="lazy"></div>
+      <figcaption>The menu on your email address.</figcaption>
+    </figure>
+    <p>
+      The menu on your email address, top right, has a <strong>Fleet</strong> group for staff:
+      <strong>Vehicles</strong> and <strong>Drivers</strong> open the lists of the company's
+      trucks and drivers (double-click a row for its details). The logo returns you to the Tracer.
+    </p>
+
+    <div class="try">
+      <h3>Things to try</h3>
+      <ol>
+        <li>On the Board, press <strong>BOL 990004</strong>, the load that is 3 hours late, and read its Overview.</li>
+        <li>Open its <strong>Booking</strong> tab and scroll down to the Staff only boxes.</li>
+        <li>Press <strong>Timeline</strong>, then <strong>Trucks</strong>, to see the same story by truck.</li>
+        <li>Search for <strong>Chicago</strong> and watch the list narrow.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------------------ -->
+  <section class="part" id="customer">
+    <h2>Customer view</h2>
+    <p class="kicker">Sign in with the customer login.</p>
+    <p>
+      A customer gets the same <strong>Map</strong>, <strong>Board</strong> and
+      <strong>Timeline</strong> and the same details panel, but only for their own loads and the
+      trucks carrying them. Demo Customer Co has 7 of the 12 sample loads, in every state, so every
+      screen has something to show.
+    </p>
+    <figure>
+      <div class="shot"><img src="media/customer-board.webp" width="1440" height="900" alt="The Board as a customer sees it, titled Your loads, with only Demo Customer Co's loads in the columns and no TV button." loading="lazy"></div>
+      <figcaption>The Board as a customer sees it: Your loads.</figcaption>
+    </figure>
+    <p>What is different from the staff view:</p>
+    <ul>
+      <li><strong>Only their own loads.</strong> The Board is titled Your loads, and the map shows only the trucks that carry them.</li>
+      <li><strong>No cost or profit.</strong> The Booking tab shows who the load is picked up from and delivered to, the freight and the references, and nothing of JB Harris's side: no carrier, cost, quotes, profit, broker or internal notes.</li>
+      <li><strong>No staff extras.</strong> There is no Macropoint order number, no Call driver button and no TV button.</li>
+    </ul>
+    <div class="pair">
+      <figure>
+        <div class="shot"><img src="media/customer-booking-tab.webp" width="1440" height="900" alt="A customer's Booking tab: pick-up, delivery, freight and references, with no staff-only boxes." loading="lazy"></div>
+        <figcaption>A customer's Booking tab.</figcaption>
+      </figure>
+      <figure>
+        <div class="shot"><img src="media/customer-menu.webp" width="1440" height="900" alt="The menu on a customer's email address, holding only Logout." loading="lazy"></div>
+        <figcaption>A customer's menu holds only Logout.</figcaption>
+      </figure>
+    </div>
+    <p>
+      The menu on the customer's email address holds only <strong>Logout</strong>: there is no
+      Fleet group. The staff screens are closed to them, and typing one of their addresses sends
+      them back to the Map. This is enforced by the database rules, not just hidden on screen: a
+      customer's account cannot read a booking at all, only a trimmed copy of it that leaves out
+      everything on the staff side.
+    </p>
+
+    <div class="try">
+      <h3>Things to try</h3>
+      <ol>
+        <li>On the Board, press <strong>BOL 990004</strong> (3 hours late) and read its Overview.</li>
+        <li>Open the <strong>Booking</strong> tab and look for the carrier's cost. It is not there.</li>
+        <li>Press <strong>Timeline</strong>, then the <strong>Tracking lost</strong> button, to see the load that stopped reporting.</li>
+        <li>Sign out, sign in as staff, and open the same load to compare.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------------------ -->
+  <section class="part" id="big-screen">
+    <h2>Big screen (TV) view</h2>
+    <p class="kicker">For a wall display in the office. Only staff can open it.</p>
+    <p>
+      Sign in with the staff login and press <strong>TV</strong>, top right of the bar. It fills
+      the whole window and needs no clicking: it keeps itself up to date.
+    </p>
+    <figure>
+      <div class="shot"><img src="media/tv.webp" width="1600" height="900" alt="The big screen: truck and load counts down the left with their state marks, an Arriving next list of five loads with ETAs, the clock top right, and the whole fleet on the map." loading="lazy"></div>
+      <figcaption>The big screen: the counts down the left, the whole fleet on the map.</figcaption>
+    </figure>
+    <ul>
+      <li><strong>Down the left:</strong> the counts. Trucks are split into moving, stopped and no signal, and loads into on track, delayed, waiting, delivered and tracking lost. Each count has the same small picture as on the map.</li>
+      <li><strong>Arriving next:</strong> the five loads due soonest, with the city and the ETA. A late one shows its time in amber.</li>
+      <li><strong>The map:</strong> every truck and load, on the same map as the Map view.</li>
+      <li><strong>The clock:</strong> the time in Eastern, top right.</li>
+    </ul>
+    <p>
+      The type is sized to the window, so a bigger screen across the room reads bigger. Press F11
+      for the browser's full-screen mode. To leave, press <strong>Exit big screen</strong>, top
+      right.
+    </p>
+  </section>
+
+  <!-- ------------------------------------------------------------------ -->
+  <section class="part" id="states">
+    <h2>What the colours and shapes mean</h2>
+    <p class="kicker">Every state has a shape and a word as well as a colour, so nothing depends on colour alone. Trucks are circles and loads are squares.</p>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th scope="col">State</th><th scope="col">Looks like</th><th scope="col">What it means</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Moving</td>
+            <td><span class="mark-cell" style="color: var(--moving)"><span class="pin circle fill" aria-hidden="true"></span>Green circle with an arrow</span></td>
+            <td>A truck doing 3 mph or more that reported in the last 10 minutes.</td>
+          </tr>
+          <tr>
+            <td>Stopped</td>
+            <td><span class="mark-cell" style="color: var(--stopped)"><span class="pin circle fill" aria-hidden="true"></span>Blue circle</span></td>
+            <td>A truck that reported in the last 24 hours and is not moving.</td>
+          </tr>
+          <tr>
+            <td>No signal</td>
+            <td><span class="mark-cell" style="color: var(--quiet)"><span class="pin circle hollow" aria-hidden="true"></span>Hollow grey circle</span></td>
+            <td>A truck with no report for 24 hours. Hidden until you switch it on. Trucks silent for over 30 days are left off.</td>
+          </tr>
+          <tr>
+            <td>On track</td>
+            <td><span class="mark-cell" style="color: var(--moving)"><span class="pin fill" aria-hidden="true"></span>Green square</span></td>
+            <td>A load with a position that is on schedule.</td>
+          </tr>
+          <tr>
+            <td>Delayed</td>
+            <td><span class="mark-cell" style="color: var(--delayed)"><span class="pin fill" aria-hidden="true"></span>Amber square</span></td>
+            <td>Macropoint's schedule says the load will miss its appointment, or already has.</td>
+          </tr>
+          <tr>
+            <td>Waiting</td>
+            <td><span class="mark-cell" style="color: var(--quiet)"><span class="pin hollow" aria-hidden="true"></span>Empty square</span></td>
+            <td>A load with no position yet. Listed, but not drawn on the map.</td>
+          </tr>
+          <tr>
+            <td>Delivered</td>
+            <td><span class="mark-cell" style="color: var(--delivered)"><span class="pin fill" aria-hidden="true"></span>Dark square</span></td>
+            <td>A load that has left its last stop. Kept on the Board for 24 hours.</td>
+          </tr>
+          <tr>
+            <td>Tracking lost</td>
+            <td><span class="mark-cell" style="color: var(--quiet)"><span class="pin hollow" aria-hidden="true"></span>Hollow grey square</span></td>
+            <td>A load with no position for a day, or nothing heard for 3 days. Hidden until you switch it on.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    <p>
+      Tracer, built for JB Harris Group by
+      <a href="https://srfreedconsulting.com">SR Freed Consulting</a>. Questions about the demo go to Shane.
+    </p>
+    <p>
+      Every screen on this page was captured in the Tracer with its demo data. Nothing here shows
+      a real load, customer or booking.
+    </p>
+  </footer>
+
+</div>
+</body>
+</html>
