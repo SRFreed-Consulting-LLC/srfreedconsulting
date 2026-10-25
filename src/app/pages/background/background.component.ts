@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { CREDENTIALS, LEADERSHIP, TIMELINE, TimelineEntry } from '../../data/background';
+import { AREAS_OF_EXPERTISE, CREDENTIALS, LEADERSHIP, STACK, TIMELINE, TimelineEntry } from '../../data/background';
 import { availabilityStatus } from '../../data/work';
 
 @Component({
@@ -15,6 +15,8 @@ export class BackgroundComponent {
   readonly availability = availabilityStatus();
   readonly leadership = LEADERSHIP;
   readonly credentials = CREDENTIALS;
+  readonly areas = AREAS_OF_EXPERTISE;
+  readonly stack = STACK;
 
   private readonly all: TimelineEntry[] = [...TIMELINE].sort((a, b) => b.from - a.from);
 

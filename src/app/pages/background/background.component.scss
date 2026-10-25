@@ -222,6 +222,92 @@
   margin-bottom: 8px;
 }
 
+/* -------------------------------------------------------------- stack ---- */
+
+.stack__note {
+  color: var(--color-text-3);
+  font-size: 14px;
+  margin: 0 0 20px;
+  max-width: var(--measure);
+}
+
+.stack__sub {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--color-text-2);
+  margin: 0 0 10px;
+}
+
+.areas {
+  list-style: none;
+  margin: 0 0 28px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+  gap: 6px 24px;
+}
+
+.area {
+  position: relative;
+  padding-left: 16px;
+  font-size: 14px;
+  color: var(--color-text-2);
+}
+
+.area::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 7px;
+  height: 1px;
+  background: var(--color-accent);
+}
+
+.stack {
+  margin: 0 0 48px;
+  border-top: 1px solid var(--color-border);
+}
+
+.stack__name,
+.stack__items {
+  margin: 0;
+  padding: 10px 0;
+  font-size: 14px;
+}
+
+.stack__name {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.stack__items {
+  color: var(--color-text-2);
+  border-bottom: 1px solid var(--color-border);
+  padding-top: 0;
+}
+
+@media (min-width: 720px) {
+  .stack {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    column-gap: 24px;
+  }
+
+  .stack__name,
+  .stack__items {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+}
+
+.contact__firm {
+  color: var(--color-text-3);
+  font-size: 14px;
+  margin: 10px 0 0;
+}
+
 /* -------------------------------------------------------- credentials ---- */
 
 .creds__note {

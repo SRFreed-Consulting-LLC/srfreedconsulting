@@ -2,11 +2,11 @@
 
   <header class="page-head">
     <p class="eyebrow">Background</p>
-    <h1 class="page-head__title">Thirty-six years of getting things into production.</h1>
+    <h1 class="page-head__title">Twenty-eight years of getting things into production.</h1>
     <p class="lede">
-      From a Marine Corps training database in 1989 to Spring Boot 4 and Angular 20
-      today. The through-line is ownership: I have rarely handed something over at
-      launch and walked away.
+      From Delta in 1997 to Spring Boot 4 and Angular 20 today, with a Marine Corps
+      training database before any of it. The through-line is ownership: I have
+      rarely handed something over at launch and walked away.
     </p>
   </header>
 
@@ -23,6 +23,9 @@
         as a senior or lead engineer and own delivery end to end — not advisory work.
         Backend platforms and APIs, event-driven services, cloud migration and
         modernization, front-end platform delivery, and team leadership.
+      </p>
+      <p class="contact__firm">
+        SRFreed Consulting, LLC, since October 2012. Atlanta metro; remote or hybrid.
       </p>
     </div>
 
@@ -87,9 +90,33 @@
     {{ expanded() ? 'Show recent only' : 'Show ' + hiddenCount + ' earlier roles' }}
   </button>
 
-  <!-- Credentials -->
+  <!-- Stack -->
   <div class="section-head">
     <span class="eyebrow">03</span>
+    <h2 class="section-head__title">What I work in</h2>
+  </div>
+
+  <p class="stack__note">
+    The areas first, then the stack by group. Each project page names only what that
+    engagement used.
+  </p>
+
+  <h3 class="stack__sub">Areas of expertise</h3>
+  <ul class="areas">
+    <li class="area" *ngFor="let area of areas">{{ area }}</li>
+  </ul>
+
+  <h3 class="stack__sub">Technical skills</h3>
+  <dl class="stack">
+    <ng-container *ngFor="let group of stack">
+      <dt class="stack__name">{{ group.name }}</dt>
+      <dd class="stack__items">{{ group.items }}</dd>
+    </ng-container>
+  </dl>
+
+  <!-- Credentials -->
+  <div class="section-head">
+    <span class="eyebrow">04</span>
     <h2 class="section-head__title">Credentials</h2>
   </div>
 

@@ -48,9 +48,9 @@ export class HomeComponent {
     'impact-platform',
     'impact-admin',
     'impact-library',
-    'smeac-spec-builder',
     'federal-reserve',
     'cfa-tax',
+    'jbhub',
   ]
     .map(slug => this.work.getBySlug(slug))
     .filter((w): w is WorkItem => !!w);

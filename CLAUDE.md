@@ -76,7 +76,10 @@ It is a **sister site of this one in the same Firebase project**:
   is written in the format the tool produces, and is a good example of what
   the site's "Spec first" principle looks like in practice.
 
-**SMEAC is not yet on this site and Shane wants it added.** Where it belongs:
+**SMEAC was on this site from 2026-09-04 to 2026-10-25 and Shane had it
+removed** ("just an app I played with"). The app and its repo stay; the site
+no longer carries a Work entry, case study, `/agentic` item or screenshots for
+it. Do not add it back without asking. The notes below describe where it sat:
 
 - A `WorkItem` in `work.ts` (`kind: 'product'`, self-directed, with a
   `liveUrl`) and a matching `CaseStudy` in `case-studies.ts` under the same
@@ -186,9 +189,9 @@ deploy would push the empty scaffold and the rules along with hosting.
 
 Carried from `HANDOFF.md` (2026-08-24) and still true on 2026-09-03:
 
-1. **SMEAC Spec Builder is on the site as of 2026-09-04** (Work entry, case
-   study, `/agentic` item). The gallery is the public help and sign-in
-   screens; the editor needs a signed-in account to capture.
+1. **SMEAC Spec Builder was on the site from 2026-09-04 and removed
+   2026-10-25** at Shane's request (Work entry, case study, `/agentic` item
+   and screenshots all gone). Eleven Work entries remain.
 2. **Fix the library names on `/impact`.** The diagram in
    `impact-system.component.html` names two shared libraries that do not exist
    under those names; there is one, `impact-discipleship-library-common`.

@@ -93,6 +93,12 @@ export class AgenticComponent {
 
   readonly shipped: ShippedItem[] = [
     {
+      title: 'A production multi-agent pipeline on the Anthropic API',
+      body:
+        'Designed and built a three-stage agent pipeline on the Anthropic API, running live in production. One agent extracts a structured JSON schema from source PDFs; a second transforms that schema into the delivery format consumed by Form.io; a third produces localized text across target languages. Architected as three single-responsibility agents with an explicit schema contract at each handoff, rather than a single monolithic prompt — the same separation-of-concerns discipline I apply to service design.',
+      link: { label: 'Operations Platform case study', route: '/work/impact-admin' },
+    },
+    {
       title: 'AI as a product feature, not a development aid',
       body:
         'Import Book takes a PDF of a curriculum and reads it with an AI pass that detects the structure — units, lessons, questions and images — then proposes the hierarchy staff would otherwise rebuild by hand. It is used by non-technical people who will never know or care which model is behind it. Nothing is persisted on the model’s say-so: the detected structure is reviewed and confirmed by a person first, which is the same boundary I hold for agent-generated code.',
@@ -104,19 +110,13 @@ export class AgenticComponent {
         'An AI-assisted security review across the Impact estate surfaced clients writing financial and order data straight to Firestore. Security rules can govern who writes a document; they cannot validate what is written. Those paths moved behind Cloud Functions as a trusted boundary. Using AI to find what you missed is a different discipline from using it to produce more, and it is the one teams skip.',
       link: { label: 'Platform case study', route: '/work/impact-platform' },
     },
-    {
-      title: 'A spec tool built on a Marine Corps operations order',
-      body:
-        'SMEAC Spec Builder turns the five-paragraph order — Situation, Mission, Execution, Admin & Logistics, Command & Signal — into a form that gets an agent-ready specification out of someone’s head in a few minutes, by voice or by keyboard. The order exists because a plan has to survive being handed to someone who cannot ask a follow-up question, which is exactly the position an agent is in. It is the first principle below, turned into a tool other people can use.',
-      link: { label: 'SMEAC case study', route: '/work/smeac-spec-builder' },
-    },
   ];
 
   readonly principles: Principle[] = [
     {
       title: 'Spec first',
       body:
-        'I write the specification before the agent writes anything. Most bad agent output traces back to an underspecified request, not to the model. SMEAC Spec Builder is that habit turned into a tool.',
+        'I write the specification before the agent writes anything. Most bad agent output traces back to an underspecified request, not to the model.',
     },
     {
       title: 'Human in the loop, every change',
@@ -135,5 +135,5 @@ export class AgenticComponent {
     },
   ];
 
-  readonly tools = ['Claude Code — primary', 'GitHub Copilot', 'GitLab Duo', 'Grok'];
+  readonly tools = ['Anthropic API', 'Claude Code — primary', 'GitHub Copilot', 'GitLab Duo', 'Grok'];
 }

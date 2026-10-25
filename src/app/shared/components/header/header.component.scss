@@ -133,9 +133,19 @@
   }
 }
 
-@media (max-width: 380px) {
+/* Under 480px the wordmark, Menu and Contact Me no longer fit at full size
+   (they summed to ~419px at a 390px viewport and pushed the page sideways).
+   The wordmark gives way first; the page never scrolls horizontally. */
+@media (max-width: 480px) {
+  .topbar__wrap {
+    gap: 8px;
+  }
+
   .wordmark {
     font-size: 16px;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .topbar__cta {

@@ -340,6 +340,46 @@ export const LEADERSHIP: LeadershipItem[] = [
   },
 ];
 
+/**
+ * Areas of expertise and the technical stack, as the master résumé states them
+ * (2026-10-11). A reader searching the page for a technology should find it here;
+ * the per-project stack lines name only what each engagement used.
+ */
+export const AREAS_OF_EXPERTISE: string[] = [
+  'Application, System and Platform Architecture / Design',
+  'Production AI Systems — Multi-Agent Pipeline Design, LLM Integration, Structured Output Contracts',
+  'AI-Augmented / Agentic Delivery — Spec-First, Human-in-the-Loop Engineering',
+  'Coaching Teams Through Adoption of AI-Assisted and Agentic Engineering Practices',
+  'Microservices, Event-Driven Architecture, ETL and Systems Integration',
+  'Legacy and Mainframe Integration — Modernizing Mainframe-Backed Platforms, DB2',
+  'Cloud Migration, CI/CD, IaC, Containerization (Docker/Kubernetes)',
+  'API Gateway Design and Implementation',
+  'Domain-Driven and Test-Driven Design, SOLID Principles, Design Patterns, Data Modeling',
+  'Cross-Functional Technical Leadership Across Product, Business, and Engineering Teams',
+  'Mentoring, Code Reviews, Technical Documentation, Performance Tuning',
+];
+
+export interface StackGroup {
+  name: string;
+  items: string;
+}
+
+export const STACK: StackGroup[] = [
+  { name: 'Languages and core frameworks', items: 'Java/JEE 17/21, Spring Boot, Spring Framework (Data, JPA, Security, REST, Batch, Cloud), Hibernate, REST, TypeScript, SSO, SAML, OAuth, JWT, OpenID' },
+  { name: 'AI engineering', items: 'Anthropic API, multi-agent pipeline design, schema-constrained (structured) output, agent handoff contracts, LLM integration, prompt and context design' },
+  { name: 'AI tooling', items: 'Claude Code (primary — agentic development), GitHub Copilot, GitLab Duo, Grok' },
+  { name: 'Frontend', items: 'Angular (through v20), React, Bootstrap, RxJS, Node.js, DevExpress, Capacitor (Android), Form.io, Stripe/PayPal' },
+  { name: 'Backend', items: 'Servlets, EJBs, Nest.js, Express' },
+  { name: 'Cloud platforms and services', items: 'AWS (CloudFormation, Beanstalk, EKS, Lambda, Fargate, RDS, DynamoDB, SQS, SNS, S3, IAM, Kinesis, Elasticsearch, Elasticache), GCP/Firebase' },
+  { name: 'Containerization and DevOps / CI-CD', items: 'IaC, Docker, Kubernetes, Jenkins, GitHub Actions, Maven/Gradle' },
+  { name: 'Databases', items: 'PostgreSQL, Oracle, DB2, MongoDB, MySQL, PL/SQL' },
+  { name: 'Messaging and integration', items: 'Apache Camel, Kafka, RabbitMQ' },
+  { name: 'API and data', items: 'GraphQL, Google Maps API' },
+  { name: 'Testing and quality', items: 'JUnit, Mockito, SonarQube' },
+  { name: 'Observability', items: 'Datadog, CloudWatch, Splunk' },
+  { name: 'Version control and project management', items: 'Git, Bitbucket, Atlassian Tools, Confluence' },
+];
+
 export const CREDENTIALS: Credential[] = [
   { name: 'Sun Certified Java Developer', issuer: 'Sun Microsystems' },
   { name: 'Sun Certified Web Component Developer', issuer: 'Sun Microsystems' },
