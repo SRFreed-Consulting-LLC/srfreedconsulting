@@ -4,8 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { MainLayoutComponent } from './layouts';
-import { FooterComponent } from './shared/components';
-import { AppInfoService, ScreenService } from './shared/services';
+import { AppInfoService } from './shared/services';
 
 @NgModule({
   declarations: [
@@ -14,11 +13,9 @@ import { AppInfoService, ScreenService } from './shared/services';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MainLayoutComponent,
-    FooterComponent
+    MainLayoutComponent
   ],
   providers: [
-    ScreenService,
     AppInfoService
   ],
   bootstrap: [AppComponent]

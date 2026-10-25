@@ -29,8 +29,10 @@
   appearance: none;
   font: inherit;
   font-size: 13.5px;
-  font-weight: 550;
-  padding: 7px 14px;
+  font-weight: 600;
+  /* 44px is the minimum touch target; the chips are buttons. */
+  min-height: 44px;
+  padding: 0 14px;
   border: 1px solid var(--color-border);
   border-radius: 999px;
   background: var(--color-surface);
@@ -48,7 +50,7 @@
   font-family: var(--font-mono);
   font-size: 12px;
   letter-spacing: 0.03em;
-  padding: 5px 11px;
+  padding: 0 11px;
 }
 
 .chip--on {
@@ -149,19 +151,6 @@
     object-position: top center;
     display: block;
   }
-}
-
-.card__media--empty {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.card__org-mark {
-  font-family: var(--font-mono);
-  font-size: 46px;
-  font-weight: 600;
-  color: var(--color-border);
 }
 
 .card__body {
@@ -282,7 +271,7 @@
 @media (max-width: 480px) {
   .filters__group .chip {
     font-size: 13px;
-    padding: 6px 12px;
+    padding: 0 12px;
   }
 
   .card__media {

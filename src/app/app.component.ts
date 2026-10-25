@@ -1,5 +1,4 @@
-import { Component, HostBinding } from '@angular/core';
-import { AppInfoService, ScreenService } from './shared/services';
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'app-root',
@@ -7,10 +6,4 @@ import { AppInfoService, ScreenService } from './shared/services';
     styleUrls: ['./app.component.scss'],
     standalone: false
 })
-export class AppComponent {
-  @HostBinding('class') get getClass() {
-    return Object.keys(this.screen.sizes).filter(cl => this.screen.sizes[cl]).join(' ');
-  }
-
-  constructor(private screen: ScreenService, public appInfo: AppInfoService) { }
-}
+export class AppComponent { }

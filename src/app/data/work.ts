@@ -87,7 +87,7 @@ export const WORK: WorkItem[] = [
     stack: ['Angular 20', 'Firebase', 'Role-based auth', 'Form.io', 'Leaflet', 'Excel / PDF export'],
     outcome:
       'Nine operational domains behind one role-based console — contacts and organizations, order fulfillment, catalog, content, curriculum authoring, campaigns and reporting — so staff run the ministry without a developer in the loop.',
-    image: 'assets/work/admin/dashboard.webp',
+    image: 'assets/work/admin/products.webp',
     hasCaseStudy: true,
   },
   {

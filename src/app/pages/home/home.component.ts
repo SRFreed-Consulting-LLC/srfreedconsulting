@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { CREDENTIALS, TIMELINE, TimelineEntry } from '../../data/background';
 import { availabilityStatus, WorkItem, WorkService } from '../../data/work';
 
 interface Proof {
@@ -17,10 +18,9 @@ interface Proof {
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  readonly availability = availabilityStatus();
+  private readonly work = inject(WorkService);
 
-  /** Two pieces of work above the fold — the portfolio's opening argument. */
-  readonly featured: WorkItem[];
+  readonly availability = availabilityStatus();
 
   readonly proofs: Proof[] = [
     {
@@ -40,10 +40,25 @@ export class HomeComponent {
     },
   ];
 
-  constructor(work: WorkService) {
-    const slugs = ['impact-platform', 'federal-reserve'];
-    this.featured = slugs
-      .map(slug => work.getBySlug(slug))
-      .filter((w): w is WorkItem => !!w);
-  }
+  /** The framed screenshot under the metrics line — the storefront's home. */
+  readonly showcase: WorkItem | undefined = this.work.getBySlug('impact-platform');
+
+  /** Six pieces of work, products first — the portfolio's opening argument. */
+  readonly featured: WorkItem[] = [
+    'impact-platform',
+    'impact-admin',
+    'impact-library',
+    'smeac-spec-builder',
+    'federal-reserve',
+    'cfa-tax',
+  ]
+    .map(slug => this.work.getBySlug(slug))
+    .filter((w): w is WorkItem => !!w);
+
+  /** The engagements that carry the most weight, most recent first. */
+  readonly timeline: TimelineEntry[] = [...TIMELINE]
+    .filter(entry => entry.notable)
+    .sort((a, b) => b.from - a.from);
+
+  readonly credentials = CREDENTIALS;
 }

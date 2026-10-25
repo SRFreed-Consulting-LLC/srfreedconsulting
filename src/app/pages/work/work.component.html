@@ -62,14 +62,9 @@
       <a class="card__link" [routerLink]="item.hasCaseStudy ? ['/work', item.slug] : null"
          [class.card__link--static]="!item.hasCaseStudy">
 
-        <div class="card__media" *ngIf="item.image; else noMedia">
+        <div class="card__media" *ngIf="item.image">
           <img [src]="item.image" [alt]="item.name + ' screenshot'" loading="lazy">
         </div>
-        <ng-template #noMedia>
-          <div class="card__media card__media--empty" aria-hidden="true">
-            <span class="card__org-mark">{{ item.org.charAt(0) }}</span>
-          </div>
-        </ng-template>
 
         <div class="card__body">
           <div class="card__meta">

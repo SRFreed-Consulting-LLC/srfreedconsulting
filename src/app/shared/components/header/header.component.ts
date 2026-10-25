@@ -1,20 +1,25 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, signal } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { navigation, NavigationItem } from '../../../app-navigation';
 
 @Component({
-    selector: 'app-header',
-    imports: [CommonModule],
-    templateUrl: './header.component.html',
-    styleUrls: ['./header.component.scss']
+  selector: 'app-header',
+  imports: [CommonModule, RouterModule],
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  @Input() title = '';
-  @Input() menuToggleEnabled = true;
-  @Input() menuOpened = false;
+  readonly items: NavigationItem[] = navigation;
 
-  @Output() menuToggle = new EventEmitter<void>();
+  /** Phone only: whether the five links are showing beneath the bar. */
+  readonly menuOpen = signal(false);
 
   toggleMenu() {
-    this.menuToggle.emit();
+    this.menuOpen.update(open => !open);
+  }
+
+  closeMenu() {
+    this.menuOpen.set(false);
   }
 }

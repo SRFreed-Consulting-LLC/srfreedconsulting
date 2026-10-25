@@ -1,19 +1,19 @@
 <div class="page">
 
   <!-- Hero -->
-  <header class="hero">
+  <section class="hero" aria-labelledby="name">
     <div class="hero__text">
       <p class="availability">
         <span class="availability__dot" aria-hidden="true"></span>
         {{ availability.label }}
       </p>
 
-      <h1 class="hero__name">Shane Freed</h1>
+      <h1 id="name" class="hero__name">Shane Freed</h1>
 
       <p class="hero__title">
         Principal Software Engineer
-        <span class="hero__sep">·</span> Application Modernization Architect
-        <span class="hero__sep">·</span> AI-Augmented Delivery
+        <span class="hero__sep" aria-hidden="true">·</span> Application Modernization Architect
+        <span class="hero__sep" aria-hidden="true">·</span> AI-Augmented Delivery
       </p>
 
       <p class="hero__pitch">
@@ -24,7 +24,7 @@
 
       <div class="hero__actions">
         <a class="btn btn--primary" routerLink="/work">See the work</a>
-        <a class="btn btn--ghost" routerLink="/contact">Get in touch</a>
+        <a class="btn btn--ghost" href="mailto:shane.freed@srfreedconsulting.com">Get in touch</a>
       </div>
 
       <p class="hero__note" *ngIf="availability.note">{{ availability.note }}</p>
@@ -38,9 +38,9 @@
         height="640"
         fetchpriority="high">
     </div>
-  </header>
+  </section>
 
-  <!-- Proof -->
+  <!-- Metrics line -->
   <ul class="proofs">
     <li class="proof" *ngFor="let proof of proofs">
       <span class="proof__figure">{{ proof.figure }}</span>
@@ -49,48 +49,98 @@
     </li>
   </ul>
 
-  <!-- Featured work -->
-  <div class="section-head">
-    <span class="eyebrow">Selected</span>
-    <h2 class="section-head__title">Start here</h2>
-  </div>
+  <!-- Framed screenshot -->
+  <figure class="showcase" *ngIf="showcase?.image">
+    <div class="frame">
+      <img [src]="showcase!.image" [alt]="showcase!.name" width="1600" height="1000">
+    </div>
+    <figcaption>
+      <strong>{{ showcase!.name }}</strong>
+      <span>{{ showcase!.outcome }}</span>
+    </figcaption>
+  </figure>
 
-  <ul class="featured">
-    <li *ngFor="let item of featured">
-      <a class="feature" [routerLink]="['/work', item.slug]">
-        <div class="feature__media" *ngIf="item.image">
-          <img [src]="item.image" [alt]="item.name" loading="lazy">
-        </div>
-        <div class="feature__body">
-          <span class="tag" [class.tag--accent]="item.kind === 'product'">
-            {{ item.kind === 'product' ? 'I operate this' : 'Client platform' }}
-          </span>
-          <h3 class="feature__name">{{ item.name }}</h3>
-          <p class="feature__outcome">{{ item.outcome }}</p>
-          <span class="feature__cta">Read the case study &rarr;</span>
-        </div>
-      </a>
-    </li>
-  </ul>
+  <!-- Start here -->
+  <section class="section" aria-labelledby="work-heading">
+    <h2 id="work-heading">Start here</h2>
 
-  <p class="all-work">
-    <a routerLink="/work">All twelve projects &rarr;</a>
-  </p>
+    <ul class="cards">
+      <li *ngFor="let item of featured">
+        <a class="card" [routerLink]="['/work', item.slug]">
+          <div class="card__media" *ngIf="item.kind === 'product' && item.image">
+            <img [src]="item.image" [alt]="item.name" loading="lazy">
+          </div>
+          <div class="card__body">
+            <span class="card__tag" [class.card__tag--client]="item.kind !== 'product'">
+              {{ item.kind === 'product' ? 'I operate this' : 'Client platform' }}
+            </span>
+            <h3 class="card__name">{{ item.name }}</h3>
+            <p class="card__meta">{{ item.org }} · {{ item.role }} · {{ item.period }}</p>
+            <p class="card__outcome">{{ item.outcome }}</p>
+            <span class="card__cta" *ngIf="item.hasCaseStudy">Read the case study &rarr;</span>
+          </div>
+        </a>
+      </li>
+    </ul>
+
+    <p class="all-work">
+      <a routerLink="/work">All twelve projects &rarr;</a>
+    </p>
+  </section>
 
   <!-- How I work -->
-  <div class="section-head">
-    <span class="eyebrow">Method</span>
-    <h2 class="section-head__title">How I work now</h2>
-  </div>
+  <section class="section" aria-labelledby="method-heading">
+    <h2 id="method-heading">How I work now</h2>
 
-  <div class="method">
-    <p class="method__body">
-      I run a spec-first, human-in-the-loop agentic practice. I write the
-      specification, steer the agent conversationally, and review every change with
-      an architect's eye. Agentic tooling accelerates delivery; it does not replace
-      engineering judgment or accountability.
-    </p>
-    <a class="btn btn--ghost" routerLink="/agentic">How that actually goes &rarr;</a>
-  </div>
+    <div class="method">
+      <p class="method__body">
+        I run a spec-first, human-in-the-loop agentic practice. I write the
+        specification, steer the agent conversationally, and review every change with
+        an architect's eye. Agentic tooling accelerates delivery; it does not replace
+        engineering judgment or accountability.
+      </p>
+      <a class="btn btn--ghost" routerLink="/agentic">How that actually goes &rarr;</a>
+    </div>
+  </section>
+
+  <!-- Background -->
+  <section class="section" aria-labelledby="background-heading">
+    <h2 id="background-heading">Background</h2>
+
+    <ul class="timeline">
+      <li class="timeline__entry" *ngFor="let entry of timeline">
+        <h3 class="timeline__org">{{ entry.org }}</h3>
+        <p class="timeline__role">{{ entry.role }}</p>
+        <p class="timeline__period">{{ entry.period }}</p>
+        <p class="timeline__summary">{{ entry.summary }}</p>
+      </li>
+    </ul>
+
+    <div class="credentials">
+      <h3 class="credentials__title">Credentials</h3>
+      <ul class="credentials__list">
+        <li class="credential" *ngFor="let cred of credentials">
+          <span class="credential__name">{{ cred.name }}</span>
+          <span class="credential__issuer">{{ cred.issuer }}</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Contact band -->
+  <section class="contact" aria-labelledby="contact-heading">
+    <div class="contact__band">
+      <div>
+        <h2 id="contact-heading" class="contact__title">
+          <span class="availability__dot" aria-hidden="true"></span>
+          {{ availability.label }}
+        </h2>
+        <p class="contact__email">
+          <a href="mailto:shane.freed@srfreedconsulting.com">shane.freed&#64;srfreedconsulting.com</a>
+        </p>
+      </div>
+      <a class="btn btn--primary" href="mailto:shane.freed@srfreedconsulting.com">Get in touch</a>
+    </div>
+  </section>
 
 </div>

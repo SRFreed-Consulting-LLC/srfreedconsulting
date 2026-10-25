@@ -1,76 +1,69 @@
 import { CommonModule } from '@angular/common';
-import {
-  Component,
-  ElementRef,
-  Input,
-  OnDestroy,
-  OnInit,
-  ViewChild
-} from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { navigation } from '../../app-navigation';
+import { WorkService } from '../../data/work';
+import { FooterComponent } from '../../shared/components/footer/footer.component';
 import { HeaderComponent } from '../../shared/components/header/header.component';
-import { SideNavigationMenuComponent } from '../../shared/components/side-navigation-menu/side-navigation-menu.component';
-import { ScreenService } from '../../shared/services';
+
+const SITE = 'SRFreed Consulting';
 
 @Component({
-    selector: 'app-main-layout',
-    imports: [CommonModule, HeaderComponent, SideNavigationMenuComponent],
-    templateUrl: './main-layout.component.html',
-    styleUrls: ['./main-layout.component.scss']
+  selector: 'app-main-layout',
+  imports: [CommonModule, HeaderComponent, FooterComponent],
+  templateUrl: './main-layout.component.html',
+  styleUrls: ['./main-layout.component.scss']
 })
 export class MainLayoutComponent implements OnInit, OnDestroy {
-  @Input() title = '';
+  private readonly router = inject(Router);
+  private readonly title = inject(Title);
+  private readonly work = inject(WorkService);
 
-  @ViewChild('content', { static: true }) content!: ElementRef<HTMLElement>;
-
-  menuOpened = false;
-
-  /** On small screens the menu floats above the content instead of shrinking it. */
-  overlayMode = false;
-
-  private readonly subscriptions = new Subscription();
-
-  constructor(private screen: ScreenService, private router: Router) { }
+  private sub?: Subscription;
 
   ngOnInit() {
-    this.applyScreenSize();
-
-    this.subscriptions.add(
-      this.screen.changed.subscribe(() => this.applyScreenSize())
-    );
-
-    this.subscriptions.add(
-      this.router.events.subscribe(event => {
-        if (event instanceof NavigationEnd) {
-          this.content.nativeElement.scrollTo(0, 0);
+    this.sub = this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.title.setTitle(this.titleFor(event.urlAfterRedirects));
+        // The document scrolls now, so a route change starts at the top
+        // unless the link asked for an anchor.
+        if (!event.urlAfterRedirects.includes('#')) {
+          window.scrollTo(0, 0);
         }
-      })
-    );
+      }
+    });
   }
 
   ngOnDestroy() {
-    this.subscriptions.unsubscribe();
+    this.sub?.unsubscribe();
   }
 
-  toggleMenu() {
-    this.menuOpened = !this.menuOpened;
-  }
+  /** "SRFreed Consulting" on home, "<Page> · SRFreed Consulting" elsewhere. */
+  private titleFor(url: string): string {
+    const path = url.split(/[?#]/)[0];
+    const [, first, second] = path.split('/');
 
-  closeMenu() {
-    this.menuOpened = false;
-  }
-
-  onNavigated() {
-    if (this.overlayMode) {
-      this.closeMenu();
+    if (!first || first === 'home') {
+      return SITE;
     }
-  }
 
-  private applyScreenSize() {
-    const isLarge = this.screen.sizes['screen-large'];
+    if (first === 'work' && second) {
+      const item = this.work.getBySlug(second);
+      return item ? `${item.name} · ${SITE}` : SITE;
+    }
 
-    this.overlayMode = !isLarge;
-    this.menuOpened = isLarge;
+    const nav = navigation.find(item => item.path === `/${first}`);
+    if (nav) {
+      return `${nav.text} · ${SITE}`;
+    }
+
+    // `/contact` renders the Background page.
+    if (first === 'contact') {
+      return `Background · ${SITE}`;
+    }
+
+    return SITE;
   }
 }
